@@ -5,7 +5,7 @@ class Banner{
         this.oct = new Oct8()
     }
 
-    ConstruirBanner(LocalId,BannerName){
+    ConstruirBanner(LocalId,BannerName,Titulo,Subtitulo,botão){
         this.oct.CreateObjectFactory(()=>{
             let Element = this.oct.CreateContainerElement(BannerName,LocalId," ","div")
             this.oct.ModifyPropsDefault(Element,null,null,null,null)
