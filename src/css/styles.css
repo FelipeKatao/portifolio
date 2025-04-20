@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  
+  header {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .about, .projects {
+    padding: 2rem;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .project {
+    background-color: white;
+    padding: 1rem;
+    border-left: 5px solid #007acc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .project h3 {
+    margin: 0 0 0.5rem 0;
+  }
+  
+  footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+  

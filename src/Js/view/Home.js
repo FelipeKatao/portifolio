@@ -7,12 +7,8 @@ class HomeView{
         this.banner = new Banner()
     }
     Home(){
-        this.view.ContruirMenu()
-        this.view.RenderMenu()
-
-        this.banner.ConstruirBanner("document_base","Big_1")
-        this.banner.RenderBanner("Big_1")
-        
+        this.banner.ConstruirBanner("dynamic","Banner_base","Bem vindo","Portifolio Felipe Catão","Veja meus projetos",`Sou felipe Catão desenvolvedor back end especialisat em python`)
+        this.banner.RenderBanner("Banner_base")
     }
 
 }
