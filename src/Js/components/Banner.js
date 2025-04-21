@@ -10,20 +10,24 @@ class Banner{
             let Element = this.oct.CreateContainerElement(BannerName,LocalId," ","div")
             this.oct.ModifyPropsDefault(Element,null,null,null,null)
             this.oct.ModifyContentContainer(Element,`
+                <article>
                <h1>${Titulo}</h1> 
                <h2> ${Subtitulo} </h2>
                <p> ${text} </p>
                <button>${botão}</button>
+               </article>
                 `)
             this.oct.createPsudoClassElement(`#${BannerName}`,`
-            margin-top:10vh;
-            border-radius:2vh;
-            border:0.2vh black solid;
             padding:2vh;
-            background-color:gray;
-            color:white;
-            width:70%;
-            margin-left:15%;
+            height:70vh;
+            width:100%;
+            margin-top:10vh;
+            text-align:center;
+            color:#333;
+
+            `)
+             this.oct.createPsudoClassElement(`#${BannerName} article`,`
+            margin-top:20vh;
                 `)
         },BannerName)
     }

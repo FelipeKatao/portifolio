@@ -10,6 +10,10 @@ body {
     color: white;
     text-align: center;
     padding: 2rem;
+    position: fixed;
+    width:100%;
+    margin-top:-5vh;
+    z-index: 100;
   }
   
   .about, .projects {
@@ -22,6 +26,10 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+  }
+
+  body{
+    overflow-x: hidden;
   }
   
   .project {
@@ -41,5 +49,6 @@ body {
     text-align: center;
     padding: 1rem;
     margin-top: 2rem;
+    width: 100%;
   }
   
