@@ -68,10 +68,13 @@ body nav ul li:active {
 
 .texto_article{
     margin-top: 4vh;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: var(--CorFundo);
 }
 .texto_article button{
     margin-top: 2vh;
-    float: right;
+    margin-left: 10%;
 }
 
 .article{
@@ -92,4 +95,26 @@ body nav ul li:active {
     border-radius: 3vh;
     text-align: left;
     padding: 2vh;
+}
+
+.division_article{
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+} 
+.division_article article{
+    width: 18vh;
+    margin-top: 3vh;
+    margin-left: 18%;
+}
+
+button{
+    background-color: var(--Button);
+    color: var(--CorFundo);
+    padding: 2vh;
+    border: none;
+    font-weight: bold;
+}
+button:hover{
+    background-color: var(--corBase);
 }
