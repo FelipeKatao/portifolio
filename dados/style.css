@@ -12,8 +12,12 @@ body{
 }
 #document{
     width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+.hero_dc{
+    text-align: center;
+}
 body nav{
     background-color: var(--corBase);
     color: var(--Texto);
@@ -95,6 +99,35 @@ body nav ul li:active {
     border-radius: 3vh;
     text-align: left;
     padding: 2vh;
+}
+.vitrine_base{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.Bloco_large{
+    background-color: white;
+    padding: 2vh;
+    margin-top: 4vh;
+    width: 50vh;
+    height: 40vh;
+    margin-left: 6vh;
+    overflow: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all 0.3s;
+}
+
+.Bloco_large:hover{
+filter: drop-shadow(-4px -1px 9px #0000002d);
+transform: scale(1.1);
+transition: all 0.3s;
+}
+
+.Bloco_large a{
+    color:#353333;
+    text-decoration: none;
 }
 
 .division_article{
