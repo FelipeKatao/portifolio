@@ -1,49 +1,95 @@
+:root {
+    --corBase : #efefef;
+    --Texto : #6b6b6b;
+    --CorFundo : #353333;
+    --BodyColor: #cecece;
+    --Button: #eaea00;
+}
 body{
     background-color: #5a7c5a;
+    overflow-x: hidden;
+    background-color: var(--BodyColor);
 }
 #document{
     width: 100%;
 }
 
 body nav{
-    background-color: #7da07d;
-    width: 100%;
+    background-color: var(--corBase);
+    color: var(--Texto);
+    width: 110%;
     height: 10vh;
+    margin-left: -2vh;
     margin-top: -2vh;
     text-align: center;
     padding-top: 1vh;
     font-family: Arial, Helvetica, sans-serif;
-    color: #142b14;
 }
 
-.banner-xl{
-    width: 100%;
-    height: 40vh;
-    margin-top:2vh;
-    background-color: #7da07d;
-}
-
-article{
-    display: flex;
-    flex-direction: row;
-    align-content:  baseline;
-
-}
-
- .card{
-    background-color: #3e573e;
-    width: 60vh;
-    height: 40vh;
+body nav ul li{
+    float: left;
     margin-left: 4vh;
-    margin-top: 2vh;
+    list-style: none;
+}
+
+body nav ul li:hover {
+    float: left;
+    margin-left: 4vh;
+    list-style: none;
+}
+
+body nav ul li:active {
+    text-decoration: none;
+    color: var(--Texto);
+}
+
+.banner_base{
+    height: 60vh;
+    width: 120%;
+    margin-left: -2vh;
+    padding: 2vh;
+    background-color: var(--CorFundo);
+    display: flex;
 
 }
 
-@media (max-width:100vh) {
-    article{
-        flex-direction: column;
-    }
-    .banner-xl{
-        width: 150%; 
-    }
+.banner_base article{
+    width: 70vh;
+    color: var(--corBase);
+    font-family: Arial, Helvetica, sans-serif ;
+    margin-left: 5vh;
+    margin-top: 8%;
+}
+
+.banner_base img{
+    float: left;
+}
+
+
+.texto_article{
+    margin-top: 4vh;
+}
+.texto_article button{
+    margin-top: 2vh;
+    float: right;
+}
+
+.article{
+    margin-top: 8vh;
+    background-color: var(--CorFundo);
+    color: var(--corBase); 
+    font-family: Arial, Helvetica, sans-serif; 
+    padding: 2vh;
+    text-align: center; 
+}
+
+.card-lg{
+    margin-left: 10%;
+    margin-top: 8vh;
+    background-color: var(--Texto);
+    color: var(--BodyColor);
+    width: 80%;
+    border-radius: 3vh;
+    text-align: left;
+    padding: 2vh;
 }
