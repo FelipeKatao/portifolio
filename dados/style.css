@@ -19,6 +19,10 @@ body{
 .hero_dc{
     text-align: center;
 }
+
+.hero_dc h1 {
+    color: var(--CorFundo);
+}
 body nav{
     background-color: var(--corBase);
     color: var(--Texto);
@@ -58,12 +62,38 @@ body nav ul li:active {
 
 }
 
-.banner_base article{
-    width: 70vh;
+
+
+.banner_text-lg{
+       width: 70vh;
     color: var(--corBase);
     font-family: Arial, Helvetica, sans-serif ;
     margin-left: 5vh;
-    margin-top: 8%;
+    margin-top: 2%;
+}
+
+.banner_text-lg h1{
+    font-weight: bolder;
+    font-size: 3rem;
+    background: #34333C;
+    background: linear-gradient(to right, #59585f 0%, #4a78db 50%, #790bbd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 3s;
+}
+
+.banner_text-lg h1:hover{
+     background: linear-gradient(to right, #9c9ba0 0%, #6f9bf8 50%, #a82ef5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 1s all;
+}
+
+
+.banner_text-lg h3{
+    font-weight: lighter;
+    font-size: 1rem;
+    margin-top: -4vh;
 }
 
 .banner_base img{
@@ -72,6 +102,8 @@ body nav ul li:active {
 
 
 .texto_article{
+    width: 40%;
+    margin: auto;
     margin-top: 4vh;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
@@ -100,7 +132,18 @@ body nav ul li:active {
     border-radius: 3vh;
     text-align: left;
     padding: 2vh;
+    display: flex;
+
 }
+
+.space_img{
+    margin: auto;
+    width: 70vh;
+    height: 30vh;
+    border-radius: 3vh;
+    background-color: #cecece;
+}
+
 .vitrine_base{
     width: 100%;
     height: auto;

@@ -1,2 +1,2 @@
 
-alert(window.location.hash)
+ //alert(" Ainda estamos em desenvolvimento ")
