@@ -2,6 +2,7 @@
     --corBase : #efefef;
     --Texto : #6b6b6b;
     --CorFundo : #353333;
+    --CorFundoCons : #423838;
     --BodyColor: #cecece;
     --Button: #eaea00;
 }
@@ -150,4 +151,52 @@ button{
 }
 button:hover{
     background-color: var(--corBase);
+}
+
+/*  =============================    */
+
+header h1{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+}
+
+header button{
+    margin-top: -9vh;
+}
+
+#data-menu{
+    display: flex;
+}
+
+#data-menu ul li {
+    float: left;
+    margin-left: 5vh;
+    list-style: none;
+    margin-top: 1vh;
+}
+
+#data{
+    margin-top: -2vh;
+    margin-left: 6%;
+    width: 90%;
+    height: 50vh;
+    background-color: var(--CorFundoCons);
+}
+
+.guide{
+    width: 90%;
+    background-color:var(--CorFundoCons);
+    height: 34vh;
+    margin-left: 6%;
+    margin-top: 4vh;
+
+}
+
+#guide_nav {
+    background-color: transparent;
+}
+
+#data-bg{
+    background-color: var(--CorFundo);    
 }
