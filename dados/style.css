@@ -57,7 +57,8 @@ body nav ul li:active {
     width: 120%;
     margin-left: -2vh;
     padding: 2vh;
-    background-color: var(--CorFundo);
+    background: #edebe8;
+background: linear-gradient(90deg, rgb(199, 199, 199) 0%, rgb(63, 63, 63) 100%);
     display: flex;
 
 }
@@ -66,7 +67,7 @@ body nav ul li:active {
 
 .banner_text-lg{
        width: 70vh;
-    color: var(--corBase);
+    color: var(--CorFundo);
     font-family: Arial, Helvetica, sans-serif ;
     margin-left: 5vh;
     margin-top: 2%;
@@ -77,14 +78,14 @@ body nav ul li:active {
     font-size: 3rem;
     background: #34333C;
     background: linear-gradient(to right, #59585f 0%, #4a78db 50%, #790bbd 100%);
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: all 3s;
 }
 
 .banner_text-lg h1:hover{
      background: linear-gradient(to right, #9c9ba0 0%, #6f9bf8 50%, #a82ef5 100%);
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: 1s all;
 }
@@ -98,6 +99,10 @@ body nav ul li:active {
 
 .banner_base img{
     float: left;
+    height: 64vh;
+    width: 112vh;
+    margin-left: 7vh;
+    margin-top: -2vh;
 }
 
 
