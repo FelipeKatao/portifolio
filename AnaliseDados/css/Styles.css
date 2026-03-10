@@ -1,0 +1,167 @@
+
+@layer banner{
+[oct8-css~="banner"]{
+    background-color: black;
+    width: auto;
+    height: 20vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-top: -2vh;
+}
+}
+
+@layer Header{
+[oct8-css="header"]{
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+}
+[oct8-css~="header"]{
+   margin-top: -5vh;
+   color: gray;
+   margin-left: 5%;
+
+}
+[oct8-css~="profile"]{
+    width: 10vh;
+    height: 10vh;
+    background-color: white;
+    padding: 2vh;
+    margin-top: 1vh;
+    margin-left: 1vh;
+
+}
+[oct8-css~="shareLink"]{
+margin-left: auto;
+align-content: center;
+}
+}
+
+@layer container{
+    [oct8-css~="containers_central"]{
+        display: flex;
+        margin: auto;
+        width: 80%;
+        flex-direction: row;
+        flex-wrap: wrap;        
+    }
+    [oct8-css~="projeto_frame"]{
+        width: 96%;
+        margin: auto;
+        background-color: aqua;
+        margin-top: 2vh;
+        padding: 2vh;
+    }
+    [oct8-css~="container_top"]{
+        display: flex;
+        flex-direction: row;
+    }
+    [oct8-css~="container_top"] button{
+        margin-left: auto;
+    }
+    [oct8-css~="container_full"]{
+        padding: 2vh;
+    }
+}
+
+@layer Color{
+    [oct8-css~="bege"]{ background-color: bisque;}
+    
+}
+
+@layer cards{
+    [oct8-css~="cards"]{
+        background-color: aqua;
+        padding: 2vh;
+        border-radius: 1vh;
+        width: 67vh;
+        height: 20vh;
+        margin-top: 4vh;
+        margin-left: 5vh;
+    }
+    [oct8-css~="card-ex"]{
+        background-color: white;
+        padding-left: 2vh;
+        padding-top: 2vh;
+        padding-bottom: 2vh;
+        margin-top: 5vh;
+        height: 18vh;
+    }
+    [oct8-css~="card-ex"] button{
+       margin-left: auto;
+    }
+
+}
+
+@layer HeaderTitle{
+
+    [oct8-css='headertitle']{
+        background-color: aquamarine;
+        display: flex;
+        flex-direction: row;
+        padding: 1vh;
+    }
+    [oct8-css='headertitle'] section{
+        margin-left: auto;
+        margin-top: 3vh;
+    }
+}
+
+@layer Dashboards{
+    [oct8-css="dashboard"]{
+        background-color: gray;
+        width: 90%;
+        height: 80vh;
+        margin: auto;
+        margin-top: 4vh;
+        margin-bottom: 4vh;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex-shrink: 1;
+        overflow: auto;
+    }
+    [oct8-css~='widget']{
+        background-color: white;
+        border-radius: 2vh;
+    }
+}
+
+@layer Medidas{
+    [oct8-css~='lg']{
+        height: 50%;
+        width: 80vh;
+        padding: 2vh;
+        margin:2vh;
+    }
+     [oct8-css~='md']{
+        height: 50%;
+        width: 40vh;
+        padding: 2vh;
+        margin:2vh;
+    }
+    [oct8-css~='sm']{
+        height: 50%;
+        width: 20vh;
+        padding: 2vh;
+        margin:2vh;
+    }
+    [oct8-css~='lsm']{
+        height: 50%;
+        width: 10vh;
+        padding: 2vh;
+        margin:2vh;
+    }
+    [oct8-css~='center']{
+        background-color: aqua;
+        margin: auto;
+        width: 100%;
+        height: 40vh;
+    }
+    rect{
+        margin: auto;
+        margin-left: -5vh;
+    }
+}
