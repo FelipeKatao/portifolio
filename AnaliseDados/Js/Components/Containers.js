@@ -7,7 +7,7 @@ class Container extends Oct8.FactoryClass{
         this.FactoryObj = `
         <div oct8-css='${this.props.classId}'  >
             <div id='${this.props.id}'></div>
-            <div>${this.props.text}</dvi>
+            <div oct8-css='pd1'>${this.props.text}</dvi>
          </div>
         `
     }
