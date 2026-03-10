@@ -17,7 +17,7 @@ class DashBoardPage{
         Oct8.Factory.render("widgets_",'#dash',{Width:"lg",color:"red",id:"base"})
         Oct8.Factory.render("widgets_",'#dash',{Width:"md",id:"piz"})
         Oct8.Factory.render("widgets_",'#dash',{Width:"md",id:"plot"})
-        Oct8.Factory.render("widgets_",'#dash',{Width:"lsm"})
+        Oct8.Factory.render("widgets_",'#dash',{Width:"lsm",id:"card"})
         Oct8.Factory.render("widgets_",'#dash',{Width:"lg",id:"teste"})
 
         let Draw = new DrawGraphs()
@@ -29,6 +29,8 @@ class DashBoardPage{
 ])
         Draw.drawPieChart("element_widgetpiz",[40,60,23,90])
         Draw.drawBarChart("element_widgetteste",[40,60,23,90])
+        Draw.drawCard("element_widgetcard","Title",90,"Soma total")
+        
 
     }
 
