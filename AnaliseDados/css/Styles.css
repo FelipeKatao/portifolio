@@ -1,4 +1,8 @@
-
+@layer Globals{
+    *{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}
 @layer banner{
 [oct8-css~="banner"]{
     background-color: black;
@@ -28,9 +32,10 @@
     width: 10vh;
     height: 10vh;
     background-color: white;
+    border-radius: 1vh;
     padding: 2vh;
-    margin-top: 1vh;
-    margin-left: 1vh;
+    margin-top: 2vh;
+    margin-left: 2vh;
 
 }
 [oct8-css~="shareLink"]{
@@ -66,14 +71,11 @@ align-content: center;
     }
 }
 
-@layer Color{
-    [oct8-css~="bege"]{ background-color: bisque;}
-    
-}
+
 
 @layer cards{
     [oct8-css~="cards"]{
-        background-color: aqua;
+
         padding: 2vh;
         border-radius: 1vh;
         width: 67vh;
@@ -82,7 +84,6 @@ align-content: center;
         margin-left: 5vh;
     }
     [oct8-css~="card-ex"]{
-        background-color: white;
         padding-left: 2vh;
         padding-top: 2vh;
         padding-bottom: 2vh;
@@ -95,10 +96,46 @@ align-content: center;
 
 }
 
+@layer Menus{
+    [oct8-css~='menuList']{
+        height: 10vh;
+        align-content: center;
+        margin-top: 5vh;
+        width: 89.8%;
+        margin-left: 5%;
+        border-radius: 2vh 2vh 0vh 0vh;
+    }
+    [oct8-css~='menuList'] ul li{
+        float: left;
+        margin-left: 4vh;
+        list-style: none;
+    }
+    [oct8-css~='menuList'] ul li select{
+        width: 90%;
+    }
+    [oct8-css~='menu_fixed']{
+        background-color: gray;
+        width: 100%;
+        height: 6vh;
+        margin-top: 0vh;
+        text-align: center;
+        position: fixed;
+        color: white;
+    }
+    [oct8-css~='menu_fixed'] ul li{
+        margin: auto;
+        float: left;
+        margin-left: 4vh;
+        list-style: none;
+    }
+
+
+}
+
 @layer HeaderTitle{
 
     [oct8-css='headertitle']{
-        background-color: aquamarine;
+
         display: flex;
         flex-direction: row;
         padding: 1vh;
@@ -122,11 +159,10 @@ align-content: center;
         overflow: auto;
     }
     [oct8-css="dashboard"]{
-        background-color: gray;
         width: 90%;
         height: 80vh;
         margin: auto;
-        margin-top: 4vh;
+        margin-top: -1vh;
         margin-bottom: 4vh;
         display: flex;
         flex-direction: row;
@@ -177,5 +213,14 @@ align-content: center;
     rect{
         margin: auto;
         margin-left: -5vh;
+    }
+}
+
+@layer move{
+    .r_5{
+        margin-left: -5vh;
+    }
+    .l_5{
+        margin-left: 5vh;
     }
 }

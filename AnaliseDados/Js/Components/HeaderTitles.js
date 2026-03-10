@@ -4,11 +4,11 @@ class Headertitle extends Oct8.FactoryClass{
     constructor(prop){
         super()
         this.props = prop
-        this.Buttons = "<button> Share </button>"
+        this.Buttons = "<button class='standart_bt'> Share </button>"
         this.FactoryObj = `
         <div oct8-css='headertitle'>
             <h1>${this.props.Title}</h1>
-            <section>
+            <section >
                 ${this.Buttons}
             </section>
         </div>

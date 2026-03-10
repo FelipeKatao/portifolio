@@ -15,7 +15,7 @@ class ProjectCard extends Oct8.FactoryClass{
             ${this.prop.Sobre}
            </p>
 
-           <button> Acessar projeto </button>
+           <button class='standart_bt'> Acessar projeto </button>
            </div> 
         `
     }

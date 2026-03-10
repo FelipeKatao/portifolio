@@ -14,7 +14,7 @@ class DataCard extends Oct8.FactoryClass{
            <div oct8-css="cards"> 
            <h1> ${this.prop.Titulo} </h1>
            <h3> ${this.prop.Sobre} </h3>
-           <button> Ver mais </button>
+           <button class='standart_bt'> Ver mais </button>
            </div> 
         `
         }

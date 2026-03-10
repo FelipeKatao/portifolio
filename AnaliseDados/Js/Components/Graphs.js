@@ -6,7 +6,10 @@ class Graphs extends Oct8.FactoryClass{
         super()
         this.props = prop
         this.FactoryObj = `
+        <div>
+            <div id='menuDash_opt'></div>   
             <div oct8-css='dashboard' id='dash'></div>
+            </div>
         `
     }
 }

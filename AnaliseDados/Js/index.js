@@ -11,6 +11,8 @@ import { Graphs } from "./Components/Graphs.js"
 import { Container } from "./Components/Containers.js"
 import { DashBoardPage } from "./page/Dashboard.js"
 import { Widgets } from "./Components/Widget.js"
+import { MenuDash } from "./Components/MenuDash.js"
+import { Menu } from "./Components/Menu.js"
 //https://www.youtube.com/watch?v=5638u_F9_hY
 
 Oct8.Factory.register("Banner",Banner)
@@ -22,17 +24,21 @@ Oct8.Factory.register("HeaderTitle",Headertitle)
 Oct8.Factory.register("Graphs",Graphs)
 Oct8.Factory.register("div",Container)
 Oct8.Factory.register("widgets_",Widgets)
+Oct8.Factory.register("MenuDash",MenuDash)
+Oct8.Factory.register("MenuSite",Menu)
 
-
-
+Oct8.Styled.register("WhiteTheme",'./css/white.css')
+Oct8.Styled.set("WhiteTheme")
 
 Oct8.Route.register("home",()=>{
     document.getElementById("page").innerHTML = ""
+    Oct8.Factory.render("MenuSite","#page",{})
     let page = new ProfilePage()    
 },"#home")
 
 Oct8.Route.register("dashboard",()=>{
       document.getElementById("page").innerHTML = ""
+      Oct8.Factory.render("MenuSite","#page",{})
       let page = new DashBoardPage()
 },"#project")
 

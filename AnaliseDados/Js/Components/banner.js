@@ -5,7 +5,9 @@ class Banner extends Oct8.FactoryClass{
         super()
         this.prop = prop 
         this.FactoryObj = `
-           <div oct8-css='banner'>Banner</div> 
+           <div oct8-css='banner'>
+           
+           </div> 
         `
     }
 }

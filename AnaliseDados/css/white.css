@@ -1,0 +1,81 @@
+@layer Color{
+    body{
+    background-color: #ffffff;
+    }
+    [oct8-css~="banner"]{
+        background-image: url('../img/abstract-gray-geometric-banner-background-vector.jpg');
+        background-size: cover;
+    }
+    [oct8-css="header"]{
+        background-color: #dfdfdfd5;
+        color: #565656;
+        border-radius: 2vh;
+        
+    }
+     [oct8-css~="cards"]{
+        background-color: #dfdfdfd5;
+        color: #565656;
+     }
+      [oct8-css~="projeto_frame"]{
+        background-color: #dfdfdfd5;
+        
+      }
+      [oct8-css~="card-ex"]{
+       background: #545353;
+background: linear-gradient(357deg, rgba(84, 83, 83, 1) 0%, rgba(133, 133, 133, 1) 77%);
+        color: white;
+      }
+      .standart_bt{
+        background: #c2c2c2;
+        background: linear-gradient(176deg, rgba(194, 194, 194, 1) 0%, rgba(199, 199, 199, 1) 100%);
+        border: solid #7a7a7a50 0.3vh;
+        padding: 1vh;
+        height: 4vh;
+        border-radius: 1vh;
+        color: #434343;
+        font-weight: bold;
+      }
+      [oct8-css='header']{
+            
+      }
+      [oct8-css='headertitle']{
+        background-color: none;
+      }
+      [oct8-css~="bege"]{
+           background: #c2c2c2;
+           background: linear-gradient(176deg, rgba(194, 194, 194, 1) 0%, rgba(235, 235, 235, 1) 100%);
+           border: solid #91919150 0.2vh;
+            color: #434343;
+            border-radius: 2vh;
+      }
+      [oct8-css="dashboard"]{
+        background-color: #f3f3f3;
+        border: solid #91919150 0.2vh;
+        box-shadow: 16px 11px 16px -8px rgba(0,0,0,0.18);
+      }
+      [oct8-css~='menuList']{
+         background-color: gray;
+          border: solid #91919150 0.2vh;
+         color: white;
+         background: #c2c2c2;
+         background: linear-gradient(176deg, rgba(194, 194, 194, 1) 0%, rgba(235, 235, 235, 1) 100%);
+      }
+      [oct8-css~='menu_fixed'] {
+        color: #434343;
+        font-weight: bold;
+        background: #d9d7d7;
+        background: linear-gradient(176deg, rgba(217, 215, 215, 1) 0%, rgba(247, 247, 247, 1) 100%);
+      }
+      [oct8-css~='menu_fixed'] a{
+        color: #434343;
+        font-weight: lighter;
+        text-decoration: none;
+      }
+      [oct8-css~='projeto_frame'] {
+        background: #d9d7d7;
+        background: linear-gradient(176deg, rgba(217, 215, 215, 1) 0%, rgba(247, 247, 247, 1) 100%);
+      }
+      [oct8-css~='card-ex'] {
+
+      }
+}

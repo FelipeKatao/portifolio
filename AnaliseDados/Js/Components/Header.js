@@ -6,14 +6,14 @@ class Header extends Oct8.FactoryClass{
         this.prop = prop 
         this.FactoryObj = `
            <div oct8-css='header'>
-           <div oct8-css='profile'></div>
-           <div>
+           <div oct8-css='profile'> <img src='./img/avatar.png' width='90vh'> </div>
+           <div class='l_5'>
                 <h1> ${this.prop.Nome} </h1>
                 <h2> ${this.prop.Header} </h2>
                 <h2> ${this.prop.Status} </h2>
            </div>
            <div oct8-css='shareLink'>
-               <button>Share</button>
+               <button class='standart_bt r_5'><img src='./img/share.png' width='20vh'></button>
            </div>
            </div> 
         `

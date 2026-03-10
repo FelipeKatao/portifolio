@@ -1,12 +1,30 @@
 import { DrawGraphs } from "../DataSCJs/DrawGraphs.js"
 import { Oct8 } from "../Oct8/Oct.js"
+class Space extends Oct8.FactoryClass{
+    constructor(prop){
+        super()
+        this.props = prop 
+        let element  = ""
+        for (let index = 0; index < this.props.espace; index++) {
+            element+="</br>"
+            
+        }
+        console.log(element)
+        this.FactoryObj = `
+            
+            ${element}
+        `
+    }
+}
 
 class DashBoardPage{
     constructor(){
+        Oct8.Factory.register("espace",Space)
+        Oct8.Factory.render("espace","#page",{espace:3})
         Oct8.Factory.render("HeaderTitle","#page",{})
         Oct8.Factory.render("div","#page",{id:"about",elements:"sobre o projeto",classId:"container_full bege",text:"Sobre o projeto"})
         Oct8.Factory.render("HeaderTitle","#about",{})
-
+        
         Oct8.Factory.render("Graphs","#page",{})
         let QuerySql = "SQL QUERY"
         Oct8.Factory.render("div","#page",{id:"query",elements:"sobre o projeto",classId:"container_full bege",text:`
@@ -14,6 +32,19 @@ class DashBoardPage{
             `})
         Oct8.Factory.render("HeaderTitle","#query",{})
 
+        let pages_dashboard = `
+        <label>Pagina:</label>
+        <select name="cars" id="cars">
+        <option value="page1">Page 1</option>
+        </select>
+        `
+        let Filtro_dash = `
+         <label>Filtro:</label>
+        <select name="cars" id="cars">
+        <option value="todos">Todos</option>
+        </select>
+        `
+        Oct8.Factory.render("MenuDash","#menuDash_opt",{Lista:[pages_dashboard,Filtro_dash]})
         Oct8.Factory.render("widgets_",'#dash',{Width:"lg",color:"red",id:"base"})
         Oct8.Factory.render("widgets_",'#dash',{Width:"md",id:"piz"})
         Oct8.Factory.render("widgets_",'#dash',{Width:"md",id:"plot"})
