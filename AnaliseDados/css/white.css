@@ -7,13 +7,13 @@
         background-size: cover;
     }
     [oct8-css="header"]{
-        background-color: #dfdfdfd5;
-        color: #565656;
+        color: #333333;
         border-radius: 2vh;
         
     }
      [oct8-css~="cards"]{
-        background-color: #dfdfdfd5;
+       background: #d9d7d7;
+        background: linear-gradient(176deg, rgba(217, 215, 215, 1) 0%, rgba(247, 247, 247, 1) 100%);
         color: #565656;
      }
       [oct8-css~="projeto_frame"]{
@@ -36,7 +36,9 @@ background: linear-gradient(357deg, rgba(84, 83, 83, 1) 0%, rgba(133, 133, 133, 
         font-weight: bold;
       }
       [oct8-css='header']{
+            background: #d9d7d7aa;
             
+        background: linear-gradient(176deg, rgba(217, 215, 215) 0%, rgba(247, 247, 247, 1,0.700) 100%);
       }
       [oct8-css='headertitle']{
         background-color: none;
@@ -74,8 +76,5 @@ background: linear-gradient(357deg, rgba(84, 83, 83, 1) 0%, rgba(133, 133, 133, 
       [oct8-css~='projeto_frame'] {
         background: #d9d7d7;
         background: linear-gradient(176deg, rgba(217, 215, 215, 1) 0%, rgba(247, 247, 247, 1) 100%);
-      }
-      [oct8-css~='card-ex'] {
-
       }
 }

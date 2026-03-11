@@ -16,16 +16,15 @@
 }
 
 @layer Header{
-[oct8-css="header"]{
-    background-color: aquamarine;
+
+[oct8-css~="header"]{
     display: flex;
     flex-direction: row;
     width: 90%;
-}
-[oct8-css~="header"]{
-   margin-top: -5vh;
-   color: gray;
-   margin-left: 5%;
+    margin-top: -5vh;
+    color: gray;
+    padding-right: 2vh;
+    margin-left: 5%;
 
 }
 [oct8-css~="profile"]{
@@ -86,9 +85,11 @@ align-content: center;
     [oct8-css~="card-ex"]{
         padding-left: 2vh;
         padding-top: 2vh;
-        padding-bottom: 2vh;
+        
         margin-top: 5vh;
         height: 18vh;
+        border-radius: 2vh;
+        padding-bottom: 4vh;
     }
     [oct8-css~="card-ex"] button{
        margin-left: auto;
@@ -222,5 +223,17 @@ align-content: center;
     }
     .l_5{
         margin-left: 5vh;
+    }
+}
+
+@layer util{
+    .modal{
+        width: 100%;
+        height: 900vh;
+        background-color: #0000008d;
+        position: absolute;
+        margin: auto;
+        margin-top: -200vh;
+        z-index: 98;
     }
 }

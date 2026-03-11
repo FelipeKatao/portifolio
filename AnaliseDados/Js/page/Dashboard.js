@@ -1,3 +1,4 @@
+import { DashboardController } from "../Controller/DashboardController.js"
 import { DrawGraphs } from "../DataSCJs/DrawGraphs.js"
 import { Oct8 } from "../Oct8/Oct.js"
 class Space extends Oct8.FactoryClass{
@@ -44,7 +45,8 @@ class DashBoardPage{
         <option value="todos">Todos</option>
         </select>
         `
-        Oct8.Factory.render("MenuDash","#menuDash_opt",{Lista:[pages_dashboard,Filtro_dash]})
+        let Bt_full =  `<button id='bt_full' class='standart_bt'> <img src='./img/fullscreen.png' width="24"> </button>`
+        Oct8.Factory.render("MenuDash","#menuDash_opt",{Lista:[pages_dashboard,Filtro_dash,Bt_full]})
         Oct8.Factory.render("widgets_",'#dash',{Width:"lg",color:"red",id:"base"})
         Oct8.Factory.render("widgets_",'#dash',{Width:"md",id:"piz"})
         Oct8.Factory.render("widgets_",'#dash',{Width:"md",id:"plot"})
@@ -62,7 +64,11 @@ class DashBoardPage{
         Draw.drawBarChart("element_widgetteste",[40,60,23,90])
         Draw.drawCard("element_widgetcard","Title",90,"Soma total")
         
-
+        let controller = new DashboardController()
+        
+        document.getElementById("bt_full").addEventListener("click",()=>{
+            controller.FullScreen()
+        })
     }
 
 }
