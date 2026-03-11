@@ -20,10 +20,12 @@ class Space extends Oct8.FactoryClass{
 }
 
 class DashBoardPage{
-    constructor(){
+    constructor(nameProject=""){
+        console.log(nameProject)
+        this.nameProject = window.location.hash.replace("#","")
         Oct8.Factory.register("espace",Space)
         Oct8.Factory.render("espace","#page",{espace:3})
-        Oct8.Factory.render("HeaderTitle","#page",{})
+        Oct8.Factory.render("HeaderTitle","#page",{Title:this.nameProject})
         Oct8.Factory.render("div","#page",{id:"about",elements:"sobre o projeto",classId:"container_full bege",text:"Sobre o projeto"})
         Oct8.Factory.render("HeaderTitle","#about",{})
         

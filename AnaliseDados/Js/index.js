@@ -1,5 +1,5 @@
 import { Oct8 } from "./Oct8/Oct.js"
-
+import { ApiData } from "./util/Api_data.js"
 import { Banner } from "./Components/banner.js"
 import { Header } from "./Components/Header.js"
 import { DataCard } from "./Components/DataCard.js"
@@ -42,6 +42,26 @@ Oct8.Route.register("dashboard",()=>{
       let page = new DashBoardPage()
 },"#project")
 
+Oct8.Route.register("dashboard",()=>{
+      document.getElementById("page").innerHTML = ""
+      Oct8.Factory.render("MenuSite","#page",{})
+      let page = new DashBoardPage()
+},"#project")
+
+ async function loadProject(){
+         let Projetos = new ApiData()
+        let project = await Projetos.ReadProject()
+        let NamesProject = Object.keys(project)
+        NamesProject.forEach(el =>{
+            Oct8.Route.register("dashboard",()=>{
+                document.getElementById("page").innerHTML = ""
+                Oct8.Factory.render("MenuSite","#page",{})
+                let page = new DashBoardPage(el)
+            },"#"+el)
+        })
+
+    }
+loadProject()
 Oct8.Styled.InitCSS()
 
 

@@ -19,7 +19,7 @@ class Oct8Routes {
             else{
                 if(RouteFind.length < 1)
                 {
-
+                        
                 }
                 else
                 {
@@ -30,12 +30,14 @@ class Oct8Routes {
         window.addEventListener("hashchange", () => {
             const RouteFind = window.location.hash;
             const Navigate = this.routes.find(x => x.Route == RouteFind) ?? "";
-            if (Navigate)
+            if (Navigate){
+
                 this.navigate("#app", Navigate?.Name);
+            }
             else{
                                if(RouteFind.length < 1)
+                                
                 {
-
                 }
                 else
                 {
