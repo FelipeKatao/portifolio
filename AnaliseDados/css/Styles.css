@@ -105,6 +105,9 @@ align-content: center;
         width: 89.8%;
         margin-left: 5%;
         border-radius: 2vh 2vh 0vh 0vh;
+        display: flex;
+        flex-wrap: wrap;
+        
     }
     [oct8-css~='menuList'] ul li{
         float: left;
@@ -122,6 +125,7 @@ align-content: center;
         text-align: center;
         position: fixed;
         color: white;
+        z-index: 99;
     }
     [oct8-css~='menu_fixed'] ul li{
         margin: auto;
@@ -235,5 +239,8 @@ align-content: center;
         margin: auto;
         margin-top: -200vh;
         z-index: 98;
+    }
+    .rotate{
+        transform: rotate(180deg);
     }
 }

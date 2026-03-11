@@ -12,8 +12,9 @@ class Space extends Oct8.FactoryClass{
         }
         console.log(element)
         this.FactoryObj = `
-            
+            <div id='espace_top'>
             ${element}
+            </div>
         `
     }
 }
@@ -45,8 +46,14 @@ class DashBoardPage{
         <option value="todos">Todos</option>
         </select>
         `
+        let Next_bt= `
+         <button id='bt_next_page' class='standart_bt'> <img class='rotate' src='./img/arrow.png' width="24"> </button>
+        `
+        let prev_bt= `
+         <button id='bt_prev_page' class='standart_bt'> <img  src='./img/arrow.png' width="24"> </button>
+        `
         let Bt_full =  `<button id='bt_full' class='standart_bt'> <img src='./img/fullscreen.png' width="24"> </button>`
-        Oct8.Factory.render("MenuDash","#menuDash_opt",{Lista:[pages_dashboard,Filtro_dash,Bt_full]})
+        Oct8.Factory.render("MenuDash","#menuDash_opt",{Lista:[pages_dashboard, Next_bt,prev_bt, Filtro_dash, Bt_full]})
         Oct8.Factory.render("widgets_",'#dash',{Width:"lg",color:"red",id:"base"})
         Oct8.Factory.render("widgets_",'#dash',{Width:"md",id:"piz"})
         Oct8.Factory.render("widgets_",'#dash',{Width:"md",id:"plot"})
