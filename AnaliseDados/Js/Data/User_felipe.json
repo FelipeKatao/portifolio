@@ -1,18 +1,18 @@
 {
-  "Project": {
+  "Dashboard_financeiro": {
     "Titulo": "Dashboard financeiro"
     ,"SubTitulo":"Relatorio financeiro semestral"
     ,"Descricao":"Relatorio financeiro contruido para uma pequena empresa para organziação semestral de suas finanças."
-    ,"link":"/AnaliseDados/#Project"
+    ,"link":"/AnaliseDados/#Dashboard_financeiro"
     ,"Projeto":{
 
     }
   },
-  "Project_2": {
+  "Insigths_setorial_0.01": {
      "Titulo": "Insigths  setorial 0.01"
     ,"SubTitulo":"Dashboard focado em Insigths por setor"
     ,"Descricao":"Focado em criar Insigths, com isso utilizar para tomada de decisão."
-    ,"link":"/AnaliseDados/#Project_2"
+    ,"link":"/AnaliseDados/#Insigths_setorial_0.01"
     ,"Projeto":{
             
     }

@@ -31,26 +31,16 @@ Oct8.Factory.register("modal",Modal)
 Oct8.Styled.register("WhiteTheme",'./css/white.css')
 Oct8.Styled.set("WhiteTheme")
 
-
+Oct8.Reaction.create("filtroProjeto","Nenhum projeto filtrado")
 
 Oct8.Route.register("home",()=>{
     document.getElementById("page").innerHTML = ""
-    Oct8.Factory.render("modal","#page",{})
+    
     Oct8.Factory.render("MenuSite","#page",{})
     let page = new ProfilePage()    
 },"#home")
 
-Oct8.Route.register("dashboard",()=>{
-      document.getElementById("page").innerHTML = ""
-      Oct8.Factory.render("MenuSite","#page",{})
-      let page = new DashBoardPage()
-},"#project")
 
-Oct8.Route.register("dashboard",()=>{
-      document.getElementById("page").innerHTML = ""
-      Oct8.Factory.render("MenuSite","#page",{})
-      let page = new DashBoardPage()
-},"#project")
 
  async function loadProject(){
          let Projetos = new ApiData()

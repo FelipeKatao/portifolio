@@ -48,7 +48,7 @@ class Oct8Factory {
      * @param props  Props of target component
      * @returns
      */
-    static render(name, target, props) {
+    static render(name, target, props,functionBase=()=>{}) {
         const Component = this.registry.get(name);
         if (!Component) {
             throw new Error(`Oct8: componente "${name}" não encontrado`);
@@ -67,6 +67,7 @@ class Oct8Factory {
         instance[OCT8_ELEMENT] = element;
         this.instances.set(element, instance);
         this.liveInstances.add(instance);
+        functionBase()
         return instance;
     }
     static ExistProp(key, obj, // objeto genérico
@@ -95,16 +96,19 @@ class Oct8Factory {
      * @returns
      */
     static destroy(element) {
+        
         const instance = this.instances.get(element);
-        if (!instance) {
+        const Element_target = this.registry.get(element)
+        if (!Element_target) {
             console.warn("Oct8: elemento não registrado");
             element.remove();
             return;
         }
-        instance.onDestroy?.();
+        Element_target.onDestroy?.();
         this.instances.delete(element);
-        this.liveInstances.delete(instance);
-        element.remove();
+        this.liveInstances.delete(Element_target);
+        console.log(Element_target)
+        Element_target.remove();
     }
     static SetDataAttribute(Attribute, InfoData) {
         const Elements = document.querySelectorAll(`[${Attribute}]`);

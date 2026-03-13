@@ -14,6 +14,7 @@ class Oct8Routes {
         window.addEventListener("load", () => {
             const RouteFind = window.location.hash;
             const Navigate = this.routes.find(x => x.Route == RouteFind) ?? "";
+            console.log(RouteFind)
             if (Navigate)
                 this.navigate("#app", Navigate?.Name);
             else{
@@ -23,7 +24,7 @@ class Oct8Routes {
                 }
                 else
                 {
-                    window.location.href =  "http://localhost:5500/AnaliseDados/404"   
+                   // window.location.href =  "http://localhost:5500/AnaliseDados/404"   
                 }
             }
         });
@@ -31,8 +32,8 @@ class Oct8Routes {
             const RouteFind = window.location.hash;
             const Navigate = this.routes.find(x => x.Route == RouteFind) ?? "";
             if (Navigate){
-
-                this.navigate("#app", Navigate?.Name);
+                console.log(Navigate)
+             this.navigate("#app", Navigate?.Name);
             }
             else{
                                if(RouteFind.length < 1)
@@ -41,7 +42,7 @@ class Oct8Routes {
                 }
                 else
                 {
-                    window.location.href =  "http://localhost:5500/AnaliseDados/404"   
+                   // window.location.href =  "http://localhost:5500/AnaliseDados/404"   
                 }
             }
         });
