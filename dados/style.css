@@ -951,3 +951,34 @@ position: relative;
   80%  { transform: translateY(0.5px) rotate(0.5deg); }
   100% { transform: translateY(0); }
 }
+oct8-interface button_s {
+  .button_s{
+    .corbase {background-color: nouse;}
+  }
+}
+
+@layer Base{
+  
+}
+.a{
+  background-color: gray;
+}
+
+.ButtonBase{
+  &.corBase{
+    background-color: red;
+  }
+}
+
+
+.ButtonBase2{
+  &.corBase{
+    background-color: blue;
+  }
+}
+
+.button_s {
+  &.corbase{
+    background-color: #353333;
+  }
+}

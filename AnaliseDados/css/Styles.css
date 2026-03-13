@@ -137,6 +137,32 @@ align-content: center;
 
 }
 
+@layer Modal{
+    [oct8-css~="modal"]{
+           
+            margin-top: 10%;
+            margin-left: 20vw;
+           width: 50%;
+           height: 50%;
+           background-color: white;
+           padding: 2vh;
+           border-radius: 2ch;
+
+    }
+    [oct8-css~="bg-modal"]{
+        display: flex;
+        flex-wrap: wrap;
+        background-color: rgba(0, 0, 0, 0.547);
+        position: fixed;
+        width: 199vh;
+        height: 100%;
+        z-index: 200;
+        top:0;
+        left:0;
+        
+    }
+}
+
 @layer HeaderTitle{
 
     [oct8-css='headertitle']{
@@ -231,6 +257,13 @@ align-content: center;
 }
 
 @layer util{
+    .flex{
+        display: flex;
+        flex-direction: row;
+    }
+    .flex button{
+        margin-left: auto;
+    }
     .modal{
         width: 100%;
         height: 900vh;

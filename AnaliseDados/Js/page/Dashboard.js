@@ -35,7 +35,6 @@ class DashBoardPage{
          <div class='box_editor'> ${QuerySql} </div>   
             `})
         Oct8.Factory.render("HeaderTitle","#query",{})
-
         let pages_dashboard = `
         <label>Pagina:</label>
         <select name="cars" id="cars">
