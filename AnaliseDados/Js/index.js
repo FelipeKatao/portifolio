@@ -14,8 +14,10 @@ import { Widgets } from "./Components/Widget.js"
 import { MenuDash } from "./Components/MenuDash.js"
 import { Menu } from "./Components/Menu.js"
 import { Modal } from "./Components/modal.js"
+import { Badge } from "./Components/Badges.js"
+import { Table } from "./Components/table.js"
 //https://www.youtube.com/watch?v=5638u_F9_hY
-
+Oct8.Factory.register("Badge",Badge)
 Oct8.Factory.register("Banner",Banner)
 Oct8.Factory.register("Header",Header)
 Oct8.Factory.register("DataCard",DataCard)
@@ -28,6 +30,8 @@ Oct8.Factory.register("widgets_",Widgets)
 Oct8.Factory.register("MenuDash",MenuDash)
 Oct8.Factory.register("MenuSite",Menu)
 Oct8.Factory.register("modal",Modal)
+Oct8.Factory.register("Table",Table)
+
 Oct8.Styled.register("WhiteTheme",'./css/white.css')
 Oct8.Styled.set("WhiteTheme")
 
@@ -38,26 +42,24 @@ Oct8.Route.register("home",()=>{
     
     Oct8.Factory.render("MenuSite","#page",{})
     let page = new ProfilePage()    
-},"#home")
+},"/")
 
 
 
- async function loadProject(){
-         let Projetos = new ApiData()
-        let project = await Projetos.ReadProject()
-        let NamesProject = Object.keys(project)
-        NamesProject.forEach(el =>{
-            Oct8.Route.register("dashboard",()=>{
-                document.getElementById("page").innerHTML = ""
-                Oct8.Factory.render("MenuSite","#page",{})
-                let page = new DashBoardPage(el)
-            },"#"+el)
-        })
 
-    }
+async function loadProject(){
+    let Projetos = new ApiData()
+    let project = await Projetos.ReadProject()
+    let NamesProject = Object.keys(project)
+    NamesProject.forEach(el =>{
+        Oct8.Route.register("dashboard",()=>{
+            document.getElementById("page").innerHTML = ""
+            Oct8.Factory.render("MenuSite","#page",{})
+            let page = new DashBoardPage(el)
+        },"#"+el)
+    })
+    Oct8.Route.RunRoutes() 
+}
 loadProject()
 Oct8.Styled.InitCSS()
 
-
-Oct8.Route.navigate("#page","home")
-Oct8.Route.RunRoutes()

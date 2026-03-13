@@ -1,11 +1,34 @@
 {
+  "User":{
+    "Name":"Felipe Catao",
+    "HeadLine":"Analista de dados",
+    "Subtitle":"Disponivel para trabalho remoto.",
+    "About":{
+        "Title":"Minha tragetoria",
+        "Apptxt":"Sou desenvolvedor e analista de dados pleno",
+        "text":"Sou dev a mais de 4 anos e possui experiencai em diversos campos"
+    },
+    "Skills":{
+         "Title":"Minhas habilidades",
+        "Apptxt":"Possui diversas habilidades",
+        "text":"Power bi, Python excel..."
+    }
+
+  },
   "Dashboard_financeiro": {
     "Titulo": "Dashboard financeiro"
     ,"SubTitulo":"Relatorio financeiro semestral"
     ,"Descricao":"Relatorio financeiro contruido para uma pequena empresa para organziação semestral de suas finanças."
     ,"link":"/AnaliseDados/#Dashboard_financeiro"
+    ,"Insigths_area":{
+      "Titulo":"Estrutura financeira semestral",
+      "Insigths":"Foi verificado por amostra de dados, que o lucro medio esta relazionado diretamente com a variação de preço dos produtos e dos descontos dados por mês."
+    }
     ,"Projeto":{
-
+          "ShowCode":{"type":"none","visible":"no","code":""},
+          "Data":{
+            
+          }
     }
   },
   "Insigths_setorial_0.01": {
@@ -13,8 +36,12 @@
     ,"SubTitulo":"Dashboard focado em Insigths por setor"
     ,"Descricao":"Focado em criar Insigths, com isso utilizar para tomada de decisão."
     ,"link":"/AnaliseDados/#Insigths_setorial_0.01"
+     ,"Insigths_area":{
+      "Titulo":"Analise por setor ",
+      "Insigths":"Analise feita para entender quais as melhores areas de desenvolvimento dentro da empresa para evolução de projetos, analise feita em amostras entre trimestres."
+    }
     ,"Projeto":{
-            
+            "ShowCode":{"Titulo":"Divisao dados","type":"SQL","visible":"yes","code":"SELECT * FROM dbo.data WHERE setor = 1"}
     }
   }
 }

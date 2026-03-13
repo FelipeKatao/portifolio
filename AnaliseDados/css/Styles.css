@@ -54,7 +54,6 @@ align-content: center;
     [oct8-css~="projeto_frame"]{
         width: 96%;
         margin: auto;
-        background-color: aqua;
         margin-top: 2vh;
         padding: 2vh;
     }
@@ -111,20 +110,22 @@ align-content: center;
     }
     [oct8-css~='menuList'] ul li{
         float: left;
-        margin-left: 4vh;
+        margin-left: 1vh;
         list-style: none;
     }
     [oct8-css~='menuList'] ul li select{
         width: 90%;
     }
     [oct8-css~='menu_fixed']{
-        background-color: gray;
+               background: #edf4f7;
+        color: #565656;
+        border: 0.3vh solid #dae1e386;
         width: 100%;
         height: 6vh;
         margin-top: 0vh;
         text-align: center;
         position: fixed;
-        color: white;
+        font-weight: bold;
         z-index: 99;
     }
     [oct8-css~='menu_fixed'] ul li{
@@ -253,9 +254,63 @@ align-content: center;
     }
     .l_5{
         margin-left: 5vh;
+        
     }
 }
+@layer table{
+    
+    table, th, td {
+  border:1px solid black;
+  width: 100%;
+}
+#database{
+    height:40vh;
+    
+}
+[oct8-css='table_basic']{
+ border:1px solid black;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
 
+}
+}
+@layer badges{
+    #badge_area{
+        display: flex ;
+        flex-direction: row;
+        height: 6vh;
+        width: 40vh;
+    }
+    [oct8-css~='badge']{       
+        border-radius: 2vh;
+        font-size: 2vh;
+        text-align: center;
+        padding: 1vh;
+        width: 20%;
+        height: 2vh;
+        margin-left: 2vh;
+    }
+    [oct8-css~='badge'][oct8-css~='pro']{
+        border: #9365af solid 0.5vh;
+        background: #a876ca;
+        background: linear-gradient(357deg, rgba(99, 60, 125, 1) 0%, rgba(98, 56, 110, 1) 77%);
+        color: #c681f5;
+        animation: animate 2s alternate-reverse infinite ;
+    }
+    @keyframes animate{
+        from{
+            background: #a876ca;
+            background: linear-gradient(357deg, rgba(99, 60, 125, 1) 0%, rgba(98, 56, 110, 1) 77%);
+            opacity: 0.9;
+        }   
+        to{
+            opacity: 1;
+        } 
+    }
+    
+}
 @layer util{
     .auto_h{
         overflow: auto;

@@ -10,11 +10,18 @@ class Oct8Routes {
     static DefaultElements(event) {
         this.DefaultComp = event;
     }
+    
+
     static RunRoutes() {
+        const RouteFind = window.location.hash;
+        this.navigate("#page",RouteFind)
+        
+        
         window.addEventListener("load", () => {
             const RouteFind = window.location.hash;
             const Navigate = this.routes.find(x => x.Route == RouteFind) ?? "";
-            console.log(RouteFind)
+            
+            
             if (Navigate)
                 this.navigate("#app", Navigate?.Name);
             else{
@@ -23,7 +30,7 @@ class Oct8Routes {
                         
                 }
                 else
-                {
+                { 
                    // window.location.href =  "http://localhost:5500/AnaliseDados/404"   
                 }
             }
@@ -31,36 +38,45 @@ class Oct8Routes {
         window.addEventListener("hashchange", () => {
             const RouteFind = window.location.hash;
             const Navigate = this.routes.find(x => x.Route == RouteFind) ?? "";
-            if (Navigate){
-                console.log(Navigate)
-             this.navigate("#app", Navigate?.Name);
-            }
-            else{
-                               if(RouteFind.length < 1)
-                                
-                {
-                }
-                else
-                {
-                   // window.location.href =  "http://localhost:5500/AnaliseDados/404"   
-                }
-            }
+            this.navigate("#page",RouteFind)
         });
     }
     static navigate(ElementId, NameRoute) {
+        let find = false
+        
+        if(!String(NameRoute).includes("#")){
+           this.routes.forEach(el=>{
+            if(el.Route == "/")
+            {
+            const Base = document.querySelector(ElementId);
+            Base.innerHTML = "";
+            
+            el.Event();
+            find = true
+            return "0"
+            }
+        })
+           return 0 
+        }
         this.current = NameRoute;
         const Element = this.routes.filter(x => x.Name == NameRoute);
-        if (Element) {
+        if(find == false){
+        this.routes.forEach(el=>{
+            if(el.Route == NameRoute)
+            {
             const Base = document.querySelector(ElementId);
-            if (Base) {
-                Base.innerHTML = "";
-            }
-            Element[0]?.Event();
+            Base.innerHTML = "";
+            
+            
+            el.Event();
             if (this.DefaultComp) {
-                console.log(this.DefaultComp);
+                
                 this.DefaultComp;
             }
-        }
+            }
+        })
+    }
+
     }
 }
 Oct8Routes.routes = [];

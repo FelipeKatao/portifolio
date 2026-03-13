@@ -4,13 +4,97 @@ import { ApiData } from "../util/Api_data.js"
 class ProfilePage{
     constructor(){
         Oct8.Factory.render("Banner","#page",{})
-        Oct8.Factory.render("Header","#page",{})
-        Oct8.Factory.render("DataCard","#page",{Type:"container",Id:"base_001"})
-        this.project =""
-        Oct8.Factory.render("DataCard","#base_001",{})
-        Oct8.Factory.render("DataCard","#base_001",{})
-        Oct8.Factory.render("ProjetoF","#page",{Titulo:"Projetos criados"})
+        this.ReadDataUser()
         this.loadProject()
+        
+
+       
+        
+    }
+
+    async ReadDataUser(){
+         let Projetos = new ApiData()
+        let project = await Projetos.ReadProject()
+        console.log(project["User"])
+        Oct8.Factory.render("Header","#page",{Nome:` <div id='badge_area'> ${project["User"]["Name"]}  </div>`,Header:project["User"]["HeadLine"],Status:project["User"]["Subtitle"]})
+        Oct8.Factory.render("DataCard","#page",{Type:"container",Id:"base_001"})
+        Oct8.Factory.render("Badge","#badge_area",{Name:"Pro",Tipo:"pro"})
+        this.project =""
+        Oct8.Factory.render("DataCard","#base_001",{id:"ver_mais",Titulo:project["User"]["About"]["Title"],Sobre:project["User"]["About"]["Apptxt"]})
+        Oct8.Factory.render("DataCard","#base_001",{id:"skills",Titulo:project["User"]["Skills"]["Title"],Sobre:project["User"]["Skills"]["Apptxt"]})
+        Oct8.Factory.render("ProjetoF","#page",{Titulo:"Projetos criados"})
+
+         document.getElementById("shareperfil").addEventListener("click",()=>{
+            Oct8.Factory.render("modal","#page",{titulo:"Compartilhar",Conteudo:`
+                <div>
+                    <h3>Compartilhe esse perfil: </h3>
+                    <p> http://127.0.0.1:5500/AnaliseDados/  </p>
+                </div>
+                `})
+                 document.getElementById("close_modal").addEventListener("click",()=>{
+                    
+                    document.querySelectorAll("[oct8-css='bg-modal']")[0].remove()
+                    
+                })
+        })
+
+         document.getElementById("skills").addEventListener("click",()=>{
+            Oct8.Factory.render("modal","#page",{titulo:"Sobre",Conteudo:`
+                <div>
+                    <h3>Habilidade </h3>
+                    <p> ${project["User"]["Skills"]["text"]} </p>
+                </div>
+                `})
+                 document.getElementById("close_modal").addEventListener("click",()=>{
+                    
+                    document.querySelectorAll("[oct8-css='bg-modal']")[0].remove()
+                    
+                })
+        })
+
+        document.getElementById("ver_mais").addEventListener("click",()=>{
+            Oct8.Factory.render("modal","#page",{titulo:"Compartilhar",Conteudo:`
+                <div>
+                    <h3>Sobre </h3>
+                    <p> ${project["User"]["About"]["text"]} </p>
+                </div>
+                `})
+                 document.getElementById("close_modal").addEventListener("click",()=>{
+                    
+                    document.querySelectorAll("[oct8-css='bg-modal']")[0].remove()
+                    
+                })
+        })
+            
+    }
+
+    async FilterData(value){
+        let Projetos = new ApiData()
+        let project = Projetos.ReadProject()
+        let NamesProject = Object.keys(this.project)
+       NamesProject =  NamesProject.filter(item => item.includes(value) && item != "User")
+         NamesProject.forEach(el =>{
+            Oct8.Factory.render("ProjetoCard","#results_filter",{
+                Titulo:this.project[el].Titulo,
+                Subtitulo:this.project[el].SubTitulo
+                ,Sobre:this.project[el].Descricao
+                ,Link:this.project[el].link})
+        })
+    }
+    async loadProject(nameProject=""){
+         let Projetos = new ApiData()
+        this.project = await Projetos.ReadProject()
+        let NamesProject = Object.keys(this.project)
+        NamesProject = NamesProject.filter(item =>  item != "User")
+        NamesProject.forEach(el =>{
+           
+            Oct8.Factory.render("ProjetoCard","#Projeto_cards",{
+                Titulo:this.project[el].Titulo,
+                Subtitulo:this.project[el].SubTitulo
+                ,Sobre:this.project[el].Descricao
+                ,Link:this.project[el].link})
+        })
+
         document.getElementById("filter_proj").addEventListener("click",()=>{
             Oct8.Factory.render("modal","#page",{titulo:"Filtrar projetos",Conteudo:`
                 <div>
@@ -38,33 +122,6 @@ class ProfilePage{
                    
                 })
             })
-        })
-    }
-    async FilterData(value){
-        let Projetos = new ApiData()
-        let project = Projetos.ReadProject()
-        let NamesProject = Object.keys(this.project)
-       NamesProject =  NamesProject.filter(item => item.includes(value))
-         NamesProject.forEach(el =>{
-            Oct8.Factory.render("ProjetoCard","#results_filter",{
-                Titulo:this.project[el].Titulo,
-                Subtitulo:this.project[el].SubTitulo
-                ,Sobre:this.project[el].Descricao
-                ,Link:this.project[el].link})
-        })
-    }
-    async loadProject(nameProject=""){
-         let Projetos = new ApiData()
-        this.project = await Projetos.ReadProject()
-        let NamesProject = Object.keys(this.project)
-        
-        NamesProject.forEach(el =>{
-           
-            Oct8.Factory.render("ProjetoCard","#Projeto_cards",{
-                Titulo:this.project[el].Titulo,
-                Subtitulo:this.project[el].SubTitulo
-                ,Sobre:this.project[el].Descricao
-                ,Link:this.project[el].link})
         })
         return this.project
     }

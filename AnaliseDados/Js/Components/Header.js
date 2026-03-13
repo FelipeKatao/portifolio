@@ -13,7 +13,7 @@ class Header extends Oct8.FactoryClass{
                 <h2> ${this.prop.Status} </h2>
            </div>
            <div oct8-css='shareLink'>
-               <button class='standart_bt r_5'><img src='./img/share.png' width='20vh'></button>
+               <button id='shareperfil' class='standart_bt r_5'><img src='./img/share.png' width='20vh'></button>
            </div>
            </div> 
         `
