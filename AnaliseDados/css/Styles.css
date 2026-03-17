@@ -294,19 +294,20 @@ align-content: center;
     }
     [oct8-css~='badge'][oct8-css~='pro']{
         border: #9365af solid 0.5vh;
-        background: #a876ca;
-        background: linear-gradient(357deg, rgba(99, 60, 125, 1) 0%, rgba(98, 56, 110, 1) 77%);
+        
         color: #c681f5;
-        animation: animate 2s alternate-reverse infinite ;
+        animation: animate-pro 1.5s alternate-reverse infinite ;
     }
-    @keyframes animate{
+    @keyframes animate-pro{
         from{
-            background: #a876ca;
-            background: linear-gradient(357deg, rgba(99, 60, 125, 1) 0%, rgba(98, 56, 110, 1) 77%);
-            opacity: 0.9;
+            background-color: #674a7b;
+        color: #ca86f8;
         }   
         to{
-            opacity: 1;
+
+        color: #633f7b;
+            background-color: #966ab5;
+
         } 
     }
     

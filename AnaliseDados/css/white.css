@@ -1,4 +1,7 @@
 @layer Color{
+  *{
+    color:#787878;
+  }
     body{
     background-color: #f8fdff;
     }

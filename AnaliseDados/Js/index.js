@@ -44,7 +44,25 @@ Oct8.Route.register("home",()=>{
     let page = new ProfilePage()    
 },"/")
 
+class Space extends Oct8.FactoryClass {
+    constructor(prop) {
+        super()
+        this.props = prop
+        let element = ""
+        for (let index = 0; index < this.props.espace; index++) {
+            element += "</br>"
 
+        }
+        console.log(element)
+        this.FactoryObj = `
+            <div id='espace_top'>
+            ${element}
+            </div>
+        `
+    }
+}
+
+Oct8.Factory.register("espace", Space)
 
 
 async function loadProject(){

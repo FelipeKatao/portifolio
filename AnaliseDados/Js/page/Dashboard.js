@@ -2,23 +2,7 @@ import { DashboardController } from "../Controller/DashboardController.js"
 import { DrawGraphs } from "../DataSCJs/DrawGraphs.js"
 import { Oct8 } from "../Oct8/Oct.js"
 import { ApiData } from "../util/Api_data.js"
-class Space extends Oct8.FactoryClass {
-    constructor(prop) {
-        super()
-        this.props = prop
-        let element = ""
-        for (let index = 0; index < this.props.espace; index++) {
-            element += "</br>"
 
-        }
-        console.log(element)
-        this.FactoryObj = `
-            <div id='espace_top'>
-            ${element}
-            </div>
-        `
-    }
-}
 
 class DashBoardPage {
     constructor(nameProject = "") {
@@ -35,7 +19,7 @@ class DashBoardPage {
         let ProjNames_api = Object.keys(project)
 
 
-        Oct8.Factory.register("espace", Space)
+        
         Oct8.Factory.render("espace", "#page", { espace: 3 })
         Oct8.Factory.render("HeaderTitle", "#page", { Title: project[value]["Titulo"],id:"share_perfil"})
         console.log([value])

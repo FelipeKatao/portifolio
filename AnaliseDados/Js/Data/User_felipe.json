@@ -26,9 +26,208 @@
     }
     ,"Projeto":{
           "ShowCode":{"type":"none","visible":"no","code":""},
-          "Data":{
-            
-          }
+          "Data":[     
+    {
+        "mes": "Jan",
+        "produto": "A",
+        "preco_medio": 50,
+        "desconto_percentual": 5,
+        "quantidade_vendida": 200,
+        "receita_total": 10000,
+        "custo_total": 7000,
+        "lucro_total": 3000
+    },
+    {
+        "mes": "Jan",
+        "produto": "B",
+        "preco_medio": 80,
+        "desconto_percentual": 10,
+        "quantidade_vendida": 150,
+        "receita_total": 12000,
+        "custo_total": 9000,
+        "lucro_total": 3000
+    },
+    {
+        "mes": "Fev",
+        "produto": "A",
+        "preco_medio": 52,
+        "desconto_percentual": 5,
+        "quantidade_vendida": 210,
+        "receita_total": 10920,
+        "custo_total": 7350,
+        "lucro_total": 3570
+    },
+    {
+        "mes": "Fev",
+        "produto": "B",
+        "preco_medio": 78,
+        "desconto_percentual": 12,
+        "quantidade_vendida": 140,
+        "receita_total": 10920,
+        "custo_total": 8800,
+        "lucro_total": 2120
+    },
+    {
+        "mes": "Mar",
+        "produto": "A",
+        "preco_medio": 55,
+        "desconto_percentual": 8,
+        "quantidade_vendida": 190,
+        "receita_total": 10450,
+        "custo_total": 7200,
+        "lucro_total": 3250
+    },
+    {
+        "mes": "Mar",
+        "produto": "B",
+        "preco_medio": 82,
+        "desconto_percentual": 10,
+        "quantidade_vendida": 160,
+        "receita_total": 13120,
+        "custo_total": 9500,
+        "lucro_total": 3620
+    },
+    {
+        "mes": "Abr",
+        "produto": "A",
+        "preco_medio": 60,
+        "desconto_percentual": 6,
+        "quantidade_vendida": 180,
+        "receita_total": 10800,
+        "custo_total": 7300,
+        "lucro_total": 3500
+    },
+    {
+        "mes": "Abr",
+        "produto": "B",
+        "preco_medio": 85,
+        "desconto_percentual": 15,
+        "quantidade_vendida": 130,
+        "receita_total": 11050,
+        "custo_total": 8700,
+        "lucro_total": 2350
+    },
+    {
+        "mes": "Mai",
+        "produto": "A",
+        "preco_medio": 58,
+        "desconto_percentual": 7,
+        "quantidade_vendida": 200,
+        "receita_total": 11600,
+        "custo_total": 7500,
+        "lucro_total": 4100
+    },
+    {
+        "mes": "Mai",
+        "produto": "B",
+        "preco_medio": 88,
+        "desconto_percentual": 10,
+        "quantidade_vendida": 140,
+        "receita_total": 12320,
+        "custo_total": 9100,
+        "lucro_total": 3220
+    },
+    {
+        "mes": "Jun",
+        "produto": "A",
+        "preco_medio": 62,
+        "desconto_percentual": 5,
+        "quantidade_vendida": 210,
+        "receita_total": 13020,
+        "custo_total": 8000,
+        "lucro_total": 5020
+    },
+    {
+        "mes": "Jun",
+        "produto": "B",
+        "preco_medio": 90,
+        "desconto_percentual": 8,
+        "quantidade_vendida": 150,
+        "receita_total": 13500,
+        "custo_total": 9500,
+        "lucro_total": 4000
+    },
+    {
+        "mes": "Jul",
+        "produto": "A",
+        "preco_medio": 65,
+        "desconto_percentual": 6,
+        "quantidade_vendida": 220,
+        "receita_total": 14300,
+        "custo_total": 8500,
+        "lucro_total": 5800
+    },
+    {
+        "mes": "Jul",
+        "produto": "B",
+        "preco_medio": 92,
+        "desconto_percentual": 10,
+        "quantidade_vendida": 160,
+        "receita_total": 14720,
+        "custo_total": 10000,
+        "lucro_total": 4720
+    },
+    {
+        "mes": "Ago",
+        "produto": "A",
+        "preco_medio": 68,
+        "desconto_percentual": 5,
+        "quantidade_vendida": 230,
+        "receita_total": 15640,
+        "custo_total": 9000,
+        "lucro_total": 6640
+    },
+    {
+        "mes": "Ago",
+        "produto": "B",
+        "preco_medio": 95,
+        "desconto_percentual": 12,
+        "quantidade_vendida": 140,
+        "receita_total": 13300,
+        "custo_total": 9800,
+        "lucro_total": 3500
+    },
+    {
+        "mes": "Set",
+        "produto": "A",
+        "preco_medio": 70,
+        "desconto_percentual": 7,
+        "quantidade_vendida": 210,
+        "receita_total": 14700,
+        "custo_total": 8800,
+        "lucro_total": 5900
+    },
+    {
+        "mes": "Set",
+        "produto": "B",
+        "preco_medio": 98,
+        "desconto_percentual": 10,
+        "quantidade_vendida": 150,
+        "receita_total": 14700,
+        "custo_total": 10200,
+        "lucro_total": 4500
+    },
+    {
+        "mes": "Out",
+        "produto": "A",
+        "preco_medio": 72,
+        "desconto_percentual": 6,
+        "quantidade_vendida": 200,
+        "receita_total": 14400,
+        "custo_total": 8700,
+        "lucro_total": 5700
+    },
+    {
+        "mes": "Out",
+        "produto": "B",
+        "preco_medio": 100,
+        "desconto_percentual": 8,
+        "quantidade_vendida": 160,
+        "receita_total": 16000,
+        "custo_total": 11000,
+        "lucro_total": 5000
+    }
+          ]
     }
   },
   "Insigths_setorial_0.01": {
