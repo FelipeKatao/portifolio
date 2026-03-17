@@ -26,6 +26,10 @@
     }
     ,"Projeto":{
           "ShowCode":{"type":"none","visible":"no","code":""},
+          "Widget":{"Grafico_barras":{"Type":"","Prop":{}, "Data":{"x":{},"y":{}}}
+          ,"Card":{"Type":"","prop":{},"Data":{"Rotulo":"","Operacao":"","Data":{}}}
+          ,"Lines":{"Type":"Line","prop":{},"Data":{"Rotulo":"","Operacao":"","Data":{"x":"preco_medio","y":"receita_total"}}}
+           },
           "Data":[     
     {
         "mes": "Jan",

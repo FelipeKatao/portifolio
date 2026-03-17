@@ -92,15 +92,28 @@ class DashBoardPage {
 
 
         let Draw = new DrawGraphs()
-        Draw.drawLineChart("element_widgetbase", [40, 60, 23, 90])
-        Draw.drawScatterChart("element_widgetplot", [
-            { x: 10, y: 20 },
-            { x: 30, y: 40 },
-            { x: 15, y: 60 }
-        ])
-        Draw.drawPieChart("element_widgetpiz", [40, 60, 23, 90])
-        Draw.drawBarChart("element_widgetteste", [40, 60, 23, 90])
-        Draw.drawCard("element_widgetcard", "Title", 90, "Soma total")
+        let Data_x = project[value]["Projeto"]["Widget"]["Lines"]["Data"]["Data"]["x"]
+        let Data_y = project[value]["Projeto"]["Widget"]["Lines"]["Data"]["Data"]["y"]
+        let Data_eixos = []
+        let LineEixos = []
+        let Card = 0
+
+       
+
+        console.log(project[value]["Projeto"]["Data"])
+        project[value]["Projeto"]["Data"].forEach(element => {
+
+            LineEixos.push(element[Data_x])
+            Data_eixos.push({x:element[Data_x],y:element[Data_y]})
+
+        });
+
+        console.log(LineEixos)
+        Draw.drawLineChart("element_widgetbase", LineEixos)
+        Draw.drawScatterChart("element_widgetplot", Data_eixos)
+        Draw.drawPieChart("element_widgetpiz", LineEixos)
+        Draw.drawBarChart("element_widgetteste", LineEixos)
+        Draw.drawCard("element_widgetcard",Data_x, LineEixos, "Soma total","sum")
 
         let controller = new DashboardController()
 

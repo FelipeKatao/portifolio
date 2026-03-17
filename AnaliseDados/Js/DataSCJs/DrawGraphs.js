@@ -133,9 +133,17 @@ drawPieChart(containerId, values){
 
 }
 
-drawCard(containerId, title, value, subtitle, bgColor="white", textColor="gray"){
+drawCard(containerId, title, value, subtitle,opration, bgColor="white", textColor="gray"){
 
  const container = document.getElementById(containerId)
+ let total= 0 
+
+ if(opration == "sum"){
+  value.forEach(s =>{
+     total+=s 
+   })
+   value = total
+ }
 
  const svgNS = "http://www.w3.org/2000/svg"
 
