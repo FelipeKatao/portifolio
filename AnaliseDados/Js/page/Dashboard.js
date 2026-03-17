@@ -17,8 +17,12 @@ class DashBoardPage {
         let Projetos = new ApiData()
         let project = await Projetos.ReadProject()
         let ProjNames_api = Object.keys(project)
+        let Data_result = project[value]["Projeto"]["Data"]
+        let Header_data = Object.keys(Data_result[0])
 
-
+        // Data_result.forEach(element => {
+        //         console.log(element)
+        // });
         
         Oct8.Factory.render("espace", "#page", { espace: 3 })
         Oct8.Factory.render("HeaderTitle", "#page", { Title: project[value]["Titulo"],id:"share_perfil"})
@@ -84,7 +88,7 @@ class DashBoardPage {
         Oct8.Factory.render("widgets_", '#dash', { elem:"svg", Width: "lsm", id: "card" })
         Oct8.Factory.render("widgets_", '#dash', { elem:"svg", Width: "lg", id: "teste" })
         Oct8.Factory.render("widgets_", '#dash', {Width: "lg", id: "table" })
-        Oct8.Factory.render("Table","#element_widgettable",{})
+        Oct8.Factory.render("Table","#element_widgettable",{Header_:Header_data,Values:Data_result})
 
 
         let Draw = new DrawGraphs()
@@ -127,7 +131,7 @@ class DashBoardPage {
                     </div>
                 </div>
                 `})
-                Oct8.Factory.render("Table","#database",{})
+                Oct8.Factory.render("Table","#database",{Header_:Header_data,Values:Data_result})
                  document.getElementById("close_modal").addEventListener("click",()=>{
                     
                     document.querySelectorAll("[oct8-css='bg-modal']")[0].remove()

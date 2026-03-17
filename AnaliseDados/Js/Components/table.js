@@ -6,97 +6,26 @@ class Table extends Oct8.FactoryClass{
     constructor(prop){
         super()
         this.props = prop
+        let Header = ""
+        this.props.Header_.forEach(element => {
+            Header+= `<th>${element}</th>`
+        });
+        let Values= ""
+        this.props.Values.forEach(el =>{
+                Values+="<tr>"
+                this.props.Header_.forEach(x =>{
+                    Values+=`<td> ${el[x]} </td>`
+                })
+                Values+="</tr>"    
+        }) 
+        
         this.FactoryObj = `
         <div oct8-css='table_basic'  >
             <table> 
                 <tr>
-                    <th>d</th>
-                    <th>d</th>
-                    <th>x</th> 
+                    ${Header}
                 <tr>
-
-                <tr>
-                    <td>a</td>
-                    <td>sssssa</td>
-                    <td>fgfdgfgdgdfgdfgdfgdfgdfg</td> 
-                <tr>
-
-                <tr>
-                    <td>a</td>
-                    <td>sssssa</td>
-                    <td>fgfdgfgdgdfgdfgdfgdfgdfg</td> 
-                <tr><tr>
-                    <td>a</td>
-                    <td>sssssa</td>
-                    <td>fgfdgfgdgdfgdfgdfgdfgdfg</td> 
-                <tr><tr>
-                    <td>a</td>
-                    <td>sssssa</td>
-                    <td>fgfdgfgdgdfgdfgdfgdfgdfg</td> 
-                <tr><tr>
-                    <td>a</td>
-                    <td>sssssa</td>
-                    <td>fgfdgfgdgdfgdfgdfgdfgdfg</td> 
-                <tr><tr>
-                    <td>a</td>
-                    <td>sssssa</td>
-                    <td>fgfdgfgdgdfgdfgdfgdfgdfg</td> 
-                <tr><tr>
-                    <td>a</td>
-                    <td>sssssa</td>
-                    <td>fgfdgfgdgdfgdfgdfgdfgdfg</td> 
-                <tr>
-                <tr>
-                    <td>a</td>
-                    <td>sssssa</td>
-                    <td>fgfdgfgdgdfgdfgdfgdfgdfg</td> 
-                <tr>
-                <tr>
-                    <td>a</td>
-                    <td>sssssa</td>
-                    <td>fgfdgfgdgdfgdfgdfgdfgdfg</td> 
-                <tr>
-                <tr>
-                    <td>a</td>
-                    <td>sssssa</td>
-                    <td>fgfdgfgdgdfgdfgdfgdfgdfg</td> 
-                <tr>
-                <tr>
-                    <td>a</td>
-                    <td>sssssa</td>
-                    <td>fgfdgfgdgdfgdfgdfgdfgdfg</td> 
-                <tr>
-                <tr>
-                    <td>a</td>
-                    <td>sssssa</td>
-                    <td>fgfdgfgdgdfgdfgdfgdfgdfg</td> 
-                <tr>
-                <tr>
-                    <td>a</td>
-                    <td>sssssa</td>
-                    <td>fgfdgfgdgdfgdfgdfgdfgdfg</td> 
-                <tr>
-                <tr>
-                    <td>a</td>
-                    <td>sssssa</td>
-                    <td>fgfdgfgdgdfgdfgdfgdfgdfg</td> 
-                <tr>
-                <tr>
-                    <td>a</td>
-                    <td>sssssa</td>
-                    <td>fgfdgfgdgdfgdfgdfgdfgdfg</td> 
-                <tr>
-                <tr>
-                    <td>a</td>
-                    <td>sssssa</td>
-                    <td>fgfdgfgdgdfgdfgdfgdfgdfg</td> 
-                <tr>
-                <tr>
-                    <td>a</td>
-                    <td>sssssa</td>
-                    <td>fgfdgfgdgdfgdfgdfgdfgdfg</td> 
-                <tr>
-                
+                ${Values}
             </table>
          </div>
         `
