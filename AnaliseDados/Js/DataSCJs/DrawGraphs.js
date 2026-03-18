@@ -80,14 +80,14 @@ class DrawGraphs{
   container.appendChild(svg)
 }
 
-drawPieChart(containerId, values){
+drawPieChart(containerId, values,Group){
 
   const size = 300
   const radius = 120
   const center = size/2
 
   const total = values.reduce((a,b)=>a+b,0)
-
+ const svgNS = "http://www.w3.org/2000/svg"
   const svg = document.createElementNS("http://www.w3.org/2000/svg","svg")
   svg.setAttribute("viewBox",`0 0 ${size} ${size}`)
   svg.setAttribute("width","100%")
@@ -95,7 +95,7 @@ drawPieChart(containerId, values){
   const colors = ["#4CAF50","#2196F3","#FFC107","#F44336","#9C27B0"]
 
   let startAngle = 0
-
+  let index_group = 0
   values.forEach((value,i)=>{
 
     const sliceAngle = (value/total) * Math.PI * 2
@@ -120,11 +120,15 @@ drawPieChart(containerId, values){
 
     path.setAttribute("d",pathData)
     path.setAttribute("fill",colors[i % colors.length])
-    
+     const titleText = document.createElementNS(svgNS,"text")
+    titleText.textContent = Object.keys(Group[index_group])
+    titleText.setAttribute("x",x2)
+    titleText.setAttribute("y",y2)
     svg.appendChild(path)
+    svg.appendChild(titleText)
 
     startAngle = endAngle
-
+    index_group+=1
   })
 
   const container = document.getElementById(containerId)

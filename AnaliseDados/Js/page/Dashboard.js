@@ -113,7 +113,8 @@ class DashBoardPage {
                 }
                 if(project[value]["Projeto"]["Widget"][widgets]["Type"] == "pie"){
                     let g = DataBase.GroupByClass(project[value]["Projeto"]["Widget"][widgets]["Data"]["group"]["group"],project[value]["Projeto"]["Widget"][widgets]["Data"]["group"]["value"])
-                    Draw.drawPieChart("element_widget"+widgets, DataBase.ValueBygroup(g))
+                    console.log(g)
+                    Draw.drawPieChart("element_widget"+widgets, DataBase.ValueBygroup(g),g)
                 }
 
             }
