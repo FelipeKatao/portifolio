@@ -26,9 +26,10 @@
     }
     ,"Projeto":{
           "ShowCode":{"type":"none","visible":"no","code":""},
-          "Widget":{"Grafico_barras":{"Type":"","Prop":{}, "Data":{"x":{},"y":{}}}
-          ,"Card":{"Type":"","prop":{},"Data":{"Rotulo":"","Operacao":"","Data":{}}}
-          ,"Lines":{"Type":"Line","prop":{},"Data":{"Rotulo":"","Operacao":"","Data":{"x":"preco_medio","y":"receita_total"}}}
+          "Widget":{"Grafico_barras":{"Width":"xx", "svg":"yes","Type":"pie","Prop":{}, "Data":{"group":{"group":"produto","value":"desconto_percentual"}}}
+          ,"Card":{"Width":"lsm","svg":"yes","Type":"line","prop":{},"Data":{"Rotulo":"","Operacao":"","Data":{}}}
+          ,"Card_":{"Width":"md","svg":"yes","Type":"bar","prop":{},"Data":{"Rotulo":"","Operacao":"","Data":{}}}
+          ,"Lines":{"Width":"lsm","svg":"no","Type":"line","prop":{},"Data":{"Rotulo":"","Operacao":"","Data":{"x":"preco_medio","y":"receita_total"}}}
            },
           "Data":[     
     {

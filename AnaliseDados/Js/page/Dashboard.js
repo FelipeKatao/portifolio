@@ -1,4 +1,5 @@
 import { DashboardController } from "../Controller/DashboardController.js"
+import DataAnalatics from "../DataSCJs/DataAnalitics.js"
 import { DrawGraphs } from "../DataSCJs/DrawGraphs.js"
 import { Oct8 } from "../Oct8/Oct.js"
 import { ApiData } from "../util/Api_data.js"
@@ -20,10 +21,6 @@ class DashBoardPage {
         let Data_result = project[value]["Projeto"]["Data"]
         let Header_data = Object.keys(Data_result[0])
 
-        // Data_result.forEach(element => {
-        //         console.log(element)
-        // });
-        
         Oct8.Factory.render("espace", "#page", { espace: 3 })
         Oct8.Factory.render("HeaderTitle", "#page", { Title: project[value]["Titulo"],id:"share_perfil"})
         console.log([value])
@@ -71,26 +68,17 @@ class DashBoardPage {
         </select>
         `
         let Next_bt = `
-         <button id='bt_next_page' class='standart_bt'> <img class='rotate' src='./img/arrow.png' width="24"> </button>
+        <button id='bt_next_page' class='standart_bt'> <img class='rotate' src='./img/arrow.png' width="24"> </button>
         `
         let prev_bt = `
-         <button id='bt_prev_page' class='standart_bt'> <img  src='./img/arrow.png' width="24"> </button>
+        <button id='bt_prev_page' class='standart_bt'> <img  src='./img/arrow.png' width="24"> </button>
         `
-
-         let dataBase_bt = `
-         <button id='bt_database_page' class='standart_bt'> <img  src='./img/table.png' width="24"> </button>
+        
+        let dataBase_bt = `
+        <button id='bt_database_page' class='standart_bt'> <img  src='./img/table.png' width="24"> </button>
         `
         let Bt_full = `<button id='bt_full' class='standart_bt'> <img src='./img/fullscreen.png' width="24"> </button>`
-        Oct8.Factory.render("MenuDash", "#menuDash_opt", { Lista: [pages_dashboard, Next_bt, prev_bt, Filtro_dash, Bt_full,dataBase_bt] })
-        Oct8.Factory.render("widgets_", '#dash', { elem:"svg", Width: "lg", color: "red", id: "base" })
-        Oct8.Factory.render("widgets_", '#dash', { elem:"svg", Width: "md", id: "piz" })
-        Oct8.Factory.render("widgets_", '#dash', { elem:"svg", Width: "md", id: "plot" })
-        Oct8.Factory.render("widgets_", '#dash', { elem:"svg", Width: "lsm", id: "card" })
-        Oct8.Factory.render("widgets_", '#dash', { elem:"svg", Width: "lg", id: "teste" })
-        Oct8.Factory.render("widgets_", '#dash', {Width: "lg", id: "table" })
-        Oct8.Factory.render("Table","#element_widgettable",{Header_:Header_data,Values:Data_result})
-
-
+        let DataBase = new DataAnalatics(project[value]["Projeto"]["Data"])
         let Draw = new DrawGraphs()
         let Data_x = project[value]["Projeto"]["Widget"]["Lines"]["Data"]["Data"]["x"]
         let Data_y = project[value]["Projeto"]["Widget"]["Lines"]["Data"]["Data"]["y"]
@@ -98,24 +86,46 @@ class DashBoardPage {
         let LineEixos = []
         let Card = 0
 
-       
 
-        console.log(project[value]["Projeto"]["Data"])
         project[value]["Projeto"]["Data"].forEach(element => {
 
             LineEixos.push(element[Data_x])
             Data_eixos.push({x:element[Data_x],y:element[Data_y]})
 
         });
+        Object.keys(project[value]["Projeto"]["Widget"]).forEach(widgets =>{
+            console.log(project[value]["Projeto"]["Widget"][widgets]["svg"])
+            if(project[value]["Projeto"]["Widget"][widgets]["svg"] == "yes"){
+                Oct8.Factory.render("widgets_", '#dash', { elem:"svg", Width: project[value]["Projeto"]["Widget"][widgets]["Width"], color: "red", id: widgets })
+            
+                if(project[value]["Projeto"]["Widget"][widgets]["Type"] == "line"){
+                    Draw.drawLineChart("element_widget"+widgets, LineEixos)
+                }
+                if(project[value]["Projeto"]["Widget"][widgets]["Type"] == "card"){
+                    Draw.drawCard("element_widgetcard",Data_x, LineEixos, "Soma total","sum")
+                }
+                if(project[value]["Projeto"]["Widget"][widgets]["Type"] == "bar"){
+                    Draw.drawBarChart("element_widget"+widgets, LineEixos)
+                }
 
-        console.log(LineEixos)
-        Draw.drawLineChart("element_widgetbase", LineEixos)
-        Draw.drawScatterChart("element_widgetplot", Data_eixos)
-        Draw.drawPieChart("element_widgetpiz", LineEixos)
-        Draw.drawBarChart("element_widgetteste", LineEixos)
-        Draw.drawCard("element_widgetcard",Data_x, LineEixos, "Soma total","sum")
+                if(project[value]["Projeto"]["Widget"][widgets]["Type"] == "scatter"){
+                    Draw.drawScatterChart("element_widget"+widgets, LineEixos)
+                }
+                if(project[value]["Projeto"]["Widget"][widgets]["Type"] == "pie"){
+                    let g = DataBase.GroupByClass(project[value]["Projeto"]["Widget"][widgets]["Data"]["group"]["group"],project[value]["Projeto"]["Widget"][widgets]["Data"]["group"]["value"])
+                    Draw.drawPieChart("element_widget"+widgets, DataBase.ValueBygroup(g))
+                }
+
+            }
+            else{
+                        Oct8.Factory.render("widgets_", '#dash', {Width: "lg", id: "table" })
+                        Oct8.Factory.render("Table","#element_widgettable",{Header_:Header_data,Values:Data_result})
+            }
+            
+        })
 
         let controller = new DashboardController()
+        Oct8.Factory.render("MenuDash", "#menuDash_opt", { Lista: [pages_dashboard, Next_bt, prev_bt, Filtro_dash, Bt_full,dataBase_bt] })
 
         document.getElementById("bt_full").addEventListener("click", () => {
             controller.FullScreen()

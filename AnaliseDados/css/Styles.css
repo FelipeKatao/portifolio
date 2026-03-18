@@ -237,6 +237,13 @@ align-content: center;
         padding: 2vh;
         margin:2vh;
     }
+    [oct8-css~='xx']{
+        height: 50%;
+        width: 180vh;
+        padding: 2vh;
+        margin:2vh;
+    }
+
     [oct8-css~='center']{
         margin: auto;
         width: 100%;
