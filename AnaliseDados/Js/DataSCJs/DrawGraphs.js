@@ -1,10 +1,10 @@
 
-
+import { Oct8 } from "../Oct8/Oct.js"
 class DrawGraphs{
     constructor(dados,id){
-
+      this.svgNS =  "http://www.w3.org/2000/svg"
     }
-  drawLineChart(containerId, values){
+  drawLineChart(containerId, values,title=""){
 
   const width = 600
   const height = 300
@@ -41,6 +41,17 @@ class DrawGraphs{
 
   // gerar pontos
   let points = ""
+    
+    if(title != ""){
+    const textTitle = document.createElementNS(this.svgNS,"text")
+
+      textTitle.textContent =  title
+          textTitle.setAttribute("x",0)
+          textTitle.setAttribute("y",-120)
+          textTitle.setAttribute("font-size","30")
+          textTitle.setAttribute("fill","gray")
+          svg.appendChild(textTitle)
+    }
 
   values.forEach((value,i)=>{
 
@@ -50,6 +61,7 @@ class DrawGraphs{
     points += `${x},${y} `
     const text = document.createElementNS("http://www.w3.org/2000/svg","text")
     const circle = document.createElementNS("http://www.w3.org/2000/svg","circle")
+
     circle.setAttribute("cx",x)
     circle.setAttribute("cy",y)
     circle.setAttribute("r",4)
@@ -62,8 +74,31 @@ class DrawGraphs{
     text.setAttribute("y",y-10)
     text.setAttribute("text-anchor","middle")
     text.setAttribute("font-size","12")
+
+
+    circle.addEventListener("mouseenter",(event)=>{
+      let enter = false
+      if(enter == false)
+      {
+        const x = event.clientX;
+        const y = event.clientY;
+
+        Oct8.Factory.render("TollTip","#menuDash_opt",{Conteudo:`Item:  `})
+        document.getElementById("tolltip_frame").style.left  = x+"px"
+        document.getElementById("tolltip_frame").style.top  = y+"px"
+        enter = true
+      }
+    })
+    circle.addEventListener("mouseleave",()=>{
+      document.getElementById("tolltip_frame").remove()
+    })
+
     svg.appendChild(circle)
     svg.appendChild(text)
+
+    circle.addEventListener("click",()=>{
+       console.log("aqui!")
+    })
 
   })
 
@@ -80,7 +115,7 @@ class DrawGraphs{
   container.appendChild(svg)
 }
 
-drawPieChart(containerId, values,Group){
+drawPieChart(containerId, values,Group,title=""){
 
   const size = 300
   const radius = 120
@@ -96,6 +131,18 @@ drawPieChart(containerId, values,Group){
 
   let startAngle = 0
   let index_group = 0
+    console.log(title)
+    if(title != ""){
+    const textTitle = document.createElementNS(svgNS,"text")
+
+      textTitle.textContent =  title
+          textTitle.setAttribute("x",0)
+          textTitle.setAttribute("y",20)
+          textTitle.setAttribute("font-size","30")
+          textTitle.setAttribute("fill","gray")
+          svg.appendChild(textTitle)
+    }
+
   values.forEach((value,i)=>{
 
     const sliceAngle = (value/total) * Math.PI * 2
@@ -124,6 +171,23 @@ drawPieChart(containerId, values,Group){
     titleText.textContent = Object.keys(Group[index_group])
     titleText.setAttribute("x",x2)
     titleText.setAttribute("y",y2)
+
+    path.addEventListener("mouseenter",(event)=>{
+      let enter = false
+      if(enter == false)
+      {
+        const x = event.clientX;
+        const y = event.clientY;
+
+        Oct8.Factory.render("TollTip","#menuDash_opt",{Conteudo:`Item:  `})
+        document.getElementById("tolltip_frame").style.left  = x+"px"
+        document.getElementById("tolltip_frame").style.top  = y+"px"
+        enter = true
+      }
+    })
+    path.addEventListener("mouseleave",()=>{
+      document.getElementById("tolltip_frame").remove()
+    })
     svg.appendChild(path)
     svg.appendChild(titleText)
 
@@ -281,8 +345,8 @@ drawScatterChart(containerId, points){
 
 }
 
-drawBarChart(containerId, values){
-
+drawBarChart(containerId, values,Group,title=""){
+  const svgNS = "http://www.w3.org/2000/svg"
   const width = 600
   const height = 300
   const padding = 40
@@ -314,6 +378,19 @@ drawBarChart(containerId, values){
 
   svg.appendChild(axisX)
   svg.appendChild(axisY)
+  let index_group = 0
+  console.log(Group)
+
+        if(title != ""){
+    const textTitle = document.createElementNS(svgNS,"text")
+
+      textTitle.textContent =  title
+          textTitle.setAttribute("x",0)
+          textTitle.setAttribute("y",-120)
+          textTitle.setAttribute("font-size","30")
+          textTitle.setAttribute("fill","gray")
+          svg.appendChild(textTitle)
+    }
 
   values.forEach((value,i)=>{
 
@@ -330,10 +407,40 @@ drawBarChart(containerId, values){
     rect.setAttribute("height",barHeight)
 
     rect.setAttribute("fill","#4CAF50")
+    const titleText = document.createElementNS(svgNS,"text")
+        if(index_group <= Group.length-1){
+          titleText.textContent =  Object.keys(Group[index_group])
+          titleText.setAttribute("x",x)
+          titleText.setAttribute("y",300)
+          titleText.setAttribute("font-size","14")
+          titleText.setAttribute("fill","gray")
+          svg.appendChild(titleText)
+
+    }
+
+    rect.addEventListener("mouseenter",(event)=>{
+      let enter = false
+      if(enter == false)
+      {
+        const x = event.clientX;
+        const y = event.clientY;
+
+        Oct8.Factory.render("TollTip","#menuDash_opt",{Conteudo:`Item:  `})
+        document.getElementById("tolltip_frame").style.left  = x+"px"
+        document.getElementById("tolltip_frame").style.top  = y+"px"
+        enter = true
+      }
+    })
+    rect.addEventListener("mouseleave",()=>{
+      document.getElementById("tolltip_frame").remove()
+    })
 
     svg.appendChild(rect)
+    index_group+=1
+
 
   })
+
 
   container.innerHTML=""
   container.appendChild(svg)

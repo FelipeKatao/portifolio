@@ -16,6 +16,7 @@ import { Menu } from "./Components/Menu.js"
 import { Modal } from "./Components/modal.js"
 import { Badge } from "./Components/Badges.js"
 import { Table } from "./Components/table.js"
+import ToolTip from "./Components/Tooltip.js"
 //https://www.youtube.com/watch?v=5638u_F9_hY
 Oct8.Factory.register("Badge",Badge)
 Oct8.Factory.register("Banner",Banner)
@@ -31,6 +32,7 @@ Oct8.Factory.register("MenuDash",MenuDash)
 Oct8.Factory.register("MenuSite",Menu)
 Oct8.Factory.register("modal",Modal)
 Oct8.Factory.register("Table",Table)
+Oct8.Factory.register("TollTip",ToolTip)
 
 Oct8.Styled.register("WhiteTheme",'./css/white.css')
 Oct8.Styled.set("WhiteTheme")

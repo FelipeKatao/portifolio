@@ -48,9 +48,10 @@
                     "Type": "line",
                     "prop": {},
                     "Data": {
-                        "Rotulo": "",
-                        "Operacao": "",
-                        "Data": {}
+                        "group": {
+                            "group": "mes",
+                            "value": "desconto_percentual"
+                        }
                     }
                 },
                 "Card_": {
@@ -59,9 +60,10 @@
                     "Type": "bar",
                     "prop": {},
                     "Data": {
-                        "Rotulo": "",
-                        "Operacao": "",
-                        "Data": {}
+                        "group": {
+                            "group": "mes",
+                            "value": "desconto_percentual"
+                        }
                     }
                 },
                 "Lines": {

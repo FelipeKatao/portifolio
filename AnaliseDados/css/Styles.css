@@ -255,6 +255,19 @@ align-content: center;
     }
 }
 
+@layer Tooltips{
+    [oct8-css~="tooltips"]{
+        background-color: #c8c8c8c5;
+        color: #313131;
+        padding: 1vh;
+        width: 30vh;
+        height: 10vh;
+        border-radius: 2vh;
+        z-index: 99;
+        position: fixed;
+        border:  solid 0.1vh #cbcbcb;
+    }
+}
 @layer move{
     .r_5{
         margin-left: -5vh;

@@ -94,27 +94,30 @@ class DashBoardPage {
 
         });
         Object.keys(project[value]["Projeto"]["Widget"]).forEach(widgets =>{
-            console.log(project[value]["Projeto"]["Widget"][widgets]["svg"])
+            let g =""
+            if(project[value]["Projeto"]["Widget"][widgets]["svg"] == "yes")
+            {
+                 g = DataBase.GroupByClass(project[value]["Projeto"]["Widget"][widgets]["Data"]["group"]["group"],project[value]["Projeto"]["Widget"][widgets]["Data"]["group"]["value"])
+            }
+            
             if(project[value]["Projeto"]["Widget"][widgets]["svg"] == "yes"){
                 Oct8.Factory.render("widgets_", '#dash', { elem:"svg", Width: project[value]["Projeto"]["Widget"][widgets]["Width"], color: "red", id: widgets })
             
                 if(project[value]["Projeto"]["Widget"][widgets]["Type"] == "line"){
-                    Draw.drawLineChart("element_widget"+widgets, LineEixos)
+                    Draw.drawLineChart("element_widget"+widgets, DataBase.ValueBygroup(g),"Analise crescimento de vendas")
                 }
                 if(project[value]["Projeto"]["Widget"][widgets]["Type"] == "card"){
                     Draw.drawCard("element_widgetcard",Data_x, LineEixos, "Soma total","sum")
                 }
                 if(project[value]["Projeto"]["Widget"][widgets]["Type"] == "bar"){
-                    Draw.drawBarChart("element_widget"+widgets, LineEixos)
+                    Draw.drawBarChart("element_widget"+widgets, DataBase.ValueBygroup(g),g,"Analise mensal por produto")
                 }
 
                 if(project[value]["Projeto"]["Widget"][widgets]["Type"] == "scatter"){
-                    Draw.drawScatterChart("element_widget"+widgets, LineEixos)
+                    Draw.drawScatterChart("element_widget"+widgets, LineEixos,g)
                 }
                 if(project[value]["Projeto"]["Widget"][widgets]["Type"] == "pie"){
-                    let g = DataBase.GroupByClass(project[value]["Projeto"]["Widget"][widgets]["Data"]["group"]["group"],project[value]["Projeto"]["Widget"][widgets]["Data"]["group"]["value"])
-                    console.log(g)
-                    Draw.drawPieChart("element_widget"+widgets, DataBase.ValueBygroup(g),g)
+                    Draw.drawPieChart("element_widget"+widgets, DataBase.ValueBygroup(g),g,"Analise de venda por produto")
                 }
 
             }
