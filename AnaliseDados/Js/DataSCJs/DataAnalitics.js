@@ -4,6 +4,25 @@ class DataAnalatics{
     constructor(DataBase){
         this.data = DataBase
         this.Categories = []
+        this.FilterData_selected = null 
+    }
+
+    Expression(CategoryBase,Operation,Valuemin=0,ValueMax=0,Limit=Infinity){
+        // Criar a expressão personalziada para cada Widget
+        if(this.FilterData_selected != null)
+        {
+            // Se for selecionado usa a base selecionada do this.FilterData_selected
+            return ""
+        }   
+        // Filtra aqui usando o data comum 
+        return ""
+
+    }
+    FilterData(Category){
+
+    }
+    ClearFilter(){
+
     }
     GroupByClass(FieldCategory,ReturnField){
         let Categories = [] 

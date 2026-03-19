@@ -35,6 +35,13 @@
                     "svg": "yes",
                     "Type": "pie",
                     "Prop": {},
+                    "formula":{
+                        "Categorie_base":"",
+                        "ValueMin":"",
+                        "ValueMax":"",
+                        "Operation":"",
+                        "Limit":""
+                    },
                     "Data": {
                         "group": {
                             "group": "produto",

@@ -4,7 +4,7 @@ class DrawGraphs{
     constructor(dados,id){
       this.svgNS =  "http://www.w3.org/2000/svg"
     }
-  drawLineChart(containerId, values,title=""){
+  drawLineChart(containerId, values,title="",group){
 
   const width = 600
   const height = 300
@@ -53,11 +53,11 @@ class DrawGraphs{
           svg.appendChild(textTitle)
     }
 
+  let index_group = 0
   values.forEach((value,i)=>{
 
     const x = padding + stepX * i
     const y = height - padding - (value/max)*(height-padding*2)
-
     points += `${x},${y} `
     const text = document.createElementNS("http://www.w3.org/2000/svg","text")
     const circle = document.createElementNS("http://www.w3.org/2000/svg","circle")
@@ -74,33 +74,50 @@ class DrawGraphs{
     text.setAttribute("y",y-10)
     text.setAttribute("text-anchor","middle")
     text.setAttribute("font-size","12")
-
-
+    circle.classList ="linechart"+containerId
+    let Validate = false
+    circle.addEventListener("click",(event)=>{
+      let GetValues = document.getElementsByClassName("linechart"+containerId)
+        if(Validate == false){
+          for (let index = 0; index < GetValues.length; index++) {
+            GetValues[index].style.opacity = 0.5
+            event.target.style.opacity = 1
+          }
+          Validate = true
+        }
+        else{
+          for (let index = 0; index < GetValues.length; index++) {
+            GetValues[index].style.opacity = 1
+          }
+          Validate = false
+        }
+    })
     circle.addEventListener("mouseenter",(event)=>{
       let enter = false
       if(enter == false)
       {
         const x = event.clientX;
         const y = event.clientY;
-
-        Oct8.Factory.render("TollTip","#menuDash_opt",{Conteudo:`Item:  `})
+        console.log(group)
+        const Name = (event.target).getAttribute("elementName")
+        const ValueElement = (event.target).getAttribute("elementValue")
+        Oct8.Factory.render("TollTip","#menuDash_opt",{Conteudo:`Item: ${Name}  <br> Valor: ${ValueElement} `})
         document.getElementById("tolltip_frame").style.left  = x+"px"
         document.getElementById("tolltip_frame").style.top  = y+"px"
         enter = true
       }
     })
+    //circle.setAttribute("elementName",Object.keys(Group[index_group]))
+    circle.setAttribute("elementValue",value)
+    circle.setAttribute("elementName",Object.keys(group[index_group]))
     circle.addEventListener("mouseleave",()=>{
       document.getElementById("tolltip_frame").remove()
     })
-
+    
     svg.appendChild(circle)
     svg.appendChild(text)
-
-    circle.addEventListener("click",()=>{
-       console.log("aqui!")
-    })
-
-  })
+    index_group+=1
+  })  
 
   // linha do gráfico
   const polyline = document.createElementNS("http://www.w3.org/2000/svg","polyline")
@@ -171,15 +188,37 @@ drawPieChart(containerId, values,Group,title=""){
     titleText.textContent = Object.keys(Group[index_group])
     titleText.setAttribute("x",x2)
     titleText.setAttribute("y",y2)
-
-    path.addEventListener("mouseenter",(event)=>{
+    path.setAttribute("elementName",Object.keys(Group[index_group]))
+    path.setAttribute("elementValue",value)
+    path.classList ="pieElem"+containerId
+    let Validate = false
+    path.addEventListener("click",(event)=>{
+      let GetValues = document.getElementsByClassName("pieElem"+containerId)
+        if(Validate == false){
+          for (let index = 0; index < GetValues.length; index++) {
+            GetValues[index].style.opacity = 0.5
+            event.target.style.opacity = 1
+          }
+          Validate = true
+        }
+        else{
+          for (let index = 0; index < GetValues.length; index++) {
+            GetValues[index].style.opacity = 1
+          }
+          Validate = false
+        }
+    })
+    path.addEventListener("mouseenter",(event,e)=>{
       let enter = false
       if(enter == false)
       {
         const x = event.clientX;
         const y = event.clientY;
+        document.getElementById("")
 
-        Oct8.Factory.render("TollTip","#menuDash_opt",{Conteudo:`Item:  `})
+        const Name = (event.target).getAttribute("elementName")
+        const ValueElement = (event.target).getAttribute("elementValue")
+        Oct8.Factory.render("TollTip","#menuDash_opt",{Conteudo:`Item: ${Name}  <br> Valor: ${ValueElement} `})
         document.getElementById("tolltip_frame").style.left  = x+"px"
         document.getElementById("tolltip_frame").style.top  = y+"px"
         enter = true
@@ -335,7 +374,7 @@ drawScatterChart(containerId, points){
     circle.setAttribute("cy",y)
     circle.setAttribute("r",5)
     circle.setAttribute("fill","#2196F3")
-
+    circle.id= "bars"+containerId
     svg.appendChild(circle)
 
   })
@@ -405,7 +444,7 @@ drawBarChart(containerId, values,Group,title=""){
     rect.setAttribute("y",y)
     rect.setAttribute("width",barWidth - 10)
     rect.setAttribute("height",barHeight)
-
+    rect.classList = "bars"+containerId
     rect.setAttribute("fill","#4CAF50")
     const titleText = document.createElementNS(svgNS,"text")
         if(index_group <= Group.length-1){
@@ -417,15 +456,46 @@ drawBarChart(containerId, values,Group,title=""){
           svg.appendChild(titleText)
 
     }
+    rect.setAttribute("elementName",Object.keys(Group[index_group]))
+    rect.setAttribute("elementValue",value)
+    let Validate = false 
+    rect.addEventListener("click",(event)=>{
+        let color = "#4caf4f6e"
+        let valuesBars = document.getElementsByClassName("bars"+containerId)
+        if(Validate == true)
+        {
+           color = "#4CAF50"
+           for (let index = 0; index < valuesBars.length; index++) {
+          console.log(valuesBars[index])
+          valuesBars[index].setAttribute("fill",color)
+          event.target.setAttribute("fill","#4CAF50")
+          
+        }
+        Validate = false
+        }
+        else{
+          for (let index = 0; index < valuesBars.length; index++) {
+          console.log(valuesBars[index])
+          valuesBars[index].setAttribute("fill",color)
+          event.target.setAttribute("fill","#4CAF50")
+        }
+        Validate = true
+        }
+        
+        
 
+
+    })
     rect.addEventListener("mouseenter",(event)=>{
       let enter = false
       if(enter == false)
       {
         const x = event.clientX;
         const y = event.clientY;
-
-        Oct8.Factory.render("TollTip","#menuDash_opt",{Conteudo:`Item:  `})
+        const Name = (event.target).getAttribute("elementName")
+        const ValueElement = (event.target).getAttribute("elementValue")
+        Oct8.Factory.render("TollTip","#menuDash_opt",{Conteudo:`Item: ${Name}  <br> Valor: ${ValueElement} `})
+        
         document.getElementById("tolltip_frame").style.left  = x+"px"
         document.getElementById("tolltip_frame").style.top  = y+"px"
         enter = true

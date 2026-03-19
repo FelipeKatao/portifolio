@@ -23,7 +23,6 @@ class DashBoardPage {
 
         Oct8.Factory.render("espace", "#page", { espace: 3 })
         Oct8.Factory.render("HeaderTitle", "#page", { Title: project[value]["Titulo"],id:"share_perfil"})
-        console.log([value])
         Oct8.Factory.render("div", "#page", { id: "about", elements: "sobre o projeto", classId: "container_full bege", text: project[value]["Insigths_area"]["Insigths"] })
         Oct8.Factory.render("HeaderTitle", "#about", {id:"share_about",Title:project[value]["Insigths_area"]["Titulo"]})
 
@@ -104,7 +103,7 @@ class DashBoardPage {
                 Oct8.Factory.render("widgets_", '#dash', { elem:"svg", Width: project[value]["Projeto"]["Widget"][widgets]["Width"], color: "red", id: widgets })
             
                 if(project[value]["Projeto"]["Widget"][widgets]["Type"] == "line"){
-                    Draw.drawLineChart("element_widget"+widgets, DataBase.ValueBygroup(g),"Analise crescimento de vendas")
+                    Draw.drawLineChart("element_widget"+widgets, DataBase.ValueBygroup(g),"Analise crescimento de vendas",g)
                 }
                 if(project[value]["Projeto"]["Widget"][widgets]["Type"] == "card"){
                     Draw.drawCard("element_widgetcard",Data_x, LineEixos, "Soma total","sum")
