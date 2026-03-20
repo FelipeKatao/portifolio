@@ -68,7 +68,7 @@
                     "prop": {},
                     "Data": {
                         "group": {
-                            "group": "mes",
+                            "group": "produto",
                             "value": "desconto_percentual"
                         }
                     }

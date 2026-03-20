@@ -27,7 +27,7 @@ class DashBoardPage {
         Oct8.Factory.render("HeaderTitle", "#about", {id:"share_about",Title:project[value]["Insigths_area"]["Titulo"]})
 
         Oct8.Factory.render("Graphs", "#page", {})
-
+ 
         if (project[value]["Projeto"]["ShowCode"]["visible"] == "yes") {
             let QuerySql = "SQL QUERY"
             Oct8.Factory.render("div", "#page", {
