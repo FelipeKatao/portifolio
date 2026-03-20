@@ -3,6 +3,7 @@
 class DataAnalatics{
     constructor(DataBase){
         this.data = DataBase
+        this.ctxData = DataBase
         this.Categories = []
         this.FilterData_selected = null 
     }
@@ -18,11 +19,17 @@ class DataAnalatics{
         return ""
 
     }
-    FilterData(Category){
-
+    FilterData(Category,Value){
+        this.FilterData_selected = []
+        this.data.forEach(c =>{
+            if(c[Category] == Value){
+                this.FilterData_selected.push(c)
+            }
+        })  
+        this.data = this.FilterData_selected
     }
     ClearFilter(){
-
+        this.data = this.ctxData
     }
     GroupByClass(FieldCategory,ReturnField){
         let Categories = [] 
@@ -46,7 +53,7 @@ class DataAnalatics{
         
         return  GroupByCategories
     }
-    ValueBygroup(GroupByClassData){
+     ValueBygroup(GroupByClassData){
         let ValueClass = []
         GroupByClassData.forEach(e =>{
             ValueClass.push(Number(Object.values(e).toString()))

@@ -24,6 +24,10 @@
             "Insigths": "Foi verificado por amostra de dados, que o lucro medio esta relazionado diretamente com a variação de preço dos produtos e dos descontos dados por mês."
         },
         "Projeto": {
+            "FilterData":{
+                "Filter":"mes",
+                "Value":"desconto_percentual"
+            },
             "ShowCode": {
                 "type": "none",
                 "visible": "no",
@@ -68,7 +72,7 @@
                     "prop": {},
                     "Data": {
                         "group": {
-                            "group": "produto",
+                            "group": "mes",
                             "value": "desconto_percentual"
                         }
                     }

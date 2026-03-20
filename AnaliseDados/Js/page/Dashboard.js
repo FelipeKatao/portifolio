@@ -9,8 +9,10 @@ class DashBoardPage {
     constructor(nameProject = "") {
         console.log(nameProject)
         this.nameProject = window.location.hash.replace("#", "")
-
+        this.Context_filter = null
         this.GetProject(this.nameProject)
+        this.Selected_value = ""
+        this.options_save = []
 
     }
     
@@ -20,6 +22,13 @@ class DashBoardPage {
         let ProjNames_api = Object.keys(project)
         let Data_result = project[value]["Projeto"]["Data"]
         let Header_data = Object.keys(Data_result[0])
+        let DataBase = new DataAnalatics(project[value]["Projeto"]["Data"])
+
+        // Iniciar a DataBase aqui
+
+        if(this.Selected_value != ""){
+            DataBase.FilterData(project[value]["Projeto"]["FilterData"]["Filter"],this.Selected_value)
+        }
 
         Oct8.Factory.render("espace", "#page", { espace: 3 })
         Oct8.Factory.render("HeaderTitle", "#page", { Title: project[value]["Titulo"],id:"share_perfil"})
@@ -53,17 +62,35 @@ class DashBoardPage {
         }
 
 
+        let options =""
+        let Opt = DataBase.GroupByClass(project[value]["Projeto"]["FilterData"]["Filter"],project[value]["Projeto"]["FilterData"]["value"])
+        console.log(this.options_save.length+"=====")
+        if(this.options_save.length == 0){
+            this.options_save = Opt
+        }
+        this.options_save.forEach(el =>{
+            if(this.Selected_value == Object.keys(el)[0])
+            {
+                options+=`  <option selected value="${Object.keys(el)[0]}">${Object.keys(el)[0]}</option>`
+            }
+            else{
+                options+=`  <option value="${Object.keys(el)[0]}">${Object.keys(el)[0]}</option>`
+
+            }
+        })
+    
+        
         
         let pages_dashboard = `
         <label>Pagina:</label>
-        <select name="cars" id="cars">
+        <select name="pag_data" id="pages">
         <option value="page1">Page 1</option>
         </select>
         `
         let Filtro_dash = `
          <label>Filtro:</label>
-        <select name="cars" id="cars">
-        <option value="todos">Todos</option>
+        <select name="filter_data" id="filter">
+        ${options}
         </select>
         `
         let Next_bt = `
@@ -77,7 +104,7 @@ class DashBoardPage {
         <button id='bt_database_page' class='standart_bt'> <img  src='./img/table.png' width="24"> </button>
         `
         let Bt_full = `<button id='bt_full' class='standart_bt'> <img src='./img/fullscreen.png' width="24"> </button>`
-        let DataBase = new DataAnalatics(project[value]["Projeto"]["Data"])
+        
         let Draw = new DrawGraphs()
         let Data_x = project[value]["Projeto"]["Widget"]["Lines"]["Data"]["Data"]["x"]
         let Data_y = project[value]["Projeto"]["Widget"]["Lines"]["Data"]["Data"]["y"]
@@ -149,6 +176,16 @@ class DashBoardPage {
         })
 
        
+        document.getElementById("filter").addEventListener("change",e=>{
+            DataBase.FilterData(project[value]["Projeto"]["FilterData"]["Filter"],e.target.value)
+            document.getElementById("page").innerHTML = ""
+             Oct8.Factory.render("MenuSite","#page",{})
+             this.Selected_value = e.target.value
+            this.GetProject(value)
+
+            
+        })
+
         document.getElementById("bt_database_page").addEventListener("click",()=>{
             Oct8.Factory.render("modal","#page",{titulo:"Fonte de dados",Conteudo:`
                 <div
