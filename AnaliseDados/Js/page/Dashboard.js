@@ -13,6 +13,7 @@ class DashBoardPage {
         this.GetProject(this.nameProject)
         this.Selected_value = ""
         this.options_save = []
+        this.Page = "Default"
 
     }
     
@@ -20,14 +21,14 @@ class DashBoardPage {
         let Projetos = new ApiData()
         let project = await Projetos.ReadProject()
         let ProjNames_api = Object.keys(project)
-        let Data_result = project[value]["Projeto"]["Data"]
+        let Data_result = project[value]["Projeto"][this.Page][0]["Data"]
         let Header_data = Object.keys(Data_result[0])
-        let DataBase = new DataAnalatics(project[value]["Projeto"]["Data"])
+        let DataBase = new DataAnalatics(project[value]["Projeto"][this.Page][0]["Data"])
 
         // Iniciar a DataBase aqui
 
         if(this.Selected_value != ""){
-            DataBase.FilterData(project[value]["Projeto"]["FilterData"]["Filter"],this.Selected_value)
+            DataBase.FilterData(project[value]["Projeto"][this.Page][0]["FilterData"]["Filter"],this.Selected_value)
         }
 
         Oct8.Factory.render("espace", "#page", { espace: 3 })
@@ -37,13 +38,13 @@ class DashBoardPage {
 
         Oct8.Factory.render("Graphs", "#page", {})
  
-        if (project[value]["Projeto"]["ShowCode"]["visible"] == "yes") {
+        if (project[value]["Projeto"][this.Page][0]["ShowCode"]["visible"] == "yes") {
             let QuerySql = "SQL QUERY"
             Oct8.Factory.render("div", "#page", {
                 id: "query", elements: "sobre o projeto", classId: "container_full bege", text: `
-                        <div class='box_editor'> ${project[value]["Projeto"]["ShowCode"]["type"]} <br> ${project[value]["Projeto"]["ShowCode"]["code"]} </div>   
+                        <div class='box_editor'> ${project[value]["Projeto"][this.Page][0]["ShowCode"]["type"]} <br> ${project[value]["Projeto"][this.Page][0]["ShowCode"]["code"]} </div>   
                             `})
-            Oct8.Factory.render("HeaderTitle", "#query", {id:"cod_share",Title:project[value]["Projeto"]["ShowCode"]["Titulo"]})
+            Oct8.Factory.render("HeaderTitle", "#query", {id:"cod_share",Title:project[value]["Projeto"][this.Page][0]["ShowCode"]["Titulo"]})
 
             document.getElementById("cod_share").addEventListener("click",()=>{
             Oct8.Factory.render("modal","#page",{titulo:"Compartilhar",Conteudo:`
@@ -63,8 +64,7 @@ class DashBoardPage {
 
 
         let options =""
-        let Opt = DataBase.GroupByClass(project[value]["Projeto"]["FilterData"]["Filter"],project[value]["Projeto"]["FilterData"]["value"])
-        console.log(this.options_save.length+"=====")
+        let Opt = DataBase.GroupByClass(project[value]["Projeto"][this.Page][0]["FilterData"]["Filter"],project[value]["Projeto"][this.Page][0]["FilterData"]["value"])
         if(this.options_save.length == 0){
             this.options_save = Opt
         }
@@ -80,16 +80,29 @@ class DashBoardPage {
         })
     
         
+        let Options_page = ""
+        Object.keys(project[value]["Projeto"]).forEach(pag =>{
+            if(pag == this.Page)
+            {
+                Options_page += `<option selected value="${pag}">${pag}</option>`
+            }
+            else{
+                Options_page += `<option  value="${pag}">${pag}</option>`
+            }
+        })
+        
         
         let pages_dashboard = `
         <label>Pagina:</label>
-        <select name="pag_data" id="pages">
-        <option value="page1">Page 1</option>
+        <select name="pag_data" id="pagesFilter">
+        ${Options_page}
         </select>
         `
+
         let Filtro_dash = `
          <label>Filtro:</label>
         <select name="filter_data" id="filter">
+        <option value="noneFilter"> ------ </option>
         ${options}
         </select>
         `
@@ -106,50 +119,43 @@ class DashBoardPage {
         let Bt_full = `<button id='bt_full' class='standart_bt'> <img src='./img/fullscreen.png' width="24"> </button>`
         
         let Draw = new DrawGraphs()
-        let Data_x = project[value]["Projeto"]["Widget"]["Lines"]["Data"]["Data"]["x"]
-        let Data_y = project[value]["Projeto"]["Widget"]["Lines"]["Data"]["Data"]["y"]
-        let Data_eixos = []
-        let LineEixos = []
-        let Card = 0
 
-
-        project[value]["Projeto"]["Data"].forEach(element => {
-
-            LineEixos.push(element[Data_x])
-            Data_eixos.push({x:element[Data_x],y:element[Data_y]})
-
-        });
-        Object.keys(project[value]["Projeto"]["Widget"]).forEach(widgets =>{
+        Object.keys(project[value]["Projeto"][this.Page][0]["Widget"]).forEach(widgets =>{
             let g =""
-            if(project[value]["Projeto"]["Widget"][widgets]["svg"] == "yes")
+            if(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["svg"] == "yes")
             {
-                 g = DataBase.GroupByClass(project[value]["Projeto"]["Widget"][widgets]["Data"]["group"]["group"],project[value]["Projeto"]["Widget"][widgets]["Data"]["group"]["value"])
+                 g = DataBase.GroupByClass(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Data"]["group"]["group"],project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Data"]["group"]["value"])
             }
             
-            if(project[value]["Projeto"]["Widget"][widgets]["svg"] == "yes"){
-                Oct8.Factory.render("widgets_", '#dash', { elem:"svg", Width: project[value]["Projeto"]["Widget"][widgets]["Width"], color: "red", id: widgets })
+            if(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["svg"] == "yes"){
+                Oct8.Factory.render("widgets_", '#dash', { elem:"svg", Width: project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Width"], color: "red", id: widgets })
             
-                if(project[value]["Projeto"]["Widget"][widgets]["Type"] == "line"){
+                if(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Type"] == "line"){
+                    // Aqui será implementado o sistema de expressão 
                     Draw.drawLineChart("element_widget"+widgets, DataBase.ValueBygroup(g),"Analise crescimento de vendas",g)
                 }
-                if(project[value]["Projeto"]["Widget"][widgets]["Type"] == "card"){
-                    Draw.drawCard("element_widgetcard",Data_x, LineEixos, "Soma total","sum")
+                if(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Type"] == "card"){
+                    // Aqui será implementado o sistema de expressão 
+                    Draw.drawCard("element_widgetcard",Data_x, DataBase.ValueBygroup(g), "Soma total","sum")
                 }
-                if(project[value]["Projeto"]["Widget"][widgets]["Type"] == "bar"){
+                if(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Type"] == "bar"){
+                    // Aqui será implementado o sistema de expressão 
                     Draw.drawBarChart("element_widget"+widgets, DataBase.ValueBygroup(g),g,"Analise mensal por produto")
                 }
 
-                if(project[value]["Projeto"]["Widget"][widgets]["Type"] == "scatter"){
-                    Draw.drawScatterChart("element_widget"+widgets, LineEixos,g)
+                if(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Type"] == "scatter"){
+                    // Aqui será implementado o sistema de expressão 
+                    Draw.drawScatterChart("element_widget"+widgets, DataBase.ValueBygroup(g),g,)
                 }
-                if(project[value]["Projeto"]["Widget"][widgets]["Type"] == "pie"){
+                if(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Type"] == "pie"){
+                    // Aqui será implementado o sistema de expressão 
                     Draw.drawPieChart("element_widget"+widgets, DataBase.ValueBygroup(g),g,"Analise de venda por produto")
                 }
 
             }
             else{
                         Oct8.Factory.render("widgets_", '#dash', {Width: "lg", id: "table" })
-                        Oct8.Factory.render("Table","#element_widgettable",{Header_:Header_data,Values:Data_result})
+                        Oct8.Factory.render("Table","#element_widgettable",{Header_:Header_data,Values:DataBase.data})
             }
             
         })
@@ -175,12 +181,21 @@ class DashBoardPage {
                 })
         })
 
+        document.getElementById("pagesFilter").addEventListener("change",(e)=>{
+            this.Page = e.target.value
+            document.getElementById("page").innerHTML = ""
+            Oct8.Factory.render("MenuSite","#page",{})
+            this.GetProject(value)
+        })
        
         document.getElementById("filter").addEventListener("change",e=>{
-            DataBase.FilterData(project[value]["Projeto"]["FilterData"]["Filter"],e.target.value)
+            DataBase.FilterData(project[value]["Projeto"][this.Page][0]["FilterData"]["Filter"],e.target.value)
             document.getElementById("page").innerHTML = ""
              Oct8.Factory.render("MenuSite","#page",{})
              this.Selected_value = e.target.value
+             if(e.target.value == "noneFilter"){
+                window.document.location.reload()
+             }
             this.GetProject(value)
 
             
