@@ -7,15 +7,22 @@ class Table extends Oct8.FactoryClass{
         super()
         this.props = prop
         let Header = ""
+        let index = 0
+        let Type_cells = ["color","no_color"]
         this.props.Header_.forEach(element => {
-            Header+= `<th>${element}</th>`
+            Header+= `<th class='${Type_cells[index]}' >${element}</th>`
         });
         let Values= ""
         this.props.Values.forEach(el =>{
-                Values+="<tr>"
+                Values+=`<tr class='${Type_cells[index]}'>`
                 this.props.Header_.forEach(x =>{
-                    Values+=`<td> ${el[x]} </td>`
+                    Values+=`<td class='${Type_cells[index]}'> ${el[x]} </td>`
+                    
                 })
+                index+=1
+                if(index > 1){
+                    index =0
+                }
                 Values+="</tr>"    
         }) 
         

@@ -73,3 +73,13 @@
       }
 
 }
+@layer table{
+  .color{
+    background-color: #fbfeff;
+  }
+  .no_color{
+    color: white;
+    color: #8a8a8a;
+  }
+  
+}
