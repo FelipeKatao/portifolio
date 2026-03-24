@@ -7,7 +7,7 @@ import { ApiData } from "../util/Api_data.js"
 
 class DashBoardPage {
     constructor(nameProject = "") {
-        console.log(nameProject)
+        
         this.nameProject = window.location.hash.replace("#", "")
         this.Context_filter = null
         this.GetProject(this.nameProject)
@@ -143,8 +143,6 @@ class DashBoardPage {
                     Draw.drawScatterChart("element_widget"+widgets,  DataBase.valueByGroupData(Value_valid),Value_valid,"Pontos de analise")
                 }
                 if(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Type"] == "pie"){
-                    console.log(DataBase.valueByGroupData(Value_valid))
-                    console.log(Value_valid)
                     Draw.drawPieChart("element_widget"+widgets, DataBase.valueByGroupData(Value_valid),Value_valid,"Analise de venda por produto")
                 }
 
@@ -190,7 +188,10 @@ class DashBoardPage {
              Oct8.Factory.render("MenuSite","#page",{})
              this.Selected_value = e.target.value
              if(e.target.value == "noneFilter"){
-                window.document.location.reload()
+                 document.getElementById("page").innerHTML = ""
+                 DataBase.data = DataBase.ctxData
+                 this.Selected_value = ""
+                Oct8.Factory.render("MenuSite","#page",{})
              }
             this.GetProject(value)
 

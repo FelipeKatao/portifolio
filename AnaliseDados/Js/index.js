@@ -55,7 +55,7 @@ class Space extends Oct8.FactoryClass {
             element += "</br>"
 
         }
-        console.log(element)
+
         this.FactoryObj = `
             <div id='espace_top'>
             ${element}
