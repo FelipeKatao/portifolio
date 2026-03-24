@@ -9,9 +9,9 @@ class DrawGraphs {
     const width = 600
     const height = 300
     const padding = 40
-
+    let KeysGroup = Object.keys(group)
     const max = Math.max(...values)
-    const stepX = (width - padding * 2) / (values.length - 1)
+    let stepX = (width - padding * 2) / (values.length - 1)
 
     const container = document.getElementById(containerId)
 
@@ -54,50 +54,45 @@ class DrawGraphs {
     }
 
     let index_group = 0
+    // Exemplo de cálculo do stepX
+    const n = values.length;
+
+
+    // Se houver apenas 1 ponto, centraliza
+    if (n === 1) {
+      stepX = 0;
+    } else {
+      stepX = (width - padding * 2) / (n - 1);
+    }
+
     values.forEach((value, i) => {
+      // Se só tem 1 ponto, coloca no meio
+      const x = n === 1 ? width / 2 : padding + stepX * i;
+      const y = height - padding - (value / max) * (height - padding * 2);
 
-      const x = padding + stepX * i
-      const y = height - padding - (value / max) * (height - padding * 2)
-      points += `${x},${y} `
-      const text = document.createElementNS("http://www.w3.org/2000/svg", "text")
-      const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle")
+      points += `${x},${y} `;
 
-      circle.setAttribute("cx", x)
-      circle.setAttribute("cy", y)
-      circle.setAttribute("r", 4)
-      circle.setAttribute("fill", "blue")
-      if (value == 60) {
-        circle.setAttribute("opacity", "0.5")
-      }
-      text.textContent = value
-      text.setAttribute("x", x)
-      text.setAttribute("y", y - 10)
-      text.setAttribute("text-anchor", "middle")
-      text.setAttribute("font-size", "12")
-      circle.classList = "linechart" + containerId
+      const circle = document.createElementNS(this.svgNS, "circle");
+      circle.setAttribute("cx", x);
+      circle.setAttribute("cy", y);
+      circle.setAttribute("r", 4);
+      circle.setAttribute("fill", "blue");
       let Validate = false
-      circle.addEventListener("click", (event) => {
-        let GetValues = document.getElementsByClassName("linechart" + containerId)
-        if (Validate == false) {
-          for (let index = 0; index < GetValues.length; index++) {
-            GetValues[index].style.opacity = 0.5
-            event.target.style.opacity = 1
-          }
-          Validate = true
-        }
-        else {
-          for (let index = 0; index < GetValues.length; index++) {
-            GetValues[index].style.opacity = 1
-          }
-          Validate = false
-        }
-      })
-      circle.addEventListener("mouseenter", (event) => {
+      const text = document.createElementNS(this.svgNS, "text");
+      text.textContent = value;
+      text.setAttribute("x", x);
+      text.setAttribute("y", y - 10);
+      text.setAttribute("text-anchor", "middle");
+      text.setAttribute("font-size", "12");
+      circle.setAttribute("elementName", KeysGroup[index_group])
+      circle.setAttribute("elementValue", value);
+      circle.addEventListener("mouseenter", (event, e) => {
         let enter = false
         if (enter == false) {
           const x = event.clientX;
           const y = event.clientY;
-          console.log(group)
+          document.getElementById("")
+
           const Name = (event.target).getAttribute("elementName")
           const ValueElement = (event.target).getAttribute("elementValue")
           Oct8.Factory.render("TollTip", "#menuDash_opt", { Conteudo: `Item: ${Name}  <br> Valor: ${ValueElement} ` })
@@ -106,17 +101,36 @@ class DrawGraphs {
           enter = true
         }
       })
-      //circle.setAttribute("elementName",Object.keys(Group[index_group]))
-      circle.setAttribute("elementValue", value)
-      circle.setAttribute("elementName", Object.keys(group[index_group]))
       circle.addEventListener("mouseleave", () => {
         document.getElementById("tolltip_frame").remove()
       })
+      circle.addEventListener("click", (event) => {
+        let AllAttr = document.querySelectorAll("[elementName]")
+        if (Validate == true) {
+          for (let index = 0; index < AllAttr.length; index++) {
+            if (AllAttr[index].getAttribute("elementName") == event.target.getAttribute("elementName")) {
+              AllAttr[index].style.opacity = 1
+            }
+            else {
+              AllAttr[index].style.opacity = 0.5
+            }
+            event.target.style.opacity = 1
+          }
+          Validate = false
+        }
+        else {
+          for (let index = 0; index < AllAttr.length; index++) {
+            AllAttr[index].style.opacity = 1
+            event.target.style.opacity = 1
+          }
+          Validate = true
+        }
+      })
+      svg.appendChild(circle);
+      svg.appendChild(text);
+      index_group+=1
+    });
 
-      svg.appendChild(circle)
-      svg.appendChild(text)
-      index_group += 1
-    })
 
     // linha do gráfico
     const polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline")
@@ -147,7 +161,7 @@ class DrawGraphs {
 
     let startAngle = 0
     let index_group = 0
-    console.log(title)
+    let KeysGroup = Object.keys(Group)
     if (title != "") {
       const textTitle = document.createElementNS(svgNS, "text")
 
@@ -160,63 +174,78 @@ class DrawGraphs {
     }
 
     values.forEach((value, i) => {
+      const sliceAngle = (value / total) * Math.PI * 2;
 
-      const sliceAngle = (value / total) * Math.PI * 2
-      const endAngle = startAngle + sliceAngle
+      // Caso especial: só um valor (círculo inteiro)
+      if (values.length === 1) {
+        const circle = document.createElementNS(svgNS, "circle");
+        circle.setAttribute("cx", center);
+        circle.setAttribute("cy", center);
+        circle.setAttribute("r", radius);
+        circle.setAttribute("fill", colors[0]);
+        circle.setAttribute("elementName", KeysGroup[0]);
+        circle.setAttribute("elementValue", value);
+        circle.classList = "pieElem" + containerId;
+        svg.appendChild(circle);
 
-      const x1 = center + radius * Math.cos(startAngle)
-      const y1 = center + radius * Math.sin(startAngle)
+        const titleText = document.createElementNS(svgNS, "text");
+        titleText.textContent = KeysGroup[0];
+        titleText.setAttribute("x", center);
+        titleText.setAttribute("y", center);
+        svg.appendChild(titleText);
 
-      const x2 = center + radius * Math.cos(endAngle)
-      const y2 = center + radius * Math.sin(endAngle)
+        circle.addEventListener("mouseenter", (event, e) => {
+          let enter = false
+          if (enter == false) {
+            const x = event.clientX;
+            const y = event.clientY;
+            document.getElementById("")
 
-      const largeArc = sliceAngle > Math.PI ? 1 : 0
+            const Name = (event.target).getAttribute("elementName")
+            const ValueElement = (event.target).getAttribute("elementValue")
+            Oct8.Factory.render("TollTip", "#menuDash_opt", { Conteudo: `Item: ${Name}  <br> Valor: ${ValueElement} ` })
+            document.getElementById("tolltip_frame").style.left = x + "px"
+            document.getElementById("tolltip_frame").style.top = y + "px"
+            enter = true
+          }
+        })
+        circle.addEventListener("mouseleave", () => {
+          document.getElementById("tolltip_frame").remove()
+        })
+
+        return;
+      }
+
+
+      const endAngle = startAngle + sliceAngle;
+      const x1 = center + radius * Math.cos(startAngle);
+      const y1 = center + radius * Math.sin(startAngle);
+      const x2 = center + radius * Math.cos(endAngle);
+      const y2 = center + radius * Math.sin(endAngle);
+      const largeArc = sliceAngle > Math.PI ? 1 : 0;
 
       const pathData = `
-      M ${center} ${center}
-      L ${x1} ${y1}
-      A ${radius} ${radius} 0 ${largeArc} 1 ${x2} ${y2}
-      Z
-    `
+    M ${center} ${center}
+    L ${x1} ${y1}
+    A ${radius} ${radius} 0 ${largeArc} 1 ${x2} ${y2}
+    Z
+  `;
 
-      const path = document.createElementNS("http://www.w3.org/2000/svg", "path")
+      const path = document.createElementNS(svgNS, "path");
+      path.setAttribute("d", pathData);
+      path.setAttribute("fill", colors[i % colors.length]);
+      path.setAttribute("elementName", KeysGroup[index_group]);
+      path.setAttribute("elementValue", value);
+      path.classList = "pieElem" + containerId;
 
-      path.setAttribute("d", pathData)
-      path.setAttribute("fill", colors[i % colors.length])
-      const titleText = document.createElementNS(svgNS, "text")
-      titleText.textContent = Object.keys(Group[index_group])
-      titleText.setAttribute("x", x2)
-      titleText.setAttribute("y", y2)
-      path.setAttribute("elementName", Object.keys(Group[index_group]))
-      path.setAttribute("elementValue", value)
-      path.classList = "pieElem" + containerId
-      let Validate = false
-      path.addEventListener("click", (event) => {
-        let AllAttr = document.querySelectorAll("[elementName]")
-        if (Validate == true) {
+      svg.appendChild(path);
 
-          for (let index = 0; index < AllAttr.length; index++) {
-            if (AllAttr[index].getAttribute("elementName") == event.target.getAttribute("elementName")) {
-              AllAttr[index].style.opacity = 1
+      const titleText = document.createElementNS(svgNS, "text");
+      titleText.textContent = KeysGroup[index_group];
+      titleText.setAttribute("x", x2);
+      titleText.setAttribute("y", y2);
+      svg.appendChild(titleText);
 
-            }
-            else {
-              AllAttr[index].style.opacity = 0.5
-            }
-            event.target.style.opacity = 1
-
-          }
-          Validate = false
-        }
-        else {
-          for (let index = 0; index < AllAttr.length; index++) {
-
-            AllAttr[index].style.opacity = 1
-            event.target.style.opacity = 1
-          }
-          Validate = true
-        }
-      })
       path.addEventListener("mouseenter", (event, e) => {
         let enter = false
         if (enter == false) {
@@ -235,12 +264,36 @@ class DrawGraphs {
       path.addEventListener("mouseleave", () => {
         document.getElementById("tolltip_frame").remove()
       })
-      svg.appendChild(path)
-      svg.appendChild(titleText)
 
-      startAngle = endAngle
-      index_group += 1
-    })
+
+      let Validate = false
+      path.addEventListener("click", (event) => {
+        let AllAttr = document.querySelectorAll("[elementName]")
+        if (Validate == true) {
+          for (let index = 0; index < AllAttr.length; index++) {
+            if (AllAttr[index].getAttribute("elementName") == event.target.getAttribute("elementName")) {
+              AllAttr[index].style.opacity = 1
+            }
+            else {
+              AllAttr[index].style.opacity = 0.5
+            }
+            event.target.style.opacity = 1
+          }
+          Validate = false
+        }
+        else {
+          for (let index = 0; index < AllAttr.length; index++) {
+            AllAttr[index].style.opacity = 1
+            event.target.style.opacity = 1
+          }
+          Validate = true
+        }
+      })
+      startAngle = endAngle;
+      index_group += 1;
+    });
+
+
 
     const container = document.getElementById(containerId)
     container.innerHTML = ""
@@ -426,7 +479,6 @@ class DrawGraphs {
     svg.appendChild(axisX)
     svg.appendChild(axisY)
     let index_group = 0
-    console.log(Group)
 
     if (title != "") {
       const textTitle = document.createElementNS(svgNS, "text")
@@ -438,6 +490,7 @@ class DrawGraphs {
       textTitle.setAttribute("fill", "gray")
       svg.appendChild(textTitle)
     }
+    let KeysGroup = Object.keys(Group)
 
     values.forEach((value, i) => {
 
@@ -449,22 +502,24 @@ class DrawGraphs {
       const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect")
 
       rect.setAttribute("x", x + 5)
+
       rect.setAttribute("y", y)
       rect.setAttribute("width", barWidth - 10)
       rect.setAttribute("height", barHeight)
       rect.classList = "bars" + containerId
       rect.setAttribute("fill", "#4CAF50")
       const titleText = document.createElementNS(svgNS, "text")
-      if (index_group <= Group.length - 1) {
-        titleText.textContent = Object.keys(Group[index_group])
-        titleText.setAttribute("x", x)
-        titleText.setAttribute("y", 300)
-        titleText.setAttribute("font-size", "14")
-        titleText.setAttribute("fill", "gray")
-        svg.appendChild(titleText)
 
-      }
-      rect.setAttribute("elementName", Object.keys(Group[index_group]))
+
+      titleText.textContent = KeysGroup[index_group]
+      titleText.setAttribute("x", x)
+      titleText.setAttribute("y", 300)
+      titleText.setAttribute("font-size", "14")
+      titleText.setAttribute("fill", "gray")
+      svg.appendChild(titleText)
+
+
+      rect.setAttribute("elementName", KeysGroup[index_group])
       rect.setAttribute("elementValue", value)
       let Validate = false
       rect.addEventListener("click", (event) => {

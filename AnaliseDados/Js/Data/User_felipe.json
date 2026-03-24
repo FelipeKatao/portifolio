@@ -41,11 +41,12 @@
                     "Type": "pie",
                     "Prop": {},
                     "formula":{
-                        "Categorie_base":"",
-                        "ValueMin":"",
-                        "ValueMax":"",
-                        "Operation":"",
-                        "Limit":""
+                        "base":"",
+                        "Categorie_base":"mes",
+                        "ValueMin":"0",
+                        "ValueMax":"200",
+                        "Operation":"desconto_percentual",
+                        "Limit":"infinity"
                     },
                     "Data": {
                         "group": {
@@ -55,10 +56,18 @@
                     }
                 },
                 "Card": {
-                    "Width": "lsm",
+                    "Width": "xx",
                     "svg": "yes",
                     "Type": "line",
                     "prop": {},
+                    "formula":{
+                        "base":"",
+                        "Categorie_base":"mes",
+                        "ValueMin":"0",
+                        "ValueMax":"200",
+                        "Operation":"desconto_percentual",
+                        "Limit":"infinity"
+                    },
                     "Data": {
                         "group": {
                             "group": "mes",
@@ -71,6 +80,14 @@
                     "svg": "yes",
                     "Type": "bar",
                     "prop": {},
+                   "formula":{
+                        "base":"",
+                        "Categorie_base":"mes",
+                        "ValueMin":"0",
+                        "ValueMax":"200",
+                        "Operation":"desconto_percentual",
+                        "Limit":"infinity"
+                    },
                     "Data": {
                         "group": {
                             "group": "mes",
@@ -83,6 +100,14 @@
                     "svg": "no",
                     "Type": "line",
                     "prop": {},
+                    "formula":{
+                        "base":"",
+                        "Categorie_base":"mes",
+                        "ValueMin":"0",
+                        "ValueMax":"200",
+                        "Operation":"desconto_percentual",
+                        "Limit":"infinity"
+                    },
                     "Data": {
                         "Rotulo": "",
                         "Operacao": "",
@@ -312,13 +337,14 @@
                     "Width": "xx",
                     "svg": "yes",
                     "Type": "pie",
-                    "Prop": {},
+                    "Prop": {"teste":0},
                     "formula":{
-                        "Categorie_base":"",
-                        "ValueMin":"",
-                        "ValueMax":"",
-                        "Operation":"",
-                        "Limit":""
+                        "base":"",
+                        "Categorie_base":"desconto_percentual",
+                        "ValueMin":"0",
+                        "ValueMax":"200",
+                        "Operation":"preco_medio",
+                        "Limit":"infinity"
                     },
                     "Data": {
                         "group": {

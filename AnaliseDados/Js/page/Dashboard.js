@@ -117,39 +117,35 @@ class DashBoardPage {
         <button id='bt_database_page' class='standart_bt'> <img  src='./img/table.png' width="24"> </button>
         `
         let Bt_full = `<button id='bt_full' class='standart_bt'> <img src='./img/fullscreen.png' width="24"> </button>`
-        
+        let Project_settings  = project[value]["Projeto"][this.Page][0]
         let Draw = new DrawGraphs()
 
         Object.keys(project[value]["Projeto"][this.Page][0]["Widget"]).forEach(widgets =>{
-            let g =""
-            if(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["svg"] == "yes")
-            {
-                 g = DataBase.GroupByClass(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Data"]["group"]["group"],project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Data"]["group"]["value"])
-            }
-            
+
+            let Value_valid = DataBase.Expression(Project_settings["Widget"][widgets]["formula"]["Operation"]
+                ,Project_settings["Widget"][widgets]["formula"]["Categorie_base"],Project_settings["Widget"][widgets]["formula"]["ValueMax"]
+                ,Project_settings["Widget"][widgets]["formula"]["ValueMin"],Project_settings["Widget"][widgets]["formula"]["Limit"])
+
             if(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["svg"] == "yes"){
                 Oct8.Factory.render("widgets_", '#dash', { elem:"svg", Width: project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Width"], color: "red", id: widgets })
             
                 if(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Type"] == "line"){
-                    // Aqui será implementado o sistema de expressão 
-                    Draw.drawLineChart("element_widget"+widgets, DataBase.ValueBygroup(g),"Analise crescimento de vendas",g)
+                    Draw.drawLineChart("element_widget"+widgets,  DataBase.valueByGroupData(Value_valid),"Analise crescimento de vendas",Value_valid)
                 }
                 if(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Type"] == "card"){
-                    // Aqui será implementado o sistema de expressão 
                     Draw.drawCard("element_widgetcard",Data_x, DataBase.ValueBygroup(g), "Soma total","sum")
                 }
                 if(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Type"] == "bar"){
-                    // Aqui será implementado o sistema de expressão 
-                    Draw.drawBarChart("element_widget"+widgets, DataBase.ValueBygroup(g),g,"Analise mensal por produto")
+                    Draw.drawBarChart("element_widget"+widgets,DataBase.valueByGroupData(Value_valid),Value_valid,"Analise mensal por produto")
                 }
 
                 if(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Type"] == "scatter"){
-                    // Aqui será implementado o sistema de expressão 
-                    Draw.drawScatterChart("element_widget"+widgets, DataBase.ValueBygroup(g),g,)
+                    Draw.drawScatterChart("element_widget"+widgets,  DataBase.valueByGroupData(Value_valid),Value_valid,"Pontos de analise")
                 }
                 if(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Type"] == "pie"){
-                    // Aqui será implementado o sistema de expressão 
-                    Draw.drawPieChart("element_widget"+widgets, DataBase.ValueBygroup(g),g,"Analise de venda por produto")
+                    console.log(DataBase.valueByGroupData(Value_valid))
+                    console.log(Value_valid)
+                    Draw.drawPieChart("element_widget"+widgets, DataBase.valueByGroupData(Value_valid),Value_valid,"Analise de venda por produto")
                 }
 
             }
