@@ -56,7 +56,7 @@
                     }
                 },
                 "Card": {
-                    "Width": "xx",
+                    "Width": "lsm",
                     "svg": "yes",
                     "Type": "line",
                     "prop": {},

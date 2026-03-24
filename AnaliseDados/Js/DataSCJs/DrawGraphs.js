@@ -68,14 +68,14 @@ class DrawGraphs {
     values.forEach((value, i) => {
       // Se só tem 1 ponto, coloca no meio
       const x = n === 1 ? width / 2 : padding + stepX * i;
-      const y = height - padding - (value / max) * (height - padding * 2);
+      const y = height - padding - (value / max) * (height - padding * 4);
 
       points += `${x},${y} `;
 
       const circle = document.createElementNS(this.svgNS, "circle");
       circle.setAttribute("cx", x);
       circle.setAttribute("cy", y);
-      circle.setAttribute("r", 4);
+      circle.setAttribute("r", 6);
       circle.setAttribute("fill", "blue");
       let Validate = false
       const text = document.createElementNS(this.svgNS, "text");
