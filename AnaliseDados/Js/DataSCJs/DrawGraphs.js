@@ -145,161 +145,162 @@ class DrawGraphs {
     container.appendChild(svg)
   }
 
-  drawPieChart(containerId, values, Group, title = "") {
+drawPieChart(containerId, values, Group, title = "") {
+  const size = 300;
+  const radius = 120;
+  const center = size / 2;
 
-    const size = 300
-    const radius = 120
-    const center = size / 2
+  const total = values.reduce((a, b) => a + b, 0);
+  const svgNS = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", `0 0 ${size} ${size}`);
+  svg.setAttribute("width", "100%");
 
-    const total = values.reduce((a, b) => a + b, 0)
-    const svgNS = "http://www.w3.org/2000/svg"
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg")
-    svg.setAttribute("viewBox", `0 0 ${size} ${size}`)
-    svg.setAttribute("width", "100%")
+  const colors = ["#4CAF50", "#2196F3", "#FFC107", "#F44336", "#9C27B0"];
+  let startAngle = 0;
+  let index_group = 0;
+  let KeysGroup = Object.keys(Group);
 
-    const colors = ["#4CAF50", "#2196F3", "#FFC107", "#F44336", "#9C27B0"]
+  if (title != "") {
+    const textTitle = document.createElementNS(svgNS, "text");
+    textTitle.textContent = title;
+    textTitle.setAttribute("x", 0);
+    textTitle.setAttribute("y", 20);
+    textTitle.setAttribute("font-size", "30");
+    textTitle.setAttribute("fill", "gray");
+    svg.appendChild(textTitle);
+  }
 
-    let startAngle = 0
-    let index_group = 0
-    let KeysGroup = Object.keys(Group)
-    if (title != "") {
-      const textTitle = document.createElementNS(svgNS, "text")
+  values.forEach((value, i) => {
+    const sliceAngle = (value / total) * Math.PI * 2;
 
-      textTitle.textContent = title
-      textTitle.setAttribute("x", 0)
-      textTitle.setAttribute("y", 20)
-      textTitle.setAttribute("font-size", "30")
-      textTitle.setAttribute("fill", "gray")
-      svg.appendChild(textTitle)
-    }
-
-    values.forEach((value, i) => {
-      const sliceAngle = (value / total) * Math.PI * 2;
-
-      // Caso especial: só um valor (círculo inteiro)
-      if (values.length === 1) {
-        const circle = document.createElementNS(svgNS, "circle");
-        circle.setAttribute("cx", center);
-        circle.setAttribute("cy", center);
-        circle.setAttribute("r", radius);
-        circle.setAttribute("fill", colors[0]);
-        circle.setAttribute("elementName", KeysGroup[0]);
-        circle.setAttribute("elementValue", value);
-        circle.classList = "pieElem" + containerId;
-        svg.appendChild(circle);
-
-        const titleText = document.createElementNS(svgNS, "text");
-        titleText.textContent = KeysGroup[0];
-        titleText.setAttribute("x", center);
-        titleText.setAttribute("y", center);
-        svg.appendChild(titleText);
-
-        circle.addEventListener("mouseenter", (event, e) => {
-          let enter = false
-          if (enter == false) {
-            const x = event.clientX;
-            const y = event.clientY;
-            document.getElementById("")
-
-            const Name = (event.target).getAttribute("elementName")
-            const ValueElement = (event.target).getAttribute("elementValue")
-            Oct8.Factory.render("TollTip", "#menuDash_opt", { Conteudo: `Item: ${Name}  <br> Valor: ${ValueElement} ` })
-            document.getElementById("tolltip_frame").style.left = x + "px"
-            document.getElementById("tolltip_frame").style.top = y + "px"
-            enter = true
-          }
-        })
-        circle.addEventListener("mouseleave", () => {
-          document.getElementById("tolltip_frame").remove()
-        })
-
-        return;
-      }
-
-
-      const endAngle = startAngle + sliceAngle;
-      const x1 = center + radius * Math.cos(startAngle);
-      const y1 = center + radius * Math.sin(startAngle);
-      const x2 = center + radius * Math.cos(endAngle);
-      const y2 = center + radius * Math.sin(endAngle);
-      const largeArc = sliceAngle > Math.PI ? 1 : 0;
-
-      const pathData = `
-    M ${center} ${center}
-    L ${x1} ${y1}
-    A ${radius} ${radius} 0 ${largeArc} 1 ${x2} ${y2}
-    Z
-  `;
-
-      const path = document.createElementNS(svgNS, "path");
-      path.setAttribute("d", pathData);
-      path.setAttribute("fill", colors[i % colors.length]);
-      path.setAttribute("elementName", KeysGroup[index_group]);
-      path.setAttribute("elementValue", value);
-      path.classList = "pieElem" + containerId;
-
-      svg.appendChild(path);
+    // Caso especial: só um valor (círculo inteiro)
+    if (values.length === 1) {
+      const circle = document.createElementNS(svgNS, "circle");
+      circle.setAttribute("cx", center);
+      circle.setAttribute("cy", center);
+      circle.setAttribute("r", radius);
+      circle.setAttribute("fill", colors[0]);
+      circle.setAttribute("elementName", KeysGroup[0]);
+      circle.setAttribute("elementValue", value);
+      circle.classList = "pieElem" + containerId;
+      svg.appendChild(circle);
 
       const titleText = document.createElementNS(svgNS, "text");
-      titleText.textContent = KeysGroup[index_group];
-      titleText.setAttribute("x", x2);
-      titleText.setAttribute("y", y2);
+      titleText.textContent = KeysGroup[0];
+      titleText.setAttribute("x", center);
+      titleText.setAttribute("y", center);
+      titleText.setAttribute("text-anchor", "middle");
+      titleText.setAttribute("dominant-baseline", "middle");
+      titleText.setAttribute("fill", "white");
       svg.appendChild(titleText);
 
-      path.addEventListener("mouseenter", (event, e) => {
-        let enter = false
+      // Mantém os listeners
+      circle.addEventListener("mouseenter", (event) => {
+        let enter = false;
         if (enter == false) {
           const x = event.clientX;
           const y = event.clientY;
-          document.getElementById("")
-
-          const Name = (event.target).getAttribute("elementName")
-          const ValueElement = (event.target).getAttribute("elementValue")
-          Oct8.Factory.render("TollTip", "#menuDash_opt", { Conteudo: `Item: ${Name}  <br> Valor: ${ValueElement} ` })
-          document.getElementById("tolltip_frame").style.left = x + "px"
-          document.getElementById("tolltip_frame").style.top = y + "px"
-          enter = true
+          const Name = event.target.getAttribute("elementName");
+          const ValueElement = event.target.getAttribute("elementValue");
+          Oct8.Factory.render("TollTip", "#menuDash_opt", { Conteudo: `Item: ${Name}  <br> Valor: ${ValueElement} ` });
+          document.getElementById("tolltip_frame").style.left = x + "px";
+          document.getElementById("tolltip_frame").style.top = y + "px";
+          enter = true;
         }
-      })
-      path.addEventListener("mouseleave", () => {
-        document.getElementById("tolltip_frame").remove()
-      })
+      });
+      circle.addEventListener("mouseleave", () => {
+        document.getElementById("tolltip_frame").remove();
+      });
 
+      return;
+    }
 
-      let Validate = false
-      path.addEventListener("click", (event) => {
-        let AllAttr = document.querySelectorAll("[elementName]")
-        if (Validate == true) {
-          for (let index = 0; index < AllAttr.length; index++) {
-            if (AllAttr[index].getAttribute("elementName") == event.target.getAttribute("elementName")) {
-              AllAttr[index].style.opacity = 1
-            }
-            else {
-              AllAttr[index].style.opacity = 0.5
-            }
-            event.target.style.opacity = 1
-          }
-          Validate = false
-        }
-        else {
-          for (let index = 0; index < AllAttr.length; index++) {
-            AllAttr[index].style.opacity = 1
-            event.target.style.opacity = 1
-          }
-          Validate = true
-        }
-      })
-      startAngle = endAngle;
-      index_group += 1;
+    const endAngle = startAngle + sliceAngle;
+    const x1 = center + radius * Math.cos(startAngle);
+    const y1 = center + radius * Math.sin(startAngle);
+    const x2 = center + radius * Math.cos(endAngle);
+    const y2 = center + radius * Math.sin(endAngle);
+    const largeArc = sliceAngle > Math.PI ? 1 : 0;
+
+    const pathData = `
+      M ${center} ${center}
+      L ${x1} ${y1}
+      A ${radius} ${radius} 0 ${largeArc} 1 ${x2} ${y2}
+      Z
+    `;
+
+    const path = document.createElementNS(svgNS, "path");
+    path.setAttribute("d", pathData);
+    path.setAttribute("fill", colors[i % colors.length]);
+    path.setAttribute("elementName", KeysGroup[index_group]);
+    path.setAttribute("elementValue", value);
+    path.classList = "pieElem" + containerId;
+    svg.appendChild(path);
+
+    // Calcula posição do rótulo no meio do pedaço
+    const midAngle = startAngle + sliceAngle / 2;
+    const labelRadius = radius * 0.6;
+    const labelX = center + labelRadius * Math.cos(midAngle);
+    const labelY = center + labelRadius * Math.sin(midAngle);
+
+    const titleText = document.createElementNS(svgNS, "text");
+    titleText.textContent = KeysGroup[index_group];
+    titleText.setAttribute("x", labelX);
+    titleText.setAttribute("y", labelY);
+    titleText.setAttribute("text-anchor", "middle");
+    titleText.setAttribute("dominant-baseline", "middle");
+    titleText.setAttribute("fill", "white");
+    svg.appendChild(titleText);
+
+    // Mantém os listeners
+    path.addEventListener("mouseenter", (event) => {
+      let enter = false;
+      if (enter == false) {
+        const x = event.clientX;
+        const y = event.clientY;
+        const Name = event.target.getAttribute("elementName");
+        const ValueElement = event.target.getAttribute("elementValue");
+        Oct8.Factory.render("TollTip", "#menuDash_opt", { Conteudo: `Item: ${Name}  <br> Valor: ${ValueElement} ` });
+        document.getElementById("tolltip_frame").style.left = x + "px";
+        document.getElementById("tolltip_frame").style.top = y + "px";
+        enter = true;
+      }
+    });
+    path.addEventListener("mouseleave", () => {
+      document.getElementById("tolltip_frame").remove();
     });
 
+    let Validate = false;
+    path.addEventListener("click", (event) => {
+      let AllAttr = document.querySelectorAll("[elementName]");
+      if (Validate == true) {
+        for (let index = 0; index < AllAttr.length; index++) {
+          if (AllAttr[index].getAttribute("elementName") == event.target.getAttribute("elementName")) {
+            AllAttr[index].style.opacity = 1;
+          } else {
+            AllAttr[index].style.opacity = 0.5;
+          }
+          event.target.style.opacity = 1;
+        }
+        Validate = false;
+      } else {
+        for (let index = 0; index < AllAttr.length; index++) {
+          AllAttr[index].style.opacity = 1;
+          event.target.style.opacity = 1;
+        }
+        Validate = true;
+      }
+    });
 
+    startAngle = endAngle;
+    index_group += 1;
+  });
 
-    const container = document.getElementById(containerId)
-    container.innerHTML = ""
-    container.appendChild(svg)
-
-  }
+  const container = document.getElementById(containerId);
+  container.innerHTML = "";
+  container.appendChild(svg);
+}
 
   drawCard(containerId, title, value, subtitle, opration, bgColor = "white", textColor = "gray") {
 
