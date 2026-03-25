@@ -386,14 +386,20 @@ drawPieChart(containerId, values, Group, title = "") {
     container.appendChild(svg)
 
   }
-  drawScatterChart(containerId, points) {
+  drawScatterChart(containerId, points,point2,Group) {
 
     const width = 600
     const height = 300
     const padding = 40
-
+    let Fields= []
+    let index = 0
+    Group.forEach(f =>{
+      Fields.push({x:points[index],y:4})
+      index+=1
+    })
+    console.log(Fields)
     const container = document.getElementById(containerId)
-
+    points = Fields
     const maxX = Math.max(...points.map(p => p.x))
     const maxY = Math.max(...points.map(p => p.y))
 

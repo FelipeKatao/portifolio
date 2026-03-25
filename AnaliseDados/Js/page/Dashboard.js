@@ -139,7 +139,8 @@ class DashBoardPage {
                 }
 
                 if(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Type"] == "scatter"){
-                    Draw.drawScatterChart("element_widget"+widgets,  DataBase.valueByGroupData(Value_valid),Value_valid,"Pontos de analise")
+                    console.log(Value_valid)
+                    Draw.drawScatterChart("element_widget"+widgets,  DataBase.valueByGroupData(Value_valid),Value_valid,[2,3,5,6,7],"Pontos de analise")
                 }
                 if(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Type"] == "pie"){
                     Draw.drawPieChart("element_widget"+widgets, DataBase.valueByGroupData(Value_valid),Value_valid,"Analise de venda por produto")

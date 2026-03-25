@@ -134,7 +134,7 @@
                 "Grafico_barras": {
                     "Width": "xx",
                     "svg": "yes",
-                    "Type": "pie",
+                    "Type": "scatter",
                     "Prop": {},
                     "formula":{
                         "base":"",
@@ -194,7 +194,7 @@
                 "Lines": {
                     "Width": "lsm",
                     "svg": "no",
-                    "Type": "line",
+                    "Type": "scatter",
                     "prop": {},
                     "formula":{
                         "base":"",
