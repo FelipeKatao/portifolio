@@ -135,6 +135,211 @@
                     "Width": "xx",
                     "svg": "yes",
                     "Type": "pie",
+                    "Prop": {},
+                    "formula":{
+                        "base":"",
+                        "Categorie_base":"mes",
+                        "ValueMin":"0",
+                        "ValueMax":"200",
+                        "Operation":"desconto_percentual",
+                        "Limit":"infinity"
+                    },
+                    "Data": {
+                        "group": {
+                            "group": "produto",
+                            "value": "desconto_percentual"
+                        }
+                    }
+                },
+                "Card": {
+                    "Width": "lsm",
+                    "svg": "yes",
+                    "Type": "line",
+                    "prop": {},
+                    "formula":{
+                        "base":"",
+                        "Categorie_base":"mes",
+                        "ValueMin":"0",
+                        "ValueMax":"200",
+                        "Operation":"desconto_percentual",
+                        "Limit":"infinity"
+                    },
+                    "Data": {
+                        "group": {
+                            "group": "mes",
+                            "value": "desconto_percentual"
+                        }
+                    }
+                },
+                "Card_": {
+                    "Width": "md",
+                    "svg": "yes",
+                    "Type": "bar",
+                    "prop": {},
+                   "formula":{
+                        "base":"",
+                        "Categorie_base":"mes",
+                        "ValueMin":"0",
+                        "ValueMax":"200",
+                        "Operation":"desconto_percentual",
+                        "Limit":"infinity"
+                    },
+                    "Data": {
+                        "group": {
+                            "group": "mes",
+                            "value": "desconto_percentual"
+                        }
+                    }
+                },
+                "Lines": {
+                    "Width": "lsm",
+                    "svg": "no",
+                    "Type": "line",
+                    "prop": {},
+                    "formula":{
+                        "base":"",
+                        "Categorie_base":"mes",
+                        "ValueMin":"0",
+                        "ValueMax":"200",
+                        "Operation":"desconto_percentual",
+                        "Limit":"infinity"
+                    },
+                    "Data": {
+                        "Rotulo": "",
+                        "Operacao": "",
+                        "Data": {
+                            "x": "preco_medio",
+                            "y": "receita_total"
+                        }
+                    }
+                }
+            },
+            "Data":"felipe_databaseProject.json"
+            }]
+          
+        }
+    },
+    "Insigths_setorial_0.01": {
+        "Titulo": "Insigths  setorial 0.01",
+        "SubTitulo": "Dashboard focado em Insigths por setor",
+        "Descricao": "Focado em criar Insigths, com isso utilizar para tomada de decisão.",
+        "link": "/AnaliseDados/#Insigths_setorial_0.01",
+        "Insigths_area": {
+            "Titulo": "Analise por setor ",
+            "Insigths": "Analise feita para entender quais as melhores areas de desenvolvimento dentro da empresa para evolução de projetos, analise feita em amostras entre trimestres."
+        },
+         "Projeto": {
+            "Default": [{
+                  "FilterData":{
+                "Filter":"mes",
+                "Value":"desconto_percentual"
+            },
+            "ShowCode": {
+                "type": "none",
+                "visible": "no",
+                "code": ""
+            },
+            "Widget": {
+                "Grafico_barras": {
+                    "Width": "xx",
+                    "svg": "yes",
+                    "Type": "pie",
+                    "Prop": {},
+                    "formula":{
+                        "base":"",
+                        "Categorie_base":"mes",
+                        "ValueMin":"0",
+                        "ValueMax":"200",
+                        "Operation":"desconto_percentual",
+                        "Limit":"infinity"
+                    },
+                    "Data": {
+                        "group": {
+                            "group": "produto",
+                            "value": "desconto_percentual"
+                        }
+                    }
+                },
+                "Card": {
+                    "Width": "lsm",
+                    "svg": "yes",
+                    "Type": "line",
+                    "prop": {},
+                    "formula":{
+                        "base":"",
+                        "Categorie_base":"mes",
+                        "ValueMin":"0",
+                        "ValueMax":"200",
+                        "Operation":"desconto_percentual",
+                        "Limit":"infinity"
+                    },
+                    "Data": {
+                        "group": {
+                            "group": "mes",
+                            "value": "desconto_percentual"
+                        }
+                    }
+                },
+                "Card_": {
+                    "Width": "md",
+                    "svg": "yes",
+                    "Type": "bar",
+                    "prop": {},
+                   "formula":{
+                        "base":"",
+                        "Categorie_base":"mes",
+                        "ValueMin":"0",
+                        "ValueMax":"200",
+                        "Operation":"desconto_percentual",
+                        "Limit":"infinity"
+                    },
+                    "Data": {
+                        "group": {
+                            "group": "mes",
+                            "value": "desconto_percentual"
+                        }
+                    }
+                },
+                "Lines": {
+                    "Width": "lsm",
+                    "svg": "no",
+                    "Type": "line",
+                    "prop": {},
+                    "formula":{
+                        "base":"",
+                        "Categorie_base":"mes",
+                        "ValueMin":"0",
+                        "ValueMax":"200",
+                        "Operation":"desconto_percentual",
+                        "Limit":"infinity"
+                    },
+                    "Data": {
+                        "Rotulo": "",
+                        "Operacao": "",
+                        "Data": {
+                            "x": "preco_medio",
+                            "y": "receita_total"
+                        }
+                    }
+                }
+            },
+            "Data":"felipe_databaseProject.json"
+            }],
+            "AmostraMensal": [{
+                  "FilterData":{
+                "Filter":"mes",
+                "Value":"desconto_percentual"
+            },
+            "ShowCode": {
+                "type": "none",
+                "visible": "no",
+                "code": ""
+            },
+            "Widget": {
+                "Grafico_barras": {
+                    "Width": "xx",
+                    "svg": "yes",
+                    "Type": "pie",
                     "Prop": {"teste":0},
                     "formula":{
                         "base":"",
@@ -180,24 +385,6 @@
              "Data":"felipe_databaseProject"
             }]
           
-        }
-    },
-    "Insigths_setorial_0.01": {
-        "Titulo": "Insigths  setorial 0.01",
-        "SubTitulo": "Dashboard focado em Insigths por setor",
-        "Descricao": "Focado em criar Insigths, com isso utilizar para tomada de decisão.",
-        "link": "/AnaliseDados/#Insigths_setorial_0.01",
-        "Insigths_area": {
-            "Titulo": "Analise por setor ",
-            "Insigths": "Analise feita para entender quais as melhores areas de desenvolvimento dentro da empresa para evolução de projetos, analise feita em amostras entre trimestres."
-        },
-        "Projeto": {
-            "ShowCode": {
-                "Titulo": "Divisao dados",
-                "type": "SQL",
-                "visible": "yes",
-                "code": "SELECT * FROM dbo.data WHERE setor = 1"
-            }
         }
     }
 }
