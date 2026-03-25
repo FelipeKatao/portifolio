@@ -21,11 +21,10 @@ class DashBoardPage {
         let Projetos = new ApiData()
         let project = await Projetos.ReadProject()
         let ProjNames_api = Object.keys(project)
-        let Data_result = project[value]["Projeto"][this.Page][0]["Data"]
-        let Header_data = Object.keys(Data_result[0])
-        let DataBase = new DataAnalatics(project[value]["Projeto"][this.Page][0]["Data"])
-
-        // Iniciar a DataBase aqui
+        let Data_read = await Projetos.ReadDatabase(project[value]["Projeto"][this.Page][0]["Data"])
+        Data_read = Data_read["Data"]
+        let DataBase = new DataAnalatics(Data_read)
+        let Header_data = Object.keys(Data_read[0])
 
         if(this.Selected_value != ""){
             DataBase.FilterData(project[value]["Projeto"][this.Page][0]["FilterData"]["Filter"],this.Selected_value)

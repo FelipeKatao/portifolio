@@ -19,8 +19,6 @@ class DrawGraphs {
     svg.setAttribute("viewBox", `0 0 ${width} ${height}`)
     svg.setAttribute("width", "100%")
 
-
-    // eixo X
     const axisX = document.createElementNS("http://www.w3.org/2000/svg", "line")
     axisX.setAttribute("x1", padding)
     axisX.setAttribute("y1", height - padding)
@@ -28,7 +26,6 @@ class DrawGraphs {
     axisX.setAttribute("y2", height - padding)
     axisX.setAttribute("stroke", "black")
 
-    // eixo Y
     const axisY = document.createElementNS("http://www.w3.org/2000/svg", "line")
     axisY.setAttribute("x1", padding)
     axisY.setAttribute("y1", padding)
@@ -39,7 +36,6 @@ class DrawGraphs {
     svg.appendChild(axisX)
     svg.appendChild(axisY)
 
-    // gerar pontos
     let points = ""
 
     if (title != "") {
@@ -132,7 +128,7 @@ class DrawGraphs {
     });
 
 
-    // linha do gráfico
+
     const polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline")
     polyline.setAttribute("points", points.trim())
     polyline.setAttribute("fill", "none")
@@ -174,7 +170,7 @@ drawPieChart(containerId, values, Group, title = "") {
   values.forEach((value, i) => {
     const sliceAngle = (value / total) * Math.PI * 2;
 
-    // Caso especial: só um valor (círculo inteiro)
+
     if (values.length === 1) {
       const circle = document.createElementNS(svgNS, "circle");
       circle.setAttribute("cx", center);
@@ -195,7 +191,7 @@ drawPieChart(containerId, values, Group, title = "") {
       titleText.setAttribute("fill", "white");
       svg.appendChild(titleText);
 
-      // Mantém os listeners
+
       circle.addEventListener("mouseenter", (event) => {
         let enter = false;
         if (enter == false) {
@@ -238,7 +234,7 @@ drawPieChart(containerId, values, Group, title = "") {
     path.classList = "pieElem" + containerId;
     svg.appendChild(path);
 
-    // Calcula posição do rótulo no meio do pedaço
+
     const midAngle = startAngle + sliceAngle / 2;
     const labelRadius = radius * 0.6;
     const labelX = center + labelRadius * Math.cos(midAngle);
@@ -253,7 +249,7 @@ drawPieChart(containerId, values, Group, title = "") {
     titleText.setAttribute("fill", "white");
     svg.appendChild(titleText);
 
-    // Mantém os listeners
+
     path.addEventListener("mouseenter", (event) => {
       let enter = false;
       if (enter == false) {
@@ -318,7 +314,7 @@ drawPieChart(containerId, values, Group, title = "") {
 
     const svg = document.createElementNS(svgNS, "svg")
 
-    // espaço interno de desenho
+
     const W = 300
     const H = 150
 
@@ -327,7 +323,6 @@ drawPieChart(containerId, values, Group, title = "") {
     svg.setAttribute("height", "100%")
     svg.setAttribute("preserveAspectRatio", "xMidYMid meet")
 
-    // fundo / borda
     const rect = document.createElementNS(svgNS, "rect")
 
     rect.setAttribute("x", 10)
@@ -343,7 +338,7 @@ drawPieChart(containerId, values, Group, title = "") {
 
     svg.appendChild(rect)
 
-    // titulo
+
     const titleText = document.createElementNS(svgNS, "text")
 
     titleText.textContent = title
@@ -355,7 +350,7 @@ drawPieChart(containerId, values, Group, title = "") {
 
     svg.appendChild(titleText)
 
-    // valor principal
+
     const valueText = document.createElementNS(svgNS, "text")
 
     valueText.textContent = value
@@ -371,7 +366,7 @@ drawPieChart(containerId, values, Group, title = "") {
 
     svg.appendChild(valueText)
 
-    // subtitulo
+
     const subText = document.createElementNS(svgNS, "text")
 
     subText.textContent = subtitle
@@ -406,7 +401,6 @@ drawPieChart(containerId, values, Group, title = "") {
     svg.setAttribute("viewBox", `0 0 ${width} ${height}`)
     svg.setAttribute("width", "100%")
 
-    // eixo X
     const axisX = document.createElementNS("http://www.w3.org/2000/svg", "line")
     axisX.setAttribute("x1", padding)
     axisX.setAttribute("y1", height - padding)
@@ -414,7 +408,7 @@ drawPieChart(containerId, values, Group, title = "") {
     axisX.setAttribute("y2", height - padding)
     axisX.setAttribute("stroke", "black")
 
-    // eixo Y
+
     const axisY = document.createElementNS("http://www.w3.org/2000/svg", "line")
     axisY.setAttribute("x1", padding)
     axisY.setAttribute("y1", padding)
@@ -461,7 +455,7 @@ drawPieChart(containerId, values, Group, title = "") {
     svg.setAttribute("viewBox", `0 0 ${width} ${height}`)
     svg.setAttribute("width", "100%")
 
-    // eixo X
+
     const axisX = document.createElementNS("http://www.w3.org/2000/svg", "line")
     axisX.setAttribute("x1", padding)
     axisX.setAttribute("y1", height - padding)
@@ -469,7 +463,7 @@ drawPieChart(containerId, values, Group, title = "") {
     axisX.setAttribute("y2", height - padding)
     axisX.setAttribute("stroke", "black")
 
-    // eixo Y
+
     const axisY = document.createElementNS("http://www.w3.org/2000/svg", "line")
     axisY.setAttribute("x1", padding)
     axisY.setAttribute("y1", padding)
@@ -527,7 +521,7 @@ drawPieChart(containerId, values, Group, title = "") {
         let color = "#4caf4f6e"
         let AllAttr = document.querySelectorAll("[elementName]")
 
-        //let valuesBars = document.gete("bars"+containerId)
+
         if (Validate == true) {
           color = "#4CAF50"
           for (let index = 0; index < AllAttr.length; index++) {

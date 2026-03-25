@@ -52,9 +52,10 @@ class DataAnalatics {
     ClearFilter() {
         this.data = this.ctxData
     }
-    GroupByClass(FieldCategory, ReturnField) {
+    GroupByClass(FieldCategory, ReturnField ) {
         let Categories = []
         let GroupByCategories = []
+
         this.data.forEach(element => {
             if (Categories.find(x => x == element[FieldCategory]) == undefined) {
                 Categories.push(element[[FieldCategory]])

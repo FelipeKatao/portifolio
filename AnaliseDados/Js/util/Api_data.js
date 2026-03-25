@@ -7,8 +7,11 @@ class ApiData{
        const response = await fetch(this.DataSource)
        const data = await response.json()
        return data
-
-
+    }
+    async ReadDatabase(DatabaseName){
+        const response = await fetch("/AnaliseDados/Js/Data/"+DatabaseName)
+       const data = await response.json()
+       return data
     }
 }
 
