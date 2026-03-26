@@ -435,12 +435,12 @@ drawPieChart(containerId, values, Group, title = "") {
         ValuesKeys.push(e)
     })
 
-    points.forEach(p => {
+    Fields.forEach(p => {
 
   const x = padding + ((p.x - minX) / (maxX - minX)) * (width - padding * 2);
   const y = height - padding - ((p.y - minY) / (maxY - minY)) * (height - padding * 2);
 
-
+let Validate = false
 
       const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle")
       
@@ -459,6 +459,59 @@ drawPieChart(containerId, values, Group, title = "") {
       circle.setAttribute("fill", "#2196F3")
       circle.id = "bars" + containerId
       svg.appendChild(circle)
+      console.log(p)
+            circle.setAttribute("elementName", ValuesKeys[index_group])
+      circle.setAttribute("elementValue", `x:${p.x} y:${p.y}`)
+          circle.addEventListener("click", (event) => {
+        let color = "#4caf4f6e"
+        let AllAttr = document.querySelectorAll("[elementName]")
+
+
+        if (Validate == true) {
+          color = "#4CAF50"
+          for (let index = 0; index < AllAttr.length; index++) {
+            if (AllAttr[index].getAttribute("elementName") == event.target.getAttribute("elementName")) {
+              AllAttr[index].style.opacity = 1
+
+            }
+            else {
+              AllAttr[index].style.opacity = 0.5
+            }
+            event.target.style.opacity = 1
+
+          }
+          Validate = false
+        }
+        else {
+          for (let index = 0; index < AllAttr.length; index++) {
+
+            AllAttr[index].style.opacity = 1
+            event.target.style.opacity = 1
+          }
+          Validate = true
+        }
+
+
+
+
+      })
+      circle.addEventListener("mouseenter", (event) => {
+        let enter = false
+        if (enter == false) {
+          const x = event.clientX;
+          const y = event.clientY;
+          const Name = (event.target).getAttribute("elementName")
+          const ValueElement = (event.target).getAttribute("elementValue")
+          Oct8.Factory.render("TollTip", "#menuDash_opt", { Conteudo: `Item: ${Name}  <br> Valor: ${ValueElement} ` })
+
+          document.getElementById("tolltip_frame").style.left = x + "px"
+          document.getElementById("tolltip_frame").style.top = y + "px"
+          enter = true
+        }
+      })
+      circle.addEventListener("mouseleave", () => {
+        document.getElementById("tolltip_frame").remove()
+      })
 
     })
 
