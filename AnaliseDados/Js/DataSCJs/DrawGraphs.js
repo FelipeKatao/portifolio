@@ -500,7 +500,7 @@ drawPieChart(containerId, values, Group, title = "") {
 
     svg.appendChild(axisX)
     svg.appendChild(axisY)
-    
+    let index_group = 0
 
     if (title != "") {
       const textTitle = document.createElementNS(svgNS, "text")
@@ -513,7 +513,7 @@ drawPieChart(containerId, values, Group, title = "") {
       svg.appendChild(textTitle)
     }
     let KeysGroup = Object.keys(Group)
-    let index_group = 0
+
     values.forEach((value, i) => {
 
       const barHeight = (value / max) * (height - padding * 2)
@@ -540,11 +540,7 @@ drawPieChart(containerId, values, Group, title = "") {
       titleText.setAttribute("fill", "gray")
       svg.appendChild(titleText)
 
-       
-      
 
-
-      index_group+=1
       rect.setAttribute("elementName", KeysGroup[index_group])
       rect.setAttribute("elementValue", value)
       let Validate = false
