@@ -83,3 +83,11 @@
   }
   
 }
+
+@layer button{
+   .disable_bt {
+      background-color: #d5d5d5;
+      opacity: 0.6;
+      border:  0.2vh solid gray;
+   }
+}

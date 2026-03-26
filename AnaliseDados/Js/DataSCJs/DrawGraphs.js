@@ -393,15 +393,19 @@ drawPieChart(containerId, values, Group, title = "") {
     const padding = 40
     let Fields= []
     let index = 0
-    Group.forEach(f =>{
-      Fields.push({x:points[index],y:4})
+    point2.forEach(f =>{
+      Fields.push({x:point2[index],y:points[index]})
       index+=1
+      console.log(point2[index],points[index])
     })
-    console.log(Fields)
+
     const container = document.getElementById(containerId)
     points = Fields
-    const maxX = Math.max(...points.map(p => p.x))
-    const maxY = Math.max(...points.map(p => p.y))
+    const minX = Math.min(...points.map(p => p.x));
+    const maxX = Math.max(...points.map(p => p.x));
+    const minY = Math.min(...points.map(p => p.y));
+    const maxY = Math.max(...points.map(p => p.y));
+
 
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg")
     svg.setAttribute("viewBox", `0 0 ${width} ${height}`)
@@ -424,14 +428,31 @@ drawPieChart(containerId, values, Group, title = "") {
 
     svg.appendChild(axisX)
     svg.appendChild(axisY)
+    let index_group = 0
+
+    let ValuesKeys = []
+    Object.keys(Group).forEach(e=>{
+        ValuesKeys.push(e)
+    })
 
     points.forEach(p => {
 
-      const x = padding + (p.x / maxX) * (width - padding * 2)
-      const y = height - padding - (p.y / maxY) * (height - padding * 2)
+  const x = padding + ((p.x - minX) / (maxX - minX)) * (width - padding * 2);
+  const y = height - padding - ((p.y - minY) / (maxY - minY)) * (height - padding * 2);
+
+
 
       const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle")
-
+      
+      const Legend_text = document.createElementNS(this.svgNS, "text")
+      console.log(Group)
+      Legend_text.textContent = ValuesKeys[index_group]
+      Legend_text.setAttribute("x", x)
+      Legend_text.setAttribute("y", y-10)
+      Legend_text.setAttribute("font-size", "10")
+      Legend_text.setAttribute("fill", "gray")
+      index_group+=1
+      svg.appendChild(Legend_text)
       circle.setAttribute("cx", x)
       circle.setAttribute("cy", y)
       circle.setAttribute("r", 5)
@@ -479,7 +500,7 @@ drawPieChart(containerId, values, Group, title = "") {
 
     svg.appendChild(axisX)
     svg.appendChild(axisY)
-    let index_group = 0
+    
 
     if (title != "") {
       const textTitle = document.createElementNS(svgNS, "text")
@@ -492,7 +513,7 @@ drawPieChart(containerId, values, Group, title = "") {
       svg.appendChild(textTitle)
     }
     let KeysGroup = Object.keys(Group)
-
+    let index_group = 0
     values.forEach((value, i) => {
 
       const barHeight = (value / max) * (height - padding * 2)
@@ -519,7 +540,11 @@ drawPieChart(containerId, values, Group, title = "") {
       titleText.setAttribute("fill", "gray")
       svg.appendChild(titleText)
 
+       
+      
 
+
+      index_group+=1
       rect.setAttribute("elementName", KeysGroup[index_group])
       rect.setAttribute("elementValue", value)
       let Validate = false

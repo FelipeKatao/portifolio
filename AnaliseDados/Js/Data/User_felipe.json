@@ -135,7 +135,7 @@
                     "Width": "xx",
                     "svg": "yes",
                     "Type": "scatter",
-                    "Prop": {},
+                    "Prop": {"Groupx":"desconto_percentual,mes","Groupy":"preco_medio,mes"},
                     "formula":{
                         "base":"",
                         "Categorie_base":"mes",

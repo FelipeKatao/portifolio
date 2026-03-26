@@ -80,13 +80,16 @@ class DashBoardPage {
     
         
         let Options_page = ""
+        let Page_ = []
         Object.keys(project[value]["Projeto"]).forEach(pag =>{
             if(pag == this.Page)
             {
                 Options_page += `<option selected value="${pag}">${pag}</option>`
+                Page_.push(pag)
             }
             else{
                 Options_page += `<option  value="${pag}">${pag}</option>`
+                Page_.push(pag)
             }
         })
         
@@ -139,8 +142,10 @@ class DashBoardPage {
                 }
 
                 if(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Type"] == "scatter"){
-                    console.log(Value_valid)
-                    Draw.drawScatterChart("element_widget"+widgets,  DataBase.valueByGroupData(Value_valid),Value_valid,[2,3,5,6,7],"Pontos de analise")
+
+                    let Values_ = [Project_settings["Widget"][widgets]["Prop"]["Groupx"].split(","),Project_settings["Widget"][widgets]["Prop"]["Groupy"].split(",")]
+                    Draw.drawScatterChart("element_widget"+widgets,  DataBase.valueByGroupData(DataBase.Expression(Values_[0][0],Values_[0][1])), DataBase.valueByGroupData(DataBase.Expression(Values_[1][0],Values_[1][1])),Value_valid,"Pontos de analise",)
+                    
                 }
                 if(project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Type"] == "pie"){
                     Draw.drawPieChart("element_widget"+widgets, DataBase.valueByGroupData(Value_valid),Value_valid,"Analise de venda por produto")
@@ -225,6 +230,36 @@ class DashBoardPage {
                     document.querySelectorAll("[oct8-css='bg-modal']")[0].remove()
                     
                 })
+        })
+        let Disable_bt_advance = false
+        let Disable_bt_back = false
+
+        document.getElementById("bt_prev_page").addEventListener("click",()=>{
+           if(Page_.indexOf(this.Page)+1  <=  parseInt(Page_.length-1) && Disable_bt_advance == false){
+                document.getElementById("bt_next_page").classList.remove("disable_bt")    
+                this.Page = Page_[Page_.indexOf(this.Page)+1]
+                document.getElementById("page").innerHTML = ""
+                Oct8.Factory.render("MenuSite","#page",{})
+                this.GetProject(value)
+            }
+            else{
+                Disable_bt_advance = true
+                 document.getElementById("bt_prev_page").classList+=" disable_bt"
+           }
+        })
+
+        document.getElementById("bt_next_page").addEventListener("click",()=>{
+           if(Page_.indexOf(this.Page)-1  >=  0 && Disable_bt_back == false){
+                document.getElementById("bt_prev_page").classList.remove("disable_bt")
+                this.Page = Page_[Page_.indexOf(this.Page)-1]
+                document.getElementById("page").innerHTML = ""
+                Oct8.Factory.render("MenuSite","#page",{})
+                this.GetProject(value)
+            }
+            else{
+                Disable_bt_back = true
+                 document.getElementById("bt_next_page").classList+=" disable_bt"
+           }
         })
     }
 
