@@ -193,7 +193,7 @@ class DashBoardPage {
                 if (project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Type"] == "scatter") {
 
                     let Values_ = [Project_settings["Widget"][widgets]["Prop"]["Groupx"].split(","), Project_settings["Widget"][widgets]["Prop"]["Groupy"].split(",")]
-                    Draw.drawScatterChart("element_widget" + widgets, DataBase.valueByGroupData(DataBase.Expression(Values_[0][0], Values_[0][1])), DataBase.valueByGroupData(DataBase.Expression(Values_[1][0], Values_[1][1])), Value_valid, "Pontos de analise",)
+                    Draw.drawScatterChart("element_widget" + widgets, DataBase.valueByGroupData(DataBase.Expression(Values_[0][0], Values_[0][1])), DataBase.valueByGroupData(DataBase.Expression(Values_[1][0], Values_[1][1])), Value_valid, Values_,"")
 
                 }
                 if (project[value]["Projeto"][this.Page][0]["Widget"][widgets]["Type"] == "pie") {

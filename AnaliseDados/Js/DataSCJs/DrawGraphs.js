@@ -386,7 +386,7 @@ drawPieChart(containerId, values, Group, title = "") {
     container.appendChild(svg)
 
   }
-  drawScatterChart(containerId, points,point2,Group) {
+  drawScatterChart(containerId, points,point2,Group,groupLegend) {
 
     const width = 600
     const height = 300
@@ -461,7 +461,8 @@ let Validate = false
       svg.appendChild(circle)
       console.log(p)
             circle.setAttribute("elementName", ValuesKeys[index_group])
-      circle.setAttribute("elementValue", `x:${p.x} y:${p.y}`)
+            console.log(groupLegend)
+      circle.setAttribute("elementValue", `${groupLegend[0][0]}:${p.x} ${groupLegend[1][0]}:${p.y}`)
           circle.addEventListener("click", (event) => {
         let color = "#4caf4f6e"
         let AllAttr = document.querySelectorAll("[elementName]")
