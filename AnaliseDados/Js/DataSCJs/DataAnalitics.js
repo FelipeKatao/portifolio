@@ -41,6 +41,7 @@ class DataAnalatics {
 
     }
     FilterData(Category, Value) {
+        console.log(Category, Value)
         this.FilterData_selected = []
         this.data.forEach(c => {
             if (c[Category] == Value) {

@@ -4,6 +4,7 @@ class DashboardController{
         this.DashBoardScreen = "dash"
         this.PageViews = "page"
         this.fullEnabled = true
+        this.mode = ""
     }
     FullScreen(){
         if(this.fullEnabled)
@@ -11,7 +12,9 @@ class DashboardController{
             
             document.getElementById(this.DashBoardScreen).style.width = "100%"
             document.getElementById(this.DashBoardScreen).style.height = "20%"
-            document.querySelector("#espace_top").style.display = "none"
+            if(this.mode =="normal"){
+                document.querySelector("#espace_top").style.display = "none"
+            }
             document.querySelectorAll("[oct8-css~='container_full']").forEach(el =>{
                 el.style.display = "none"
             })
@@ -41,6 +44,23 @@ class DashboardController{
          document.exitFullscreen()
          this.fullEnabled = true
         }
+    }
+    RunFull(){
+         document.getElementById(this.DashBoardScreen).style.width = "100%"
+            document.getElementById(this.DashBoardScreen).style.height = "20%"
+            if(this.mode =="normal"){
+                document.querySelector("#espace_top").style.display = "none"
+            }
+            document.querySelectorAll("[oct8-css~='container_full']").forEach(el =>{
+                el.style.display = "none"
+            })
+             document.querySelectorAll("[oct8-css='headertitle']").forEach(el =>{
+                el.style.display = "none"
+            })
+             document.querySelectorAll("[oct8-css='menu_fixed']").forEach(el =>{
+                el.style.display = "none"
+            })
+            this.fullEnabled = false
     }
 }
 

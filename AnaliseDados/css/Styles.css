@@ -98,7 +98,7 @@ align-content: center;
 
 @layer Menus{
     [oct8-css~='menuList']{
-        height: 10vh;
+        height: auto;
         align-content: center;
         margin-top: 5vh;
         width: 89.8%;
@@ -112,6 +112,7 @@ align-content: center;
         float: left;
         margin-left: 1vh;
         list-style: none;
+        height: auto;
     }
     [oct8-css~='menuList'] ul li select{
         width: 90%;

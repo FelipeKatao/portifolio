@@ -27,12 +27,22 @@
             "Default": [{
                   "FilterData":{
                 "Filter":"mes",
-                "Value":"desconto_percentual"
+                "desconto":"desconto_percentual",
+                "value":"none"
+            },
+            
+            "password":{
+                "loginEnabled":"true",
+                "login":"123"
             },
             "ShowCode": {
                 "type": "none",
                 "visible": "no",
                 "code": ""
+            },
+            "config":{
+                "mode":"normal",
+                "autoplay":"off"
             },
             "Widget": {
                 "Grafico_barras": {
@@ -129,6 +139,11 @@
                 "type": "none",
                 "visible": "no",
                 "code": ""
+            },
+             "config":{
+                "mode":"normal",
+                "autoplay":"yes,10000" 
+                ,"anote":"!!yes,10000"
             },
             "Widget": {
                 "Grafico_barras": {
