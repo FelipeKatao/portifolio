@@ -15,6 +15,7 @@
         }
     },
     "Dashboard_financeiro": {
+        "theme":"white",
         "Titulo": "Dashboard financeiro",
         "SubTitulo": "Relatorio financeiro semestral",
         "Descricao": "Relatorio financeiro contruido para uma pequena empresa para organziação semestral de suas finanças.",
@@ -42,7 +43,7 @@
                 "code": ""
             },
             "config":{
-                "mode":"normal",
+                "mode":"full",
                 "autoplay":"off"
             },
             "Widget": {
@@ -247,13 +248,23 @@
          "Projeto": {
             "Default": [{
                   "FilterData":{
-                "Filter":"mes",
-                "Value":"desconto_percentual"
+                "value":"none"
+            },
+            
+            "password":{
+                "loginEnabled":"true",
+                "login":"123"
             },
             "ShowCode": {
-                "type": "none",
-                "visible": "no",
-                "code": ""
+                "Titulo":"Consulta por setor",
+                "type": "SQL",
+                "visible": "yes",
+                "code": "SELECT * FROM dbo.product WHERE id >2",
+                "share":"Codigo a seguir pode ser visto em detalhes aqui neste link do Github"
+            },
+            "config":{
+                "mode":"normal",
+                "autoplay":"off"
             },
             "Widget": {
                 "Grafico_barras": {
@@ -275,132 +286,10 @@
                             "value": "desconto_percentual"
                         }
                     }
-                },
-                "Card": {
-                    "Width": "lsm",
-                    "svg": "yes",
-                    "Type": "line",
-                    "prop": {},
-                    "formula":{
-                        "base":"",
-                        "Categorie_base":"mes",
-                        "ValueMin":"0",
-                        "ValueMax":"200",
-                        "Operation":"desconto_percentual",
-                        "Limit":"infinity"
-                    },
-                    "Data": {
-                        "group": {
-                            "group": "mes",
-                            "value": "desconto_percentual"
-                        }
-                    }
-                },
-                "Card_": {
-                    "Width": "md",
-                    "svg": "yes",
-                    "Type": "bar",
-                    "prop": {},
-                   "formula":{
-                        "base":"",
-                        "Categorie_base":"mes",
-                        "ValueMin":"0",
-                        "ValueMax":"200",
-                        "Operation":"desconto_percentual",
-                        "Limit":"infinity"
-                    },
-                    "Data": {
-                        "group": {
-                            "group": "mes",
-                            "value": "desconto_percentual"
-                        }
-                    }
-                },
-                "Lines": {
-                    "Width": "lsm",
-                    "svg": "no",
-                    "Type": "line",
-                    "prop": {},
-                    "formula":{
-                        "base":"",
-                        "Categorie_base":"mes",
-                        "ValueMin":"0",
-                        "ValueMax":"200",
-                        "Operation":"desconto_percentual",
-                        "Limit":"infinity"
-                    },
-                    "Data": {
-                        "Rotulo": "",
-                        "Operacao": "",
-                        "Data": {
-                            "x": "preco_medio",
-                            "y": "receita_total"
-                        }
-                    }
                 }
             },
             "Data":"felipe_databaseProject.json"
-            }],
-            "AmostraMensal": [{
-                  "FilterData":{
-                "Filter":"mes",
-                "Value":"desconto_percentual"
-            },
-            "ShowCode": {
-                "type": "none",
-                "visible": "no",
-                "code": ""
-            },
-            "Widget": {
-                "Grafico_barras": {
-                    "Width": "xx",
-                    "svg": "yes",
-                    "Type": "pie",
-                    "Prop": {"teste":0},
-                    "formula":{
-                        "base":"",
-                        "Categorie_base":"desconto_percentual",
-                        "ValueMin":"0",
-                        "ValueMax":"200",
-                        "Operation":"preco_medio",
-                        "Limit":"infinity"
-                    },
-                    "Data": {
-                        "group": {
-                            "group": "produto",
-                            "value": "desconto_percentual"
-                        }
-                    }
-                },
-                "Card": {
-                    "Width": "lg",
-                    "svg": "yes",
-                    "Type": "line",
-                    "prop": {},
-                    "Data": {
-                        "group": {
-                            "group": "mes",
-                            "value": "desconto_percentual"
-                        }
-                    }
-                },
-                "Card_": {
-                    "Width": "md",
-                    "svg": "yes",
-                    "Type": "bar",
-                    "prop": {},
-                    "Data": {
-                        "group": {
-                            "group": "mes",
-                            "value": "desconto_percentual"
-                        }
-                    }
-                }
-
-            },
-             "Data":"felipe_databaseProject"
-            }]
-          
+            }]        
         }
     }
 }

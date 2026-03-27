@@ -1,7 +1,4 @@
 @layer Color{
-  *{
-    color:#787878;
-  }
     body{
     background-color: #f8fdff;
     }
@@ -19,13 +16,13 @@
         color: #565656;
         border: 0.3vh solid #e7eef086;
      }
-      [oct8-css~="projeto_frame"]{
-        background-color: #fbfeff;
+      /* [oct8-css~="projeto_frame"]{
+      border-radius: 2vh;
        border: 0.3vh solid #e7eef086;
         
-      }
+      } */
       [oct8-css~="card-ex"]{
-       background: #ecf4f8;
+       /* background: #ecf4f8; */
         color: #565656;
         border: 0.3vh solid #e7eef086;
 

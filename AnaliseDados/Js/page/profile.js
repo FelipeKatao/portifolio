@@ -16,9 +16,11 @@ class ProfilePage{
          let Projetos = new ApiData()
         let project = await Projetos.ReadProject()
         console.log(project["User"])
-        Oct8.Factory.render("Header","#page",{Nome:` <div id='badge_area'> ${project["User"]["Name"]}  </div>`,Header:project["User"]["HeadLine"],Status:project["User"]["Subtitle"]})
+        Oct8.Factory.render("Header","#page",{Nome:`  ${project["User"]["Name"]}`,Header:project["User"]["HeadLine"],Status:project["User"]["Subtitle"],Badge:`<div id='badge_area'></div>`})
         Oct8.Factory.render("DataCard","#page",{Type:"container",Id:"base_001"})
         Oct8.Factory.render("Badge","#badge_area",{Name:"Pro",Tipo:"pro"})
+        Oct8.Factory.render("Badge","#badge_area",{Name:"Contribuidor de database ",Tipo:"vault"})
+        Oct8.Factory.render("Badge","#badge_area",{Name:"Projetos em Produção ",Tipo:"red"})
         this.project =""
         Oct8.Factory.render("DataCard","#base_001",{id:"ver_mais",Titulo:project["User"]["About"]["Title"],Sobre:project["User"]["About"]["Apptxt"]})
         Oct8.Factory.render("DataCard","#base_001",{id:"skills",Titulo:project["User"]["Skills"]["Title"],Sobre:project["User"]["Skills"]["Apptxt"]})

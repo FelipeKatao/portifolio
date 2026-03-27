@@ -8,7 +8,7 @@ class DrawGraphs {
 
     const width = 600
     const height = 300
-    const padding = 40
+    const padding = 10
     let KeysGroup = Object.keys(group)
     const max = Math.max(...values)
     let stepX = (width - padding * 2) / (values.length - 1)
@@ -38,16 +38,16 @@ class DrawGraphs {
 
     let points = ""
 
-    if (title != "") {
-      const textTitle = document.createElementNS(this.svgNS, "text")
+    // if (title != "") {
+    //   const textTitle = document.createElementNS(this.svgNS, "text")
 
-      textTitle.textContent = title
-      textTitle.setAttribute("x", 0)
-      textTitle.setAttribute("y", -120)
-      textTitle.setAttribute("font-size", "30")
-      textTitle.setAttribute("fill", "gray")
-      svg.appendChild(textTitle)
-    }
+    //   textTitle.textContent = title
+    //   textTitle.setAttribute("x", 0)
+    //   textTitle.setAttribute("y", -120)
+    //   textTitle.setAttribute("font-size", "30")
+    //   textTitle.setAttribute("fill", "gray")
+    //   svg.appendChild(textTitle)
+    // }
 
     let index_group = 0
     // Exemplo de cálculo do stepX
@@ -157,15 +157,15 @@ drawPieChart(containerId, values, Group, title = "") {
   let index_group = 0;
   let KeysGroup = Object.keys(Group);
 
-  if (title != "") {
-    const textTitle = document.createElementNS(svgNS, "text");
-    textTitle.textContent = title;
-    textTitle.setAttribute("x", 0);
-    textTitle.setAttribute("y", 20);
-    textTitle.setAttribute("font-size", "30");
-    textTitle.setAttribute("fill", "gray");
-    svg.appendChild(textTitle);
-  }
+  // if (title != "") {
+  //   const textTitle = document.createElementNS(svgNS, "text");
+  //   textTitle.textContent = title;
+  //   textTitle.setAttribute("x", 0);
+  //   textTitle.setAttribute("y", 20);
+  //   textTitle.setAttribute("font-size", "30");
+  //   textTitle.setAttribute("fill", "gray");
+  //   svg.appendChild(textTitle);
+  // }
 
   values.forEach((value, i) => {
     const sliceAngle = (value / total) * Math.PI * 2;
@@ -554,16 +554,16 @@ drawScatterChart(containerId, points, point2, Group, groupLegend,title) {
     svg.appendChild(axisY)
     let index_group = 0
 
-    if (title != "") {
-      const textTitle = document.createElementNS(svgNS, "text")
+    // if (title != "") {
+    //   const textTitle = document.createElementNS(svgNS, "text")
 
-      textTitle.textContent = title
-      textTitle.setAttribute("x", 0)
-      textTitle.setAttribute("y", -120)
-      textTitle.setAttribute("font-size", "30")
-      textTitle.setAttribute("fill", "gray")
-      svg.appendChild(textTitle)
-    }
+    //   textTitle.textContent = title
+    //   textTitle.setAttribute("x", 0)
+    //   textTitle.setAttribute("y", -120)
+    //   textTitle.setAttribute("font-size", "30")
+    //   textTitle.setAttribute("fill", "gray")
+    //   svg.appendChild(textTitle)
+    // }
     let KeysGroup = Object.keys(Group)
 
     values.forEach((value, i) => {

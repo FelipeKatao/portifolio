@@ -12,6 +12,11 @@ class Header extends Oct8.FactoryClass{
                 <h2> ${this.prop.Header} </h2>
                 <h2> ${this.prop.Status} </h2>
            </div>
+           <div class='mini_block'>
+            <h><i>Conquistas</i></h2>
+            <hr></hr>
+            ${this.prop.Badge}
+           </div>
            <div oct8-css='shareLink'>
                <button id='shareperfil' class='standart_bt r_5'><img src='./img/share.png' width='20vh'></button>
            </div>

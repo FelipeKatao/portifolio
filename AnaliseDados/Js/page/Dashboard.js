@@ -45,6 +45,9 @@ class DashBoardPage {
             }
         })
 
+        if(project[value]["theme"] == "white"){
+                // Criar o sistema de Temas aqui 
+        }
 
         if (this.Selected_value != "") {
             DataBase.FilterData(project[value]["Projeto"][this.Page][0]["FilterData"][this.Select_filed], this.Selected_value)
@@ -92,10 +95,9 @@ class DashBoardPage {
 
             document.getElementById("cod_share").addEventListener("click", () => {
                 Oct8.Factory.render("modal", "#page", {
-                    titulo: "Compartilhar", Conteudo: `
+                    titulo: "<h3>Share code</h3>", Conteudo: `
                 <div>
-                    <h3>Sobre </h3>
-                    <p> Sombre o perfil fica completo aqui </p>
+                    <p> ${project[value]["Projeto"][this.Page][0]["ShowCode"]["share"]} </p>
                 </div>
                 `})
                 document.getElementById("close_modal").addEventListener("click", () => {

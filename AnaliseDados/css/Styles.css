@@ -46,14 +46,20 @@ align-content: center;
 @layer container{
     [oct8-css~="containers_central"]{
         display: flex;
+        justify-content: space-between;
+        align-items: center;        
+        gap: 1rem;  
+        width: 91%;
         margin: auto;
-        width: 80%;
+        margin-left: 10vh;
         flex-direction: row;
         flex-wrap: wrap;        
+        
     }
     [oct8-css~="projeto_frame"]{
-        width: 96%;
+        width: 89%;
         margin: auto;
+        margin-left: 10vh;
         margin-top: 2vh;
         padding: 2vh;
     }
@@ -76,10 +82,10 @@ align-content: center;
 
         padding: 2vh;
         border-radius: 1vh;
-        width: 67vh;
+        width: 82vh;
         height: 20vh;
-        margin-top: 4vh;
-        margin-left: 5vh;
+        margin-top:1vh;
+        
     }
     [oct8-css~="card-ex"]{
         padding-left: 2vh;
@@ -302,34 +308,44 @@ align-content: center;
 @layer badges{
     #badge_area{
         display: flex ;
+        flex-wrap: wrap;
         flex-direction: row;
         height: 6vh;
-        width: 40vh;
+        width: 42vh;
     }
     [oct8-css~='badge']{       
-        border-radius: 2vh;
+        border-radius: 6vh;
         font-size: 2vh;
-        text-align: center;
-        padding: 1vh;
-        width: 20%;
-        height: 2vh;
-        margin-left: 2vh;
+        width: auto;
+        padding-left: 1vh;
+        padding-right: 1vh;
+        margin-left: 1vh;
+        height: 31%;
+        font-weight: bold;
     }
     [oct8-css~='badge'][oct8-css~='pro']{
-        border: #9365af solid 0.5vh;
-        
-        color: #c681f5;
-        animation: animate-pro 1.5s alternate-reverse infinite ;
+        border: #8d52b1 solid 0.2vh;
+        color: #ab6bd3;
+        text-align: center;           
+    }
+    [oct8-css~='badge'][oct8-css~='vault']{
+        border: #5d52b1 solid 0.2vh;
+        color: #726bd3;
+        text-align: center;           
+    }
+    [oct8-css~='badge'][oct8-css~='red']{
+        border: #b15252 solid 0.2vh;
+        color: #d36b6d;
+        text-align: center;           
     }
     @keyframes animate-pro{
         from{
-            background-color: #674a7b;
-        color: #ca86f8;
+            border-color: #674a7b;
+
         }   
         to{
 
-        color: #633f7b;
-            background-color: #966ab5;
+             border-color: #966ab5;
 
         } 
     }
@@ -359,5 +375,9 @@ align-content: center;
     }
     .rotate{
         transform: rotate(180deg);
+    }
+    .mini_block{
+        padding: 2vh;
+        width: 20%;
     }
 }
