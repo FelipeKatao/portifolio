@@ -386,140 +386,138 @@ drawPieChart(containerId, values, Group, title = "") {
     container.appendChild(svg)
 
   }
-  drawScatterChart(containerId, points,point2,Group,groupLegend) {
+drawScatterChart(containerId, points, point2, Group, groupLegend,title) {
+  const width = 600;
+  const height = 300;
+  const padding = 40;
+  let Fields = [];
+  let index = 0;
 
-    const width = 600
-    const height = 300
-    const padding = 40
-    let Fields= []
-    let index = 0
-    point2.forEach(f =>{
-      Fields.push({x:point2[index],y:points[index]})
-      index+=1
-      console.log(point2[index],points[index])
-    })
+  point2.forEach(f => {
+    Fields.push({ x: point2[index], y: points[index] });
+    index += 1;
+  });
 
-    const container = document.getElementById(containerId)
-    points = Fields
-    const minX = Math.min(...points.map(p => p.x));
-    const maxX = Math.max(...points.map(p => p.x));
-    const minY = Math.min(...points.map(p => p.y));
-    const maxY = Math.max(...points.map(p => p.y));
+  const container = document.getElementById(containerId);
+  points = Fields;
 
+  const minX = Math.min(...points.map(p => p.x));
+  const maxX = Math.max(...points.map(p => p.x));
+  const minY = Math.min(...points.map(p => p.y));
+  const maxY = Math.max(...points.map(p => p.y));
 
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg")
-    svg.setAttribute("viewBox", `0 0 ${width} ${height}`)
-    svg.setAttribute("width", "100%")
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+  svg.setAttribute("width", "100%");
 
-    const axisX = document.createElementNS("http://www.w3.org/2000/svg", "line")
-    axisX.setAttribute("x1", padding)
-    axisX.setAttribute("y1", height - padding)
-    axisX.setAttribute("x2", width - padding)
-    axisX.setAttribute("y2", height - padding)
-    axisX.setAttribute("stroke", "black")
+  const axisX = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  axisX.setAttribute("x1", padding);
+  axisX.setAttribute("y1", height - padding);
+  axisX.setAttribute("x2", width - padding);
+  axisX.setAttribute("y2", height - padding);
+  axisX.setAttribute("stroke", "black");
 
+  const axisY = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  axisY.setAttribute("x1", padding);
+  axisY.setAttribute("y1", padding);
+  axisY.setAttribute("x2", padding);
+  axisY.setAttribute("y2", height - padding);
+  axisY.setAttribute("stroke", "black");
 
-    const axisY = document.createElementNS("http://www.w3.org/2000/svg", "line")
-    axisY.setAttribute("x1", padding)
-    axisY.setAttribute("y1", padding)
-    axisY.setAttribute("x2", padding)
-    axisY.setAttribute("y2", height - padding)
-    axisY.setAttribute("stroke", "black")
+  svg.appendChild(axisX);
+  svg.appendChild(axisY);
 
-    svg.appendChild(axisX)
-    svg.appendChild(axisY)
-    let index_group = 0
+  let index_group = 0;
+  let ValuesKeys = Object.keys(Group);
 
-    let ValuesKeys = []
-    Object.keys(Group).forEach(e=>{
-        ValuesKeys.push(e)
-    })
+  Fields.forEach(p => {
+    // Se houver apenas um valor em X ou Y, centraliza
+    let x, y;
+    if (maxX === minX) {
+      x = width / 2;
+    } else {
+      x = padding + ((p.x - minX) / (maxX - minX)) * (width - padding * 2);
+    }
 
-    Fields.forEach(p => {
+    if (maxY === minY) {
+      y = height / 2;
+    } else {
+      y = height - padding - ((p.y - minY) / (maxY - minY)) * (height - padding * 2);
+    }
 
-  const x = padding + ((p.x - minX) / (maxX - minX)) * (width - padding * 2);
-  const y = height - padding - ((p.y - minY) / (maxY - minY)) * (height - padding * 2);
+    let Validate = false;
 
-let Validate = false
+    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    const Legend_text = document.createElementNS(this.svgNS, "text");
 
-      const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle")
-      
-      const Legend_text = document.createElementNS(this.svgNS, "text")
-      console.log(Group)
-      Legend_text.textContent = ValuesKeys[index_group]
-      Legend_text.setAttribute("x", x)
-      Legend_text.setAttribute("y", y-10)
-      Legend_text.setAttribute("font-size", "10")
-      Legend_text.setAttribute("fill", "gray")
-      index_group+=1
-      svg.appendChild(Legend_text)
-      circle.setAttribute("cx", x)
-      circle.setAttribute("cy", y)
-      circle.setAttribute("r", 5)
-      circle.setAttribute("fill", "#2196F3")
-      circle.id = "bars" + containerId
-      svg.appendChild(circle)
-      console.log(p)
-            circle.setAttribute("elementName", ValuesKeys[index_group])
-            console.log(groupLegend)
-      circle.setAttribute("elementValue", `${groupLegend[0][0]}:${p.x} ${groupLegend[1][0]}:${p.y}`)
-          circle.addEventListener("click", (event) => {
-        let color = "#4caf4f6e"
-        let AllAttr = document.querySelectorAll("[elementName]")
+    Legend_text.textContent = ValuesKeys[index_group];
+    Legend_text.setAttribute("x", x);
+    Legend_text.setAttribute("y", y - 10);
+    Legend_text.setAttribute("font-size", "10");
+    Legend_text.setAttribute("fill", "gray");
+    svg.appendChild(Legend_text);
+    
+    circle.setAttribute("cx", x);
+    circle.setAttribute("cy", y);
+    circle.setAttribute("r", 5);
+    circle.setAttribute("fill", "#2196F3");
+    circle.id = "bars" + containerId;
+    svg.appendChild(circle);
+    console.log(ValuesKeys[index_group])
+    circle.setAttribute("elementName", ValuesKeys[index_group]);
+    circle.setAttribute("elementValue", `${groupLegend[0][0]}:${p.x} ${groupLegend[1][0]}:${p.y}`);
+    index_group += 1;
 
+    // Mantém todos os listeners
+    circle.addEventListener("click", (event) => {
+      let color = "#4caf4f6e";
+      let AllAttr = document.querySelectorAll("[elementName]");
 
-        if (Validate == true) {
-          color = "#4CAF50"
-          for (let index = 0; index < AllAttr.length; index++) {
-            if (AllAttr[index].getAttribute("elementName") == event.target.getAttribute("elementName")) {
-              AllAttr[index].style.opacity = 1
-
-            }
-            else {
-              AllAttr[index].style.opacity = 0.5
-            }
-            event.target.style.opacity = 1
-
+      if (Validate == true) {
+        color = "#4CAF50";
+        for (let index = 0; index < AllAttr.length; index++) {
+          if (AllAttr[index].getAttribute("elementName") == event.target.getAttribute("elementName")) {
+            AllAttr[index].style.opacity = 1;
+          } else {
+            AllAttr[index].style.opacity = 0.5;
           }
-          Validate = false
+          event.target.style.opacity = 1;
         }
-        else {
-          for (let index = 0; index < AllAttr.length; index++) {
-
-            AllAttr[index].style.opacity = 1
-            event.target.style.opacity = 1
-          }
-          Validate = true
+        Validate = false;
+      } else {
+        for (let index = 0; index < AllAttr.length; index++) {
+          AllAttr[index].style.opacity = 1;
+          event.target.style.opacity = 1;
         }
+        Validate = true;
+      }
+    });
+
+    circle.addEventListener("mouseenter", (event) => {
+      let enter = false;
+      if (enter == false) {
+        const x = event.clientX;
+        const y = event.clientY;
+        const Name = event.target.getAttribute("elementName");
+        const ValueElement = event.target.getAttribute("elementValue");
+        Oct8.Factory.render("TollTip", "#menuDash_opt", { Conteudo: `Item: ${Name}  <br> Valor: ${ValueElement} ` });
+
+        document.getElementById("tolltip_frame").style.left = x + "px";
+        document.getElementById("tolltip_frame").style.top = y + "px";
+        enter = true;
+      }
+    });
+
+    circle.addEventListener("mouseleave", () => {
+      document.getElementById("tolltip_frame").remove();
+    });
+  });
 
 
+  container.innerHTML = "";
+  container.appendChild(svg);
+}
 
-
-      })
-      circle.addEventListener("mouseenter", (event) => {
-        let enter = false
-        if (enter == false) {
-          const x = event.clientX;
-          const y = event.clientY;
-          const Name = (event.target).getAttribute("elementName")
-          const ValueElement = (event.target).getAttribute("elementValue")
-          Oct8.Factory.render("TollTip", "#menuDash_opt", { Conteudo: `Item: ${Name}  <br> Valor: ${ValueElement} ` })
-
-          document.getElementById("tolltip_frame").style.left = x + "px"
-          document.getElementById("tolltip_frame").style.top = y + "px"
-          enter = true
-        }
-      })
-      circle.addEventListener("mouseleave", () => {
-        document.getElementById("tolltip_frame").remove()
-      })
-
-    })
-
-    container.innerHTML = ""
-    container.appendChild(svg)
-
-  }
 
   drawBarChart(containerId, values, Group, title = "") {
     const svgNS = "http://www.w3.org/2000/svg"
