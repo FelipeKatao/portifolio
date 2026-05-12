@@ -2,51 +2,372 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfólio - Back-end Dev</title>
-  <link rel="stylesheet" href="./src/css/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Katao IA | Sistemas Inteligentes</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./src/css/styles.css">
 </head>
 <body>
-  <header>
-    <h1>Felipe Catão</h1>
-    <p>Desenvolvedor Back-end | Python, C#, Java</p>
+
+  <!-- ================= HEADER ================= -->
+
+  <header class="header">
+    <div class="logo">
+      Katao<span>IA</span>
+    </div>
+
+    <nav class="nav">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
   </header>
-  <div id="dynamic">
-    <!-- Implementar components do Oct8 -->
-  </div>
-  <div id="content">
-    <section class="about">
-      <h2>Sobre Mim</h2>
-      <p>Sou um desenvolvedor back-end com experiência em construção de APIs, microsserviços e integrações utilizando Python, C# e Java.</p>
-    </section>
-  
-    <section class="projects">
-      <h2>Projetos</h2>
-      <div class="project-list">
-        <div class="project">
-          <h3>API de Produtos - Python Flask</h3>
-          <p>API RESTful para gerenciamento de produtos com autenticação JWT.</p>
-          <a href="https://github.com/seuusuario/projeto-flask" target="_blank">Ver no GitHub</a>
-        </div>
-        <div class="project">
-          <h3>Sistema de Reservas - C# .NET</h3>
-          <p>Back-end de um sistema de reservas usando Entity Framework.</p>
-          <a href="https://github.com/seuusuario/projeto-dotnet" target="_blank">Ver no GitHub</a>
-        </div>
-        <div class="project">
-          <h3>API de Tarefas - Java Spring Boot</h3>
-          <p>Aplicação com Spring Boot, banco PostgreSQL e Swagger.</p>
-          <a href="https://github.com/seuusuario/projeto-java" target="_blank">Ver no GitHub</a>
-        </div>
+
+  <!-- ================= HERO ================= -->
+
+  <section class="hero">
+
+    <div class="hero-left">
+
+      <div class="tag">
+        IA • NLP • Automação Inteligente
       </div>
-    </section>
-    <footer>
-      <p>Contato: <a href="mailto:seuemail@email.com">seuemail@email.com</a></p>
-    </footer>
-  </div>
- 
 
+      <h1>
+        Construindo sistemas inteligentes para negócios modernos.
+      </h1>
 
-  <script type="module" src="./src/Js/main.js"></script>
+      <p>
+        Desenvolvimento de aplicações com Inteligência Artificial,
+        automações inteligentes, NLP e soluções digitais modernas.
+      </p>
+
+      <div class="hero-buttons">
+        <button class="primary-btn">
+          Ver projetos
+        </button>
+
+        <button class="secondary-btn">
+          Fale comigo
+        </button>
+      </div>
+
+      <div class="hero-stats">
+
+        <div class="stat">
+          <h2>10+</h2>
+          <span>Projetos</span>
+        </div>
+
+        <div class="stat">
+          <h2>IA</h2>
+          <span>Automação</span>
+        </div>
+
+        <div class="stat">
+          <h2>24/7</h2>
+          <span>Escalável</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="hero-right">
+
+      <div class="dashboard-card">
+
+        <div class="dashboard-top">
+          <div class="circle red"></div>
+          <div class="circle yellow"></div>
+          <div class="circle green"></div>
+        </div>
+
+        <div class="dashboard-content">
+
+          <div class="dashboard-box">
+            <img src="./src/img/KataoDevImg.png" height="300">
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= EMPRESAS ================= -->
+
+  <section class="brands">
+
+    <p>TECNOLOGIAS UTILIZADAS</p>
+
+    <div class="brand-items">
+      <span>Python</span>
+      <span>Flask</span>
+      <span>LangChain</span>
+      <span>React</span>
+      <span>Ollama</span>
+      <span>NLP</span>
+    </div>
+
+  </section>
+
+  <!-- ================= SOBRE ================= -->
+
+  <section id="sobre" class="about section">
+
+    <div class="section-title">
+      <span>SOBRE</span>
+      <h2>Transformando ideias em soluções inteligentes.</h2>
+    </div>
+
+    <div class="about-grid">
+
+      <div class="about-card">
+        <h3>IA aplicada</h3>
+
+        <p>
+          Desenvolvimento de sistemas com inteligência artificial
+          focados em automação, produtividade e experiência.
+        </p>
+      </div>
+
+      <div class="about-card">
+        <h3>NLP & Linguagem Natural</h3>
+
+        <p>
+          Aplicações capazes de entender textos, interpretar contexto
+          e responder de forma inteligente.
+        </p>
+      </div>
+
+      <div class="about-card">
+        <h3>Soluções escaláveis</h3>
+
+        <p>
+          Estruturas modernas preparadas para crescimento,
+          APIs e integrações inteligentes.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= SERVIÇOS ================= -->
+
+  <section id="servicos" class="services section">
+
+    <div class="section-title">
+      <span>SERVIÇOS</span>
+      <h2>O que eu posso construir.</h2>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <h3>Chatbots Inteligentes</h3>
+        <p>
+          Assistentes inteligentes para automação de atendimento
+          e processos.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>Automações IA</h3>
+        <p>
+          Fluxos automatizados utilizando IA e linguagem natural.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>Dashboards Inteligentes</h3>
+        <p>
+          Visualização moderna e análise automatizada de dados.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>APIs Inteligentes</h3>
+        <p>
+          APIs escaláveis integradas com modelos de IA.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= PRODUTOS ================= -->
+
+  <section id="produtos" class="products section">
+
+    <div class="section-title">
+      <span>PRODUTOS</span>
+      <h2>Produtos digitais e soluções.</h2>
+    </div>
+
+    <div class="products-grid">
+
+      <div class="product-card">
+
+        <div class="product-top">
+          <span>PDF</span>
+        </div>
+
+        <h3>Guia de IA para iniciantes</h3>
+
+        <p>
+          Aprenda IA de forma prática criando aplicações reais.
+        </p>
+
+        <button>Saiba mais</button>
+
+      </div>
+
+      <div class="product-card">
+
+        <div class="product-top">
+          <span>CURSO</span>
+        </div>
+
+        <h3>Aplicações com NLP</h3>
+
+        <p>
+          Desenvolvimento de sistemas inteligentes com linguagem natural.
+        </p>
+
+        <button>Saiba mais</button>
+
+      </div>
+
+      <div class="product-card">
+
+        <div class="product-top">
+          <span>SCRIPT</span>
+        </div>
+
+        <h3>Kit de automações Python</h3>
+
+        <p>
+          Scripts reutilizáveis para produtividade e automação.
+        </p>
+
+        <button>Saiba mais</button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= PROJETOS ================= -->
+
+  <section id="projetos" class="projects section">
+
+    <div class="section-title">
+      <span>PROJETOS</span>
+      <h2>Projetos em destaque.</h2>
+    </div>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <h3>Assistente IA</h3>
+        <p>
+          Sistema inteligente com NLP e interpretação contextual.
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3>Análise de sentimentos</h3>
+        <p>
+          Modelo para classificação emocional de textos.
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3>Classificação documental</h3>
+        <p>
+          Organização automática de documentos com IA.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= CTA ================= -->
+
+  <section class="cta">
+
+    <div class="cta-box">
+
+      <h2>
+        Vamos construir algo inteligente juntos.
+      </h2>
+
+      <p>
+        Desenvolvimento de soluções modernas utilizando IA,
+        automações e linguagem natural.
+      </p>
+
+      <button>
+        Entrar em contato
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- ================= CONTATO ================= -->
+
+  <section id="contato" class="contact section">
+
+    <div class="section-title">
+      <span>CONTATO</span>
+      <h2>Vamos conversar.</h2>
+    </div>
+
+    <form class="contact-form">
+
+      <input type="text" placeholder="Seu nome">
+
+      <input type="email" placeholder="Seu email">
+
+      <textarea placeholder="Sua mensagem"></textarea>
+
+      <button type="submit">
+        Enviar mensagem
+      </button>
+
+    </form>
+
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer class="footer">
+
+    <div class="footer-logo">
+      Katao<span>IA</span>
+    </div>
+
+    <p>
+      © 2026 Katao IA — Todos os direitos reservados.
+    </p>
+
+  </footer>
+
 </body>
 </html>

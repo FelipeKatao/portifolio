@@ -1,402 +1,129 @@
-@layer Globals{
-    *{
-        font-family: Arial, Helvetica, sans-serif;
-    }
-}
-@layer banner{
-[oct8-css~="banner"]{
-    background-color: black;
-    width: auto;
-    height: 20vh;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin-top: -2vh;
-}
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-@layer Header{
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: #fffbea;
+    color: #333;
+}
 
-[oct8-css~="header"]{
+/* Header */
+header {
+    background: #ffcc00;
+    padding: 15px 30px;
     display: flex;
-    flex-direction: row;
-    width: 90%;
-    margin-top: -5vh;
-    color: gray;
-    padding-right: 2vh;
-    margin-left: 5%;
-
-}
-[oct8-css~="profile"]{
-    width: 10vh;
-    height: 10vh;
-    background-color: white;
-    border-radius: 1vh;
-    padding: 2vh;
-    margin-top: 2vh;
-    margin-left: 2vh;
-
-}
-[oct8-css~="shareLink"]{
-margin-left: auto;
-align-content: center;
-}
+    justify-content: space-between;
+    align-items: center;
 }
 
-@layer container{
-    [oct8-css~="containers_central"]{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;        
-        gap: 1rem;  
-        width: 91%;
-        margin: auto;
-        margin-left: 10vh;
-        flex-direction: row;
-        flex-wrap: wrap;        
-        
-    }
-    [oct8-css~="projeto_frame"]{
-        width: 89%;
-        margin: auto;
-        margin-left: 10vh;
-        margin-top: 2vh;
-        padding: 2vh;
-    }
-    [oct8-css~="container_top"]{
-        display: flex;
-        flex-direction: row;
-    }
-    [oct8-css~="container_top"] button{
-        margin-left: auto;
-    }
-    [oct8-css~="container_full"]{
-        padding: 2vh;
-    }
+header .logo {
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
-
-
-@layer cards{
-    [oct8-css~="cards"]{
-
-        padding: 2vh;
-        border-radius: 1vh;
-        width: 82vh;
-        height: 20vh;
-        margin-top:1vh;
-        
-    }
-    [oct8-css~="card-ex"]{
-        padding-left: 2vh;
-        padding-top: 2vh;
-        
-        margin-top: 5vh;
-        height: 18vh;
-        border-radius: 2vh;
-        padding-bottom: 4vh;
-    }
-    [oct8-css~="card-ex"] button{
-       margin-left: auto;
-    }
-
-}
-
-@layer Menus{
-    [oct8-css~='menuList']{
-        height: auto;
-        align-content: center;
-        margin-top: 5vh;
-        width: 89.8%;
-        margin-left: 5%;
-        border-radius: 2vh 2vh 0vh 0vh;
-        display: flex;
-        flex-wrap: wrap;
-        
-    }
-    [oct8-css~='menuList'] ul li{
-        float: left;
-        margin-left: 1vh;
-        list-style: none;
-        height: auto;
-    }
-    [oct8-css~='menuList'] ul li select{
-        width: 90%;
-    }
-    [oct8-css~='menu_fixed']{
-               background: #edf4f7;
-        color: #565656;
-        border: 0.3vh solid #dae1e386;
-        width: 100%;
-        height: 6vh;
-        margin-top: 0vh;
-        text-align: center;
-        position: fixed;
-        font-weight: bold;
-        z-index: 99;
-    }
-    [oct8-css~='menu_fixed'] ul li{
-        margin: auto;
-        float: left;
-        margin-left: 4vh;
-        list-style: none;
-    }
-
-
-}
-
-@layer Modal{
-    [oct8-css~="modal"]{
-           
-            margin-top: 10%;
-            margin-left: 20vw;
-           width: 50%;
-           height: 50%;
-           background-color: white;
-           padding: 2vh;
-           border-radius: 2ch;
-
-    }
-    [oct8-css~="bg-modal"]{
-        display: flex;
-        flex-wrap: wrap;
-        background-color: rgba(0, 0, 0, 0.547);
-        position: fixed;
-        width: 199vh;
-        height: 100%;
-        z-index: 200;
-        top:0;
-        left:0;
-        
-    }
-}
-
-@layer HeaderTitle{
-
-    [oct8-css='headertitle']{
-
-        display: flex;
-        flex-direction: row;
-        padding: 1vh;
-    }
-    [oct8-css='headertitle'] section{
-        margin-left: auto;
-        margin-top: 3vh;
-    }
-}
-
-@layer Dashboards{
-    .box_editor{
-        color: #535ef6;
-        font-weight: bold;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        background-color: white;
-        width: 90%;
-        margin: auto;
-        height: 30vh;
-        padding: 2vh;
-        overflow: auto;
-    }
-    [oct8-css="dashboard"]{
-        width: 90%;
-        height: 80vh;
-        margin: auto;
-        margin-top: -1vh;
-        margin-bottom: 4vh;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        flex-shrink: 1;
-        overflow: auto;
-    }
-    [oct8-css~='widget']{
-        background-color: white;
-        border-radius: 2vh;
-        overflow: auto;
-    }
-}
-
-@layer Medidas{
-    [oct8-css~='pd1']{
-        padding: 1vh;
-        margin-top: 2vh;
-    }
-    [oct8-css~='lg']{
-        height: 50%;
-        width: 80vh;
-        padding: 2vh;
-        margin:2vh;
-        overflow: auto;
-    }
-     [oct8-css~='md']{
-        height: 50%;
-        width: 40vh;
-        padding: 2vh;
-        margin:2vh;
-    }
-    [oct8-css~='sm']{
-        height: 50%;
-        width: 20vh;
-        padding: 2vh;
-        margin:2vh;
-    }
-    [oct8-css~='lsm']{
-        height: 30%;
-        width: 30vh;
-        padding: 2vh;
-        margin:2vh;
-    }
-    [oct8-css~='xx']{
-        height: 50%;
-        width: 180vh;
-        padding: 2vh;
-        margin:2vh;
-    }
-
-    [oct8-css~='center']{
-        margin: auto;
-        width: 100%;
-        height: 40vh;
-    }
-    rect{
-        margin: auto;
-        margin-left: -5vh;
-    }
-}
-
-@layer Tooltips{
-    [oct8-css~="tooltips"]{
-        background-color: #c8c8c8c5;
-        color: #313131;
-        padding: 1vh;
-        width: 30vh;
-        height: 10vh;
-        border-radius: 2vh;
-        z-index: 99;
-        position: fixed;
-        border:  solid 0.1vh #cbcbcb;
-    }
-}
-@layer move{
-    .r_5{
-        margin-left: -5vh;
-    }
-    .l_5{
-        margin-left: 5vh;
-        
-    }
-}
-@layer table{
-    
-    table, th, td {
-    background-color: #eeeeff;
-  width: 100%;
-}
-#database{
-    height:40vh;
-    
-}
-[oct8-css='table_basic']{
-    
-    overflow: auto;
+header nav ul {
+    list-style: none;
     display: flex;
+    gap: 20px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(to right, #ffcc00, #ffe066);
+}
+
+.hero h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.hero button {
+    background: #333;
+    color: #ffcc00;
+    border: none;
+    padding: 12px 25px;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+}
+
+/* Sections */
+.section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.section h2 {
+    margin-bottom: 20px;
+    color: #ffcc00;
+}
+
+/* Cards */
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
     flex-wrap: wrap;
-    height: 100%;
-
 }
+
+.card {
+    background: #fff;
+    border: 2px solid #ffcc00;
+    border-radius: 8px;
+    padding: 20px;
+    width: 250px;
+    transition: transform 0.3s;
 }
-@layer badges{
-    #badge_area{
-        display: flex ;
-        flex-wrap: wrap;
-        flex-direction: row;
-        height: 6vh;
-        width: 42vh;
-    }
-    [oct8-css~='badge']{       
-        border-radius: 6vh;
-        font-size: 2vh;
-        width: auto;
-        padding-left: 1vh;
-        padding-right: 1vh;
-        margin-left: 1vh;
-        height: 31%;
-        font-weight: bold;
-    }
-    [oct8-css~='badge'][oct8-css~='pro']{
-        border: #8d52b1 solid 0.2vh;
-        color: #ab6bd3;
-        text-align: center;           
-    }
-    [oct8-css~='badge'][oct8-css~='pro']:hover{
-         color: white ;
-        border: #ab6bd3 solid 0.2vh;
-        background-color:#81549c ;
-         transition: 0.3s;
-    }
-    [oct8-css~='badge'][oct8-css~='vault']{
-        border: #5d52b1 solid 0.2vh;
-        color: #726bd3;
-        text-align: center;           
-    }
-    [oct8-css~='badge'][oct8-css~='vault']:hover{
-         color: white ;
-        border: #726bd3 solid 0.2vh;
-        background-color: #726bd3;
-         transition: 0.3s;
-    }
-    [oct8-css~='badge'][oct8-css~='red']{
-        border: #b15252 solid 0.2vh;
-        color: #d36b6d;
-        text-align: center;    
-               
-    }
-    [oct8-css~='badge'][oct8-css~='red']:hover{
-        color: white;
-        border: #d36b6d solid 0.2vh;
-        background-color: #b15252;
-        transition: 0.3s;
-    }
-    @keyframes animate-pro{
-        from{
-            border-color: #674a7b;
 
-        }   
-        to{
-
-             border-color: #966ab5;
-
-        } 
-    }
-    
+.card:hover {
+    transform: scale(1.05);
 }
-@layer util{
-    .auto_h{
-        overflow: auto;
-        width: 100%;
-        height: 40vh;
-    }
-    .flex{
-        display: flex;
-        flex-direction: row;
-    }
-    .flex button{
-        margin-left: auto;
-    }
-    .modal{
-        width: 100%;
-        height: 900vh;
-        background-color: #0000008d;
-        position: absolute;
-        margin: auto;
-        margin-top: -200vh;
-        z-index: 98;
-    }
-    .rotate{
-        transform: rotate(180deg);
-    }
-    .mini_block{
-        padding: 2vh;
-        width: 20%;
-    }
+
+/* Contato */
+.contato form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.contato input, .contato textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contato button {
+    background: #ffcc00;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
 }
